@@ -110,6 +110,47 @@ abstract class Basexmlcontroller extends Controller{
         exit;
 	}
 
+    public function fluxRSSForumAction($forum_id){
+
+        $this->load_manager('forum', 'base_app');
+
+        # Recuperation des 10 derniers topics du forum
+        $Topics = $this->manager->forum->getThreadByForumId($forum_id);
+
+        # On boucle sur le topic pour recuperer le 1er message
+        $i = 0;
+        foreach( $Topics as $Topic ):
+            $Topics[$i]['message'] = $this->app->db->get_one(PREFIX . 'forum_message', array('thread_id =' => $Topic['id']), 'add_on ASC');
+            $i++;
+        endforeach;
+
+        $XML = '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0">';
+            $XML .='<channel>';
+                $XML .= '<title>'. $this->app->config['titre_site'] .'</title>';
+                $XML .= '<description>'. $this->app->config['description_site'] .'</description>';
+                $XML .= '<link>'. $this->app->config['url'] . $this->app->config['url_dir'] . '</link>';
+                $XML .= '<pubDate>'. date('r',time()) . '</pubDate>';
+                $XML . '<lastBuildDate>'. date('r',time()) .'</lastBuildDate>';
+
+         foreach($Topics as $Row):
+            $XML .= '<item>';
+                $XML .= '<title>' . $Row['titre'] .'</title>';
+                $XML .= '<link>' . getLink("forum/viewtopic/". $Row['id'] ."/". urlencode($Row['titre']) ." " ) .'</link>';
+                $XML .= '<description><![CDATA[';
+                $XML .= BBCode2Html($Row['message']['message']) . ']]></description>';
+                $XML .= '<guid>'. $Row['id'] . '</guid>';
+                $XML .= '<pubDate>'. $Row['add_on'] .'</pubDate>';
+            $XML .= '</item>';
+        endforeach;
+        
+        $XML .= '</channel></rss>';
+        
+        header("Content-Type: application/rss+xml");
+        echo $XML;
+        exit;
+
+    }
+
     /**
      * Genere le site map sur les modules de base
      * @return [type] [description]

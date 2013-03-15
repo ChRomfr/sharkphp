@@ -10,7 +10,9 @@
 	<h3>{$Forum.name}</h3>
 	<!-- Bouton nouveau sujet -->
 	<div class="pull-right">
+		{if $smarty.session.utilisateur.id != 'Visiteur'}
 		<a href="{$Helper->getLink("forum/newthread/{$Forum.id}")}" title="Nouveau sujet" class="btn">Créer un sujet</a>
+		{/if}
 	</div>
 	<div class="clearfix"></div>
 	<div style="padding-bottom: 3px;"></div>
@@ -30,4 +32,8 @@
 			{/foreach}
 		</tbody>
 	</table>
+	<div class="pull-right">
+		<a href="{$Helper->getLink("xml/fluxRSSForum/{$Forum.id}")}" title="Rss" target="_blank"><span class="icon icon-rssfeed"/></a>
+	</div>
+	<div class="clearfix"></div>
 </div>

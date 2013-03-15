@@ -87,7 +87,7 @@ class BaseforumManager extends BaseModel{
 		return $this->db->count(PREFIX . 'forum_thread', array('forum_id =' => $forum_id) );
 	}
 
-	public function getThreadByForumId($forum_id){
+	public function getThreadByForumId($forum_id, $limit=10, $offset=0){
 		return 	$this->db
 					->select('ft.* , uft.identifiant as auteur, (SELECT COUNT(id) FROM '.PREFIX .'forum_message sfm WHERE sfm.thread_id = ft.id) as nb_message, u2ft.identifiant as last_auteur')
 					->from(PREFIX . 'forum_thread ft')
@@ -97,6 +97,8 @@ class BaseforumManager extends BaseModel{
 					->where(array('ft.forum_id =' => $forum_id, 'ft.visible =' => 1))
 					->group_by('ft.id')
 					->order('ft.last_message_date DESC')
+					->limit($limit)
+					->offset($offset)
 					->get();
 	}
 

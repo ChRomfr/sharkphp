@@ -24,7 +24,7 @@ abstract class Baseforumcontroller extends Controller{
 		$Forum = $this->manager->forum->getForum($forum_id);
 
 		$this->app->smarty->assign(array(
-			'ctitre'		=>	'Forum :: ',
+			'ctitre'		=>	'Forum :: '. $Forum['name'],
 			'Threads'		=>	$Threads,
 			'Forum'			=>	$Forum,
 		));
@@ -33,6 +33,10 @@ abstract class Baseforumcontroller extends Controller{
 	}
 
 	public function newthreadAction($forum_id){
+
+		if( $_SESSION['utilisateur']['id'] == 'Visiteur'):
+			return $this->indexAction();
+		endif;
 
 		$this->load_manager('forum', 'base_app');
 
@@ -112,7 +116,7 @@ abstract class Baseforumcontroller extends Controller{
 		
 		# Envoie a smarty
 		$this->app->smarty->assign(array(
-			'ctitre'		=>	'',
+			'ctitre'		=>	'Forum :: ' . $Thread->titre,
 			'Messages'		=>	$Messages,
 			'Thread'		=>	$Thread,
 			'Pagination'	=>	$Pagination,
@@ -137,7 +141,7 @@ abstract class Baseforumcontroller extends Controller{
 
 		$per_page = 20;
 
-		if( $this->app->HTTPRequest->postExists('reply') ):
+		if( $this->app->HTTPRequest->postExists('reply') && $_SESSION['utilisateur']['id'] != 'Visiteur' ):
 
 			$Thread = new Basethread($this->app->db->get_one(PREFIX . 'forum_thread', array('id =' => $thread_id)));
 

@@ -195,4 +195,41 @@ abstract class Baseforumcontroller extends Controller{
 
 	}
 
+	/**
+	 * [locksujetAction description]
+	 * @param  [type] $thread_id [description]
+	 * @return [type]            [description]
+	 */
+	public function locksujetAction($thread_id){
+
+		# Verification des droits
+		if( $this->isModerateur() == false ):
+			return $this->indexAction();
+		endif;
+
+		$Thread = new Basethread();
+		$Thread->id = $thread_id;
+		$Thread->closed = 1;
+		$Thread->save();
+
+		return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Sujet verouillé' );
+	}	
+
+
+	private function isModerateur(){
+		if( $_SESSION['utilisateur']['isAdmin'] > 0 ):
+			return true;
+		endif;
+
+		if( isset($_SESSION['utilisateur']['groupes']['moderateurs']) ):
+			return true;
+		endif;
+
+		if( isset($_SESSION['utilisateur']['groupes']['administrateurs']) ):
+			return true;
+		endif;
+
+		return false;
+	}
+
 }

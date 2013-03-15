@@ -105,8 +105,6 @@ abstract class Baseforumcontroller extends Controller{
 		# Recuperation infos topic
 		$Thread = new Basethread($this->app->db->get_one(PREFIX . 'forum_thread', array('id =' => $thread_id)));
 
-		$Thread->save();
-
 		# On traite la pagination
 		$Pagination = new Zebra_Pagination();
 		$Pagination->records($NbMessage);
@@ -179,9 +177,43 @@ abstract class Baseforumcontroller extends Controller{
 		return $this->redirect( $_SERVER['HTTP_REFERER'],0,'');
 	}
 
-	public function editReply($message_id){
+	public function editreplyformAction($message_id){
 
+		$Message = new Basemessage();
+		$Message->get($message_id);
+		
+		$Thread = new Basethread();
+		$Thread->get($Message->thread_id);
+
+		$this->app->smarty->assign(array(
+			'Message'		=>	$Message,
+			'Thread'		=>	$Thread,
+		));
+
+		return $this->app->smarty->fetch(BASE_APP_PATH . 'view' . DS . 'forum' . DS . 'editreplyform.tpl');
 	}
+
+	public function editReplyAction($message_id){
+
+		if( $this->app->HTTPRequest->postExists('replyedit') ):
+
+			$Message = new Basemessage($this->app->HTTPRequest->postData('replyedit'));
+			$Message->edit_on = TimeToDATETIME();
+			$Message->edit = 1;
+			$Message->id = $message_id;
+			$Message->save();
+
+			$Message->get($message_id);
+
+			$Thread = new Basethread();
+			$Thread->get($Message->thread_id);
+
+			return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Message modifié' );
+		endif;
+
+		return $this->indexAction();
+	}
+
 
 	public function deleteReply($message_id){
 
@@ -224,7 +256,7 @@ abstract class Baseforumcontroller extends Controller{
 
 		$Thread = new Basethread();
 		$Thread->id = $thread_id;
-		$Thread->closed = 0;
+		$Thread->closed = '2';
 		$Thread->save();
 
 		return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Sujet déverouillé' );

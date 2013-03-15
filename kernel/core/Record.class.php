@@ -156,7 +156,7 @@ abstract class Record implements ArrayAccess{
     	if( empty($id) ):
     		return $db->get($this->getTable());
     	else:
-    		$Result = $db->get_one($this->getTable());
+    		$Result = $db->get_one($this->getTable(), array('id =' => $id));
     		$this->hydrate($Result);
     	endif;
     }

@@ -111,7 +111,7 @@ class BaseforumManager extends BaseModel{
 	public function getMessagesByThreadId($thread_id, $limit, $offset){
 
 		return 	$this->db
-					->select('fm.*, u.identifiant as auteur')
+					->select('fm.*, u.identifiant as auteur, u.avatar')
 					->from(PREFIX . 'forum_message fm')
 					->left_join(PREFIX . 'user u', 'fm.auteur_id = u.id')
 					->where(array('fm.thread_id =' => $thread_id))

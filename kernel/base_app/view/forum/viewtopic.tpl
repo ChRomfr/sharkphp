@@ -7,18 +7,36 @@
 </ul>
 
 <div class="well">
+	{if $Thread->closed == 1}
+	<div class="alert alert-info">
+		Sujet fermé
+	</div>
+	{/if}
 	<div class="pagination">{$Pagination->render()}</div>
 	<table class="table table-hover table-striped table-condensed">
 		{foreach $Messages as $Message name=loopmessage}
 		<tr>
-			<td>
+			<td style="width:20%;">
 				<!-- Auteur -->
-				<span>{$Message.auteur}</span>
+				<span><strong>{$Message.auteur}</strong></span><br/>
+				{if empty($Message.avatar)}
+				<span><img src="{$config.url}{$config.url_dir}web/upload/utilisateur/avatar/default.png" alt="" style="width:150px;"/></span>
+				{/if}
 			</td>
 			<td>
 				<!-- Message -->
-				<a name="message-{$Message.id}"><span class="muted"><small>Le {$Message.add_on}</small></span></a>
-				<p>{BBCode2Html($Message.message)}</span>
+				<div class="pull-left">
+					<a name="message-{$Message.id}"><span class="muted"><small>Le {$Message.add_on}</small></span></a>
+				</div>
+				<div class="pull-right">
+					{if $Message.auteur_id == $smarty.session.utilisateur.id && $Thread->closed != 1}
+					<a href="javascript:getFormEditReply({$Message.id});" title="Modifier"><span class="icon icon-edit"/></a>
+					{/if}
+				</div>
+				<div class="clearfix"></div>
+				<div id="message{$Message.id}">
+					<p>{BBCode2Html($Message.message|html_entity_decode)}</p>
+				</div>
 			</td>
 			{if $config.forum_pub_after_1_message == 1 && !empty($config.forum_pub_code) && $smarty.foreach.loopmessage.iteration == 1}
 			<tr>
@@ -28,7 +46,7 @@
 		{/foreach}
 	</table>
 
-	{if $smarty.session.utilisateur.id != 'Visiteur'}
+	{if $smarty.session.utilisateur.id != 'Visiteur' && $Thread->closed != 1}
 	<hr/>
 	<form method="post" action="{$Helper->getLink("forum/addReply/{$Thread.id}")}" id="formReply" class="form-horizontal">
 		<div class="control-group">
@@ -46,10 +64,10 @@
 	{if $smarty.session.utilisateur.isAdmin > 0}
 	<hr/>
 	<div class="pull-right">
-		{if $Thread.closed == 0}
+		{if $Thread.closed != 1}
 		<a href="javascript:lockSujet({$Thread.id});" title="Fermer le sujet"><span class="icon32 icon-locked"/></a>
 		{else}
-		<a href="javascript:unlockSujet({$Thread.id});" title="Fermer le sujet"><span class="icon32 icon-unlocked"/></a>
+		<a href="javascript:unlockSujet({$Thread.id});" title="Ouvrir le sujet"><span class="icon32 icon-unlocked"/></a>
 		{/if}
 	</div>
 	<div class="clearfix"></div>
@@ -102,6 +120,15 @@ function unlockSujet(thread_id){
 	}
 }
 
+{if $Thread->closed != 1}
+function getFormEditReply(message_id){
+	$.get(
+		'{getLink("forum/editreplyform/'+ message_id +'")}',{literal}
+		{nohtml:'nohtml'},{/literal}
+		function(data){ $('#message'+ message_id).html(data); }
+	);
+}
+{/if}
 //-->
 </script>
 {/if}

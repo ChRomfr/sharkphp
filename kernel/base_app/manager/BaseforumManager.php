@@ -15,7 +15,7 @@ class BaseforumManager extends BaseModel{
 			foreach($Data[$i]['forums'] as $forum):
 				$Data[$i]['forums'][$y]['nb_thread'] = $this->getNumThreadByForum($forum['id']);
 				$Data[$i]['forums'][$y]['nb_message'] = $this->getNumMessageByForum($forum['id']);
-				//$Data[$i]['forums'][$y]['last_message'] = $this->getLastMessageForum($forum['id']);
+				$Data[$i]['forums'][$y]['last_message'] = $this->getLastMessageForum($forum['id']);
 				$y++;
 			endforeach;
 			$i++;
@@ -74,7 +74,7 @@ class BaseforumManager extends BaseModel{
 
 	public function getLastMessageForum($forum_id){
 		return 	$this->db
-					->select('fm.id, ft.name as thread, fm.post_on, u.identifiant')
+					->select('fm.id, ft.titre as thread, ft.id as thread_id, fm.add_on, u.identifiant')
 					->from(PREFIX . 'forum_message fm')
 					->left_join(PREFIX . 'forum_thread ft','fm.thread_id = ft.id')
 					->left_join(PREFIX . 'user u','fm.auteur_id = u.id')

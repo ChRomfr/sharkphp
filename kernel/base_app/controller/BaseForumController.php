@@ -215,6 +215,21 @@ abstract class Baseforumcontroller extends Controller{
 		return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Sujet verouillé' );
 	}	
 
+	public function unlocksujetAction($thread_id){
+
+		# Verification des droits
+		if( $this->isModerateur() == false ):
+			return $this->indexAction();
+		endif;
+
+		$Thread = new Basethread();
+		$Thread->id = $thread_id;
+		$Thread->closed = 0;
+		$Thread->save();
+
+		return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Sujet déverouillé' );
+	}
+
 
 	private function isModerateur(){
 		if( $_SESSION['utilisateur']['isAdmin'] > 0 ):

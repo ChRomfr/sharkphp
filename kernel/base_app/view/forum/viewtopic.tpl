@@ -48,6 +48,8 @@
 	<div class="pull-right">
 		{if $Thread.closed == 0}
 		<a href="javascript:lockSujet({$Thread.id});" title="Fermer le sujet"><span class="icon32 icon-locked"/></a>
+		{else}
+		<a href="javascript:unlockSujet({$Thread.id});" title="Fermer le sujet"><span class="icon32 icon-unlocked"/></a>
 		{/if}
 	</div>
 	<div class="clearfix"></div>
@@ -91,6 +93,12 @@ $(document).ready(function()	{
 function lockSujet(thread_id){
 	if( confirm('Etes vous sur de vouloir verouiller le sujet') ){
 		window.location.href = '{$Helper->getLink("forum/locksujet/'+ thread_id +'")}';
+	}
+}
+
+function unlockSujet(thread_id){
+	if( confirm('Etes vous sur de vouloir déverouiller le sujet') ){
+		window.location.href = '{$Helper->getLink("forum/unlocksujet/'+ thread_id +'")}';
 	}
 }
 

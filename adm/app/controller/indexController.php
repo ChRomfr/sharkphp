@@ -5,8 +5,15 @@ if( !defined('IN_VA') ) exit;
 class indexController extends Controller{
 
 	public function indexAction(){	
+
+		if( $this->app->config['mod_forum'] == 1 ):
+			$this->app->smarty->assign(array(
+				'NbAlerteForum'			=>	$this->app->db->count(PREFIX . 'forum_message_alerte'),
+				'NbAlerteNonTraite'		=>	$this->app->db->count(PREFIX . 'forum_message_alerte', array('traite =' => 0)),
+			));
+		endif;
 	
-		$this->registry->smarty->assign(array(
+		$this->app->smarty->assign(array(
 			'ctitre'			=>	$this->lang['Administration'],
 			'Logs'				=>	/*$this->app->MyLog->getLastLog(10)*/null,
 			'NbContacts'		=>	$this->app->db->count(PREFIX . 'contact', array('lu =' => 0)),
@@ -15,7 +22,7 @@ class indexController extends Controller{
 			'NbSitesNew'		=>	$this->app->db->count(PREFIX . 'annuaire_site', array('status =' => 'new')),
 		));
 		
-		return $this->registry->smarty->fetch(VIEW_PATH . 'index' . DS . 'index.tpl');
+		return $this->app->smarty->fetch(VIEW_PATH . 'index' . DS . 'index.tpl');
 	}	
     
     public function ajaxGetNotReadContact(){

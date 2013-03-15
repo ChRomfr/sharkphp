@@ -67,11 +67,16 @@
 	{if $smarty.session.utilisateur.isAdmin > 0}
 	<hr/>
 	<div class="pull-right">
+		<!-- Verouillage/Deverouillage -->
 		{if $Thread.closed != 1}
 		<a href="javascript:lockSujet({$Thread.id});" title="Fermer le sujet"><span class="icon32 icon-locked"/></a>
 		{else}
 		<a href="javascript:unlockSujet({$Thread.id});" title="Ouvrir le sujet"><span class="icon32 icon-unlocked"/></a>
 		{/if}
+		<!-- Deplacement -->
+		<a href="javascript:unlockSujet({$Thread.id});" title="Ouvrir le sujet"><span class="icon32 icon-redo"/></a>
+		<!-- Suppression -->
+		<a href="javascript:deleteTopic({$Thread.id});" title="Supprimer le sujet"><span class="icon32 icon-trash"/></a>
 	</div>
 	<div class="clearfix"></div>
 	{/if}
@@ -136,6 +141,12 @@ function getFormEditReply(message_id){
 function deleteReply(message_id){
 	if( confirm('Etes vous sur de vouloir supprimer cette reponse ?') ){
 		window.location.href = '{getLink("forum/deletereply/'+ message_id +'")}';
+	}
+}
+
+function deleteTopic(topic_id){
+	if( confirm('Etes vous sur de vouloir supprimer ce sujet ?') ){
+		window.location.href = '{getLink("forum/deletetopic/'+ topic_id +'")}';
 	}
 }
 

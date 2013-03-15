@@ -281,7 +281,9 @@ abstract class Baseforumcontroller extends Controller{
 		$Log->action = "Verouillage du topic";
 		$Log->save();
 
-		return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Sujet verouillé' );
+		$this->app->smarty->assign('FlashMessage','Sujet verouillé');
+
+		return $this->viewtopicAction($thread_id);
 	}	
 
 	public function unlocksujetAction($thread_id){
@@ -303,9 +305,34 @@ abstract class Baseforumcontroller extends Controller{
 		$Log->action = "Deverouillage du topic";
 		$Log->save();
 
-		return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Sujet déverouillé' );
+		$this->app->smarty->assign('FlashMessage','Sujet déverouillé');
+
+		return $this->viewtopicAction($thread_id);
 	}
 
+
+	public function deletetopicAction($topic_id){
+		# Verification des droits
+		if( $this->isModerateur() == false ):
+			return $this->indexAction();
+		endif;
+
+		$Topic = new Basethread();
+		$Topic->get($topic_id);
+
+		$this->app->db->delete(PREFIX . 'forum_message', null, array('thread_id =' => $topic_id));
+		$this->app->db->delete(PREFIX . 'forum_thread', null, array('id =' => $topic_id));
+
+		$Log = new Baselogmoderation();
+		$Log->date_action = TimeToDATETIME();
+		$Log->moderateur_id = $_SESSION['utilisateur']['id'];
+		$Log->action = "Suppression du sujet : ". $Topic->titre;
+		$Log->save();
+
+		$this->app->smarty->assign('FlashMessage','Sujet supprimé');
+
+		return $this->viewforumAction($Topic->forum_id);
+	}
 
 	private function isModerateur(){
 		if( $_SESSION['utilisateur']['isAdmin'] > 0 ):

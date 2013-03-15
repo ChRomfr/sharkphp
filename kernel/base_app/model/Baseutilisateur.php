@@ -61,6 +61,13 @@ class Baseutilisateur extends Record{
 	public 	$portable;
 	public 	$telephone;
 	public 	$uniq_id;
+
+	/**
+	 * Contient les groupes utilisisateurs
+	 * @NoDb: {"nodb":1}
+	 * @CallFunction: {"function":"getGroupes"}
+	 */
+	public $groupes; 
 	
 	public function setActif( $str ){
 		$this->actif = $str;
@@ -136,6 +143,19 @@ class Baseutilisateur extends Record{
 		if( $this->actif == 0):
 			return 'Votre compte n\'est pas active ou a été desactivé par un administrateur';
 		endif;
+
+		# Recuperation des groupes
+		$Groupes = $db->
+						select('gr.*')
+						->from(PREFIX . 'groupe gr')
+						->left_join(PREFIX . 'user_groupe ugr','ugr.groupe_id = gr.id')
+						->where(array('ugr.user_id =' => $data['id']))
+						->get();
+
+		# On boucle dessus pour les mettres dans le bon shema
+		foreach($Groupes as $Groupe):
+			$this->groupes[$Groupe['name']];
+		endforeach;
 		
 		# Return true 
 		return true;

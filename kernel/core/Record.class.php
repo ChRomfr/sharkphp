@@ -82,9 +82,6 @@ abstract class Record implements ArrayAccess{
                 }
             }
         }
-        /*echo "<pre>";
-        print_r($schema);
-        echo "</pre>";*/
 
         return $schema;
     }
@@ -110,10 +107,25 @@ abstract class Record implements ArrayAccess{
     public function save(){
     	global $db;
 
-    	if( empty($this->id) ):
-    		return $db->insert( $this->getTable(), $this);
+        # On stocke l object dans var tmp
+        $Obj = $this;
+
+        # On recupere son schema
+        $Properties = $this->buildSchema();
+
+        var_dump($Properties);
+
+        # On parcourt le schema pour supprimer la var NoDb
+        foreach( $Properties as $key => $values ):
+            if( isset($values['NoDb']) ):
+                unset($Obj->$key);
+            endif;
+        endforeach;
+        
+    	if( empty($Obj->id) ):
+    		return $db->insert( $this->getTable(), $Obj);
     	else:
-    		return $db->update( $this->getTable(), $this, array('id =' => $this->id));
+    		return $db->update( $this->getTable(), $Obj, array('id =' => $Obj->id));
     	endif;
     }
 

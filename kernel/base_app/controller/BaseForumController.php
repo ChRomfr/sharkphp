@@ -105,6 +105,8 @@ abstract class Baseforumcontroller extends Controller{
 		# Recuperation infos topic
 		$Thread = new Basethread($this->app->db->get_one(PREFIX . 'forum_thread', array('id =' => $thread_id)));
 
+		$Thread->save();
+
 		# On traite la pagination
 		$Pagination = new Zebra_Pagination();
 		$Pagination->records($NbMessage);

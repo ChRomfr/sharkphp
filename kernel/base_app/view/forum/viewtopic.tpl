@@ -43,11 +43,14 @@
 	</form>
 	{/if}
 	<div class="pagination">{$Pagination->render()}</div>
-	{if $smarty.session.utilisateur.isAdmin == 1}
+	{if $smarty.session.utilisateur.isAdmin > 0}
+	<hr/>
 	<div class="pull-right">
 		{if $Thread.closed == 0}
-		<a href="" title=""><span class="icon32 icon-lock"/>
+		<a href="javascript:lockSujet({$Thread.id});" title="Fermer le sujet"><span class="icon32 icon-locked"/></a>
+		{/if}
 	</div>
+	<div class="clearfix"></div>
 	{/if}
 </div>
 {/strip}
@@ -84,6 +87,13 @@ jQuery(document).ready(function(){
 $(document).ready(function()	{
     $('#message').markItUp(mySettings);
 });
+
+function lockSujet(thread_id){
+	if( confirm('Etes vous sur de vouloir verouiller le sujet') ){
+		window.location.href = '{$Helper->getLink("forum/locksujet/'+ thread_id +'")}';
+	}
+}
+
 //-->
 </script>
 {/if}

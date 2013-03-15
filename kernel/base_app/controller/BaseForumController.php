@@ -113,6 +113,10 @@ abstract class Baseforumcontroller extends Controller{
 		$Pagination = new Zebra_Pagination();
 		$Pagination->records($NbMessage);
 		$Pagination->records_per_page($per_page);
+
+		if( $this->isModerateur() == true ):
+			$this->app->smarty->assign('Forums', $this->manager->forum->getAllForums());
+		endif;
 		
 		# Envoie a smarty
 		$this->app->smarty->assign(array(
@@ -249,12 +253,30 @@ abstract class Baseforumcontroller extends Controller{
 
 	}
 
-	public function deleteThread($thread_id){
+	public function movetopicAction($topic_id){
+		# Verification des droits
+		if( $this->isModerateur() == false ):
+			return $this->indexAction();
+		endif;
 
-	}
+		if( $this->app->HTTPRequest->postExists('thread') ):
+			$Topic = new Basethread( $this->app->HTTPRequest->postData('thread')  );
+			$Topic->save();
 
-	public function moveThread($thread_id){
+			$this->app->db->query('UPDATE '. PREFIX . 'forum_message SET forum_id = "'. $Topic->forum_id .'" WHERE thread_id = "'. $Topic->id .'"');
 
+			$Log = new Baselogmoderation();
+			$Log->date_action = TimeToDATETIME();
+			$Log->moderateur_id = $_SESSION['utilisateur']['id'];
+			$Log->thread_id = $topic_id;
+			$Log->action = "Deplacement sujet";
+			$Log->save();
+
+		endif;
+
+		$this->app->smarty->assign('FlashMessage','Sujet deplacé');
+
+		return $this->viewtopicAction($topic_id);
 	}
 
 	/**

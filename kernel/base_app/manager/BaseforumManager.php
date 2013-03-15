@@ -124,4 +124,12 @@ class BaseforumManager extends BaseModel{
 
 	}
 
+	public function getAllForums(){
+		return 	$this->db
+					->select('f.*, fc.name as categorie')
+					->from(PREFIX . 'forum f')
+					->left_join(PREFIX . 'forum_categorie fc','f.categorie_id = fc.id')
+					->order('ordre, f.name')
+					->get();
+	}
 }

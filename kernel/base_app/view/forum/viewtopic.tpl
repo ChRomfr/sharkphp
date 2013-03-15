@@ -74,13 +74,37 @@
 		<a href="javascript:unlockSujet({$Thread.id});" title="Ouvrir le sujet"><span class="icon32 icon-unlocked"/></a>
 		{/if}
 		<!-- Deplacement -->
-		<a href="javascript:unlockSujet({$Thread.id});" title="Ouvrir le sujet"><span class="icon32 icon-redo"/></a>
+		<a href="#myModal" role="button" data-toggle="modal"><span class="icon32 icon-redo"/></a>
 		<!-- Suppression -->
 		<a href="javascript:deleteTopic({$Thread.id});" title="Supprimer le sujet"><span class="icon32 icon-trash"/></a>
 	</div>
 	<div class="clearfix"></div>
 	{/if}
 </div>
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+<h3 id="myModalLabel">Deplacement sujet</h3>
+</div>
+<div class="modal-body">
+<form method="post" action="{$Helper->getLink("forum/movetopic/{$Thread.id}")}">
+	<label>Forum :<label>
+	<select name="thread[forum_id]">
+		{foreach $Forums as $Forum}
+			<option value="{$Forum.id}" {if $Forum.id == $Thread.forum_id}selected="selected"{/if}>{$Forum.categorie} > {$Forum.name}</option>
+		{/foreach}
+	</select>
+</div>
+<div class="modal-footer">
+	<input type="hidden" name="thread[id]" value="{$Thread.id}" />
+<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+<button class="btn btn-primary" type="submit">Save changes</button>
+</form>
+</div>
+</div>
+
 {/strip}
 {if $smarty.session.utilisateur.id != 'Visiteur'}
 <script type="text/javascript">

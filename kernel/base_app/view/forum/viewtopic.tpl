@@ -64,7 +64,7 @@
 	</form>
 	{/if}
 	<div class="pagination">{$Pagination->render()}</div>
-	{if $smarty.session.utilisateur.isAdmin > 0}
+	{if $smarty.session.utilisateur.isAdmin > 0 || isset($smarty.session.utilisateur.groupe.moderateurs)}
 	<hr/>
 	<div class="pull-right">
 		<!-- Verouillage/Deverouillage -->
@@ -140,6 +140,7 @@ $(document).ready(function()	{
     $('#message').markItUp(mySettings);
 });
 
+{if $smarty.session.utilisateur.isAdmin > 0 || isset($smarty.session.utilisateur.groupe.moderateurs)}
 function lockSujet(thread_id){
 	if( confirm('Etes vous sur de vouloir verouiller le sujet') ){
 		window.location.href = '{$Helper->getLink("forum/locksujet/'+ thread_id +'")}';
@@ -173,7 +174,7 @@ function deleteTopic(topic_id){
 		window.location.href = '{getLink("forum/deletetopic/'+ topic_id +'")}';
 	}
 }
-
+{/if}
 //-->
 </script>
 {/if}

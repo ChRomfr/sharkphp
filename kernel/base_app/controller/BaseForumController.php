@@ -345,6 +345,31 @@ abstract class Baseforumcontroller extends Controller{
 		return $this->viewtopicAction($thread_id);
 	}
 
+	public function alertemessageAction($message_id){
+
+		if( $_SESSION['utilisateur']['id'] == 'Visiteur'):
+			return $this->indexAction();
+		endif;
+
+		# Verification si deja une alerte pour ce message
+		if( $this->app->db->count(PREFIX . 'forum_message_alerte', array('id =' => $message_id, 'traite =' => 0)) ):
+			return $this->redirect( $_SERVER['HTTP_REFERER'], 3, 'Ce message a déjà été signaler. L\'alerte est en cour de traitement');	
+		endif;
+
+		# Recuperation du message
+		$Message = new Basemessage();
+		$Message->get($message_id);
+
+		# Alerte
+		$Alerte  = new Basemessagealerte();
+		$Alerte->message_id = $message_id;
+		$Alerte->auteur_id = $_SESSION['utilisateur']['id'];
+		$Alerte->date_alerte = TimeToDATETIME();
+		$Alerte->traite = 0;
+		$Alerte->save();
+
+		return $this->redirect( $_SERVER['HTTP_REFERER'], 3, 'Alerte envoyée');
+	}	
 
 	public function deletetopicAction($topic_id){
 		# Verification des droits

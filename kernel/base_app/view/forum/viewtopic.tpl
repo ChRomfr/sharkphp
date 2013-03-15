@@ -29,6 +29,9 @@
 					<a name="message-{$Message.id}"><span class="muted"><small>Le {$Message.add_on}</small></span></a>
 				</div>
 				<div class="pull-right">
+					{if $smarty.session.utilisateur.id != 'Visiteur'}
+					<a href="javascript:alerteMessage({$Message.id});" title="Alerter"><span class="icon icon-alert"/></a>
+					{/if}
 					{if $Message.auteur_id == $smarty.session.utilisateur.id && $Thread->closed != 1}
 					<a href="javascript:getFormEditReply({$Message.id});" title="Modifier"><span class="icon icon-edit"/></a>
 					{/if}
@@ -106,9 +109,10 @@
 </div>
 
 {/strip}
-{if $smarty.session.utilisateur.id != 'Visiteur'}
+
 <script type="text/javascript">
 <!--
+{if $smarty.session.utilisateur.id != 'Visiteur'}
 jQuery(document).ready(function(){
 	// binds form submission and fields to the validation engine
 	$("#formReply").validate({
@@ -136,9 +140,29 @@ jQuery(document).ready(function(){
         }
 	});
 });
+
 $(document).ready(function()	{
     $('#message').markItUp(mySettings);
 });
+
+function alerteMessage(message_id){
+	if( confirm('Etes vous sur de vouloir signaler ce message ?') ){
+		window.location.href = '{$Helper->getLink("forum/alertemessage/'+ message_id +'")}';
+	}
+}
+
+
+{if $Thread->closed != 1}
+function getFormEditReply(message_id){
+	$.get(
+		'{getLink("forum/editreplyform/'+ message_id +'")}',{literal}
+		{nohtml:'nohtml'},{/literal}
+		function(data){ $('#message'+ message_id).html(data); }
+	);
+}
+{/if}
+	
+{/if}
 
 {if $smarty.session.utilisateur.isAdmin > 0 || isset($smarty.session.utilisateur.groupe.moderateurs)}
 function lockSujet(thread_id){
@@ -152,16 +176,6 @@ function unlockSujet(thread_id){
 		window.location.href = '{$Helper->getLink("forum/unlocksujet/'+ thread_id +'")}';
 	}
 }
-
-{if $Thread->closed != 1}
-function getFormEditReply(message_id){
-	$.get(
-		'{getLink("forum/editreplyform/'+ message_id +'")}',{literal}
-		{nohtml:'nohtml'},{/literal}
-		function(data){ $('#message'+ message_id).html(data); }
-	);
-}
-{/if}
 
 function deleteReply(message_id){
 	if( confirm('Etes vous sur de vouloir supprimer cette reponse ?') ){
@@ -177,4 +191,3 @@ function deleteTopic(topic_id){
 {/if}
 //-->
 </script>
-{/if}

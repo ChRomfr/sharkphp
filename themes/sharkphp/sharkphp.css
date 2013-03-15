@@ -1,0 +1,10 @@
+.clear{clear:both;}
+.fleft{float:left;}
+.fright{float:right;}
+.footer_site{
+    width:100%;
+    min-height: 100px;
+    background-color:#f5f5f5;
+    border-color:1px solid #e3e3e3;
+    border-radius: 4px;
+}

@@ -17,16 +17,29 @@ abstract class Baseforumcontroller extends Controller{
 	}
 
 	public function viewforumAction($forum_id){
+		$per_page = 20;
 
 		$this->load_manager('forum', 'base_app');
 
-		$Threads = $this->manager->forum->getThreadByForumId($forum_id);
+		# Recuperation du nombre de topic
+		$NbThread = $this->manager->forum->getNumThreadByForum($forum_id);
+
+		# Recuperation des topics
+		$Threads = $this->manager->forum->getThreadByForumId($forum_id, $per_page, getOffset($per_page));
+
+		# Recuperation des infos du forum
 		$Forum = $this->manager->forum->getForum($forum_id);
+
+		# Pagination
+		$Pagination = new Zebra_Pagination();
+		$Pagination->records_per_page($per_page);
+		$Pagination->records($NbThread);
 
 		$this->app->smarty->assign(array(
 			'ctitre'		=>	'Forum :: '. $Forum['name'],
 			'Threads'		=>	$Threads,
 			'Forum'			=>	$Forum,
+			'Pagination'	=>	$Pagination,
 		));
 
 		return $this->app->smarty->fetch(BASE_APP_PATH . 'view' . DS . 'forum' . DS . 'viewforum.tpl');

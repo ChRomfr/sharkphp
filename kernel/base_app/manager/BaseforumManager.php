@@ -60,7 +60,7 @@ class BaseforumManager extends BaseModel{
 	 * @return [type]           [description]
 	 */
 	public function getNumThreadByForum($forum_id){
-
+		return $this->db->count(PREFIX . 'forum_thread', array('forum_id =' => $forum_id, 'visible =' => 1 ));
 	}
 
 	/**

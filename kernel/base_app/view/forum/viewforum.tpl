@@ -1,13 +1,19 @@
 <!-- 
 	base_app/forum/viewforum.tpl
 -->
-<ul>
-	
+{strip}
+<ul class="breadcrumb">
+	<li><a href="{$Helper->getLink("index")}" title="{$lang.Accueil}">{$lang.Accueil}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLink("forum")}" title="Forums">Forums</a><span class="divider">/</span></li>
+	<li>{$Forum.name}</li>
 </ul>
 
 <div class="well">
 
 	<h3>{$Forum.name}</h3>
+	
+	<div class="pagination">{$Pagination->render()}</div>
+
 	<!-- Bouton nouveau sujet -->
 	<div class="pull-right">
 		{if $smarty.session.utilisateur.id != 'Visiteur'}
@@ -32,8 +38,10 @@
 			{/foreach}
 		</tbody>
 	</table>
+	<div class="pagination">{$Pagination->render()}</div>
 	<div class="pull-right">
 		<a href="{$Helper->getLink("xml/fluxRSSForum/{$Forum.id}")}" title="Rss" target="_blank"><span class="icon icon-rssfeed"/></a>
 	</div>
 	<div class="clearfix"></div>
 </div>
+{/strip}

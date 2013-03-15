@@ -35,7 +35,7 @@ class BaseconnexionController extends Controller{
 
             # On creer la session
 			$this->app->session->create($user);
-			
+
 			# On met a jour le profil utilisateur avec sa derniere connexion
 			$this->app->db->update(PREFIX . 'user', array('last_connexion' => time()), array('id =' => $_SESSION['utilisateur']['id']));
 			

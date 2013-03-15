@@ -132,7 +132,7 @@ class Baseutilisateur extends Record{
 
 		# On recupere les informations de utilisateur
 		$data = $db->get_one( $this->getTable(), array('identifiant =' => $this->identifiant, 'password =' => $this->password) );
-		
+		var_dump($data);
 		if( empty($data) ):
 			return 'Impossible de recuperer vos informations';
 		endif;
@@ -144,19 +144,6 @@ class Baseutilisateur extends Record{
 			return 'Votre compte n\'est pas active ou a été desactivé par un administrateur';
 		endif;
 
-		# Recuperation des groupes
-		$Groupes = $db->
-						select('gr.*')
-						->from(PREFIX . 'groupe gr')
-						->left_join(PREFIX . 'user_groupe ugr','ugr.groupe_id = gr.id')
-						->where(array('ugr.user_id =' => $data['id']))
-						->get();
-
-		# On boucle dessus pour les mettres dans le bon shema
-		foreach($Groupes as $Groupe):
-			$this->groupes[$Groupe['name']];
-		endforeach;
-		
 		# Return true 
 		return true;
 	}
@@ -185,5 +172,26 @@ class Baseutilisateur extends Record{
 	
 	public function getTokenActivation(){
 		return $this->token_activation;
+	}
+
+	/**
+	 * Recupere les groupes de l utilisateurs
+	 * @return void
+	 */
+	public function getGroupes(){
+		global $db;
+
+		# Recuperation des groupes
+		$Groupes = 	$db->
+						select('gr.*')
+						->from(PREFIX . 'groupe gr')
+						->left_join(PREFIX . 'user_groupe ugr','ugr.groupe_id = gr.id')
+						->where(array('ugr.user_id =' => $this->id))
+						->get();
+
+		# On boucle dessus pour les mettres dans le bon shema
+		foreach($Groupes as $Groupe):
+			$this->groupes[$Groupe['name']] = $Groupe['name'];
+		endforeach;
 	}
 }

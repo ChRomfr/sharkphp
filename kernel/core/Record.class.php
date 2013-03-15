@@ -1,8 +1,6 @@
 <?php
 abstract class Record implements ArrayAccess{
 
-	//public $error;
-
 	const Table = NULL;
 	
 	public function __construct(array $donnees = array()){
@@ -12,11 +10,26 @@ abstract class Record implements ArrayAccess{
 	}	
 	
 	public function hydrate(array $donnees){
+
 		foreach($donnees as $k => $v){
 			if( property_exists($this, $k) ){
 				$this->$k = $v;
 			}
 		}
+
+        # On recupere son schema
+        $Properties = $this->buildSchema();
+        
+        # On parcourt le schema pour verifier si des fonctions
+        # doivent etre appelle
+        foreach( $Properties as $key => $values ):
+            if( isset($values['CallFunction']) ):
+                $Call = $values['CallFunction'];
+                $f = $Call->function;
+                $this->$f();
+            endif;
+        endforeach;
+
 	}
 	
 	public function offsetGet($offset) {
@@ -113,8 +126,6 @@ abstract class Record implements ArrayAccess{
         # On recupere son schema
         $Properties = $this->buildSchema();
 
-        var_dump($Properties);
-
         # On parcourt le schema pour supprimer la var NoDb
         foreach( $Properties as $key => $values ):
             if( isset($values['NoDb']) ):
@@ -125,6 +136,16 @@ abstract class Record implements ArrayAccess{
     	if( empty($Obj->id) ):
     		return $db->insert( $this->getTable(), $Obj);
     	else:
+            # Pour eviter la suppression de donnees et passer des object partiellement remplie
+            # ce qui peut etre le cas si le formulaire ne permet que la modification en partie
+            # On supprimer toutes proprietes empty
+            
+            foreach( $Obj as $k => $v ):
+                if( empty($v) ):
+                    unset($Obj->$k);
+                endif;
+            endforeach;
+            # On sauvegarde en base
     		return $db->update( $this->getTable(), $Obj, array('id =' => $Obj->id));
     	endif;
     }

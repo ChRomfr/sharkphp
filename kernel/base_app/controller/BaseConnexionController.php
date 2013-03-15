@@ -20,10 +20,10 @@ class BaseconnexionController extends Controller{
             
             if( is_file(APP_PATH . 'model' . DS  . 'utilisateur.php') ):
                 $this->load_model('utilisateur');
-                $user = new utilisateur( $this->registry->HTTPRequest->postData('login') );
+                $user = new utilisateur( $this->app->HTTPRequest->postData('login') );
             else:
                 $this->load_model('utilisateur', 'base_app');
-                $user = new Baseutilisateur( $this->registry->HTTPRequest->postData('login') );
+                $user = new Baseutilisateur( $this->app->HTTPRequest->postData('login') );
             endif;	
 			
             $Result = $user->checkLogin();

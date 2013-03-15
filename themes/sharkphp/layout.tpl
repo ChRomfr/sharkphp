@@ -88,7 +88,15 @@
 	<!-- Contenu -->
 	<div class="container">
 	<div class="row-fluid">		
-		<div class="span12">{$content}</div>
+		<div class="span12">
+			{if isset($FlashMessage) && !empty($FlashMessage)}
+				<div class="alert alert-info">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					{$FlashMessage}
+				</div>
+			{/if}
+			{$content}
+		</div>
 	</div>
 	</div>
 	<!-- Footer -->

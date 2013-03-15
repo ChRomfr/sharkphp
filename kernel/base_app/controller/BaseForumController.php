@@ -219,7 +219,33 @@ abstract class Baseforumcontroller extends Controller{
 	}
 
 
-	public function deleteReply($message_id){
+	public function deletereplyAction($message_id){
+
+		if( $this->isModerateur() == false ):
+			return $this->indexAction();
+		endif;
+
+		$Message = new Basemessage();
+		$Message->get($message_id);
+		$oldmessage = $Message->message;
+		$Message->message = 'Supprimer par modérateur';
+		$Message->save();
+
+		$Log = new Baselogmoderation();
+		$Log->date_action = TimeToDATETIME();
+		$Log->moderateur_id = $_SESSION['utilisateur']['id'];
+		$Log->forum_id = $Message->forum_id;
+		$Log->thread_id = $Message->thread_id;
+		$Log->message_id = $message_id;
+		$Log->action = "Suppression d une message";
+		$Log->detail = $oldmessage;
+		$Log->save();
+
+		$this->app->smarty->assign(array(
+			'FlashMessage'		=>	'Message supprimé',
+		));
+
+		return $this->viewtopicAction($Message->thread_id);
 
 	}
 
@@ -248,6 +274,13 @@ abstract class Baseforumcontroller extends Controller{
 		$Thread->closed = 1;
 		$Thread->save();
 
+		$Log = new Baselogmoderation();
+		$Log->date_action = TimeToDATETIME();
+		$Log->moderateur_id = $_SESSION['utilisateur']['id'];
+		$Log->thread_id = $thread_id;
+		$Log->action = "Verouillage du topic";
+		$Log->save();
+
 		return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Sujet verouillé' );
 	}	
 
@@ -262,6 +295,13 @@ abstract class Baseforumcontroller extends Controller{
 		$Thread->id = $thread_id;
 		$Thread->closed = '2';
 		$Thread->save();
+
+		$Log = new Baselogmoderation();
+		$Log->date_action = TimeToDATETIME();
+		$Log->moderateur_id = $_SESSION['utilisateur']['id'];
+		$Log->thread_id = $thread_id;
+		$Log->action = "Deverouillage du topic";
+		$Log->save();
 
 		return $this->redirect( getLink('forum/viewtopic/'. $Thread->id), 3, 'Sujet déverouillé' );
 	}

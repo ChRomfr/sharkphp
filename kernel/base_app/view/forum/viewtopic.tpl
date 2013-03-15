@@ -32,6 +32,9 @@
 					{if $Message.auteur_id == $smarty.session.utilisateur.id && $Thread->closed != 1}
 					<a href="javascript:getFormEditReply({$Message.id});" title="Modifier"><span class="icon icon-edit"/></a>
 					{/if}
+					{if isset($smarty.session.utilisateur.groupes.moderateurs) || $smarty.session.utilisateur.isAdmin > 0}
+					<a href="javascript:deleteReply({$Message.id});" title="Supprimer"><span class="icon icon-trash"/></a>
+					{/if}
 				</div>
 				<div class="clearfix"></div>
 				<div id="message{$Message.id}">
@@ -129,6 +132,13 @@ function getFormEditReply(message_id){
 	);
 }
 {/if}
+
+function deleteReply(message_id){
+	if( confirm('Etes vous sur de vouloir supprimer cette reponse ?') ){
+		window.location.href = '{getLink("forum/deletereply/'+ message_id +'")}';
+	}
+}
+
 //-->
 </script>
 {/if}

@@ -90,6 +90,7 @@ $ClassList = array(
 	'AdmFilemanagerController'	=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'controller' . DS.  'AdmFilemanagerController.php',
 	'AdmLinkController'			=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'controller' . DS.  'AdmLinkController.php',
 	'AdmAnnuaireController'		=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'controller' . DS.  'AdmAnnuaireController.php',
+	'AdmForumController'		=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'controller' . DS.  'AdmForumController.php',
 
 	'Baseutilisateurmanager'	=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'manager' . DS . 'BaseutilisateurManager.php',
 	'Basedownloadrmanager'		=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'manager' . DS . 'BasedownloadManager.php',

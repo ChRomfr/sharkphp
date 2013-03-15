@@ -49,9 +49,19 @@ class Router{
 
  public $action; 
 
+ public $adm = 0;
+
  function __construct($registry) {
-        $this->registry = $registry;
-		$this->getRoute();
+
+    $this->registry = $registry;
+	$this->getRoute();
+
+	# On dertime si on est dans l administration ou non 
+	$Result = strpos( $_SERVER['REQUEST_URI'], '/adm/');
+
+	if( $Result !== false ):
+		$this->adm = 1;
+	endif;
  }
  
  function getRoute(){
@@ -82,27 +92,40 @@ class Router{
  }
  
 function setPath($path) {
-	
-	if( !is_array($path) ):
-		/*** check if path i sa directory ***/
-		if (is_dir($path) == false)
-		{
-			throw new Exception ('Invalid controller path: `' . $path . '`');
-		}
-		/*** set the path ***/
-		$this->path = $path;
-	else:
-		foreach($path as $row):
-			if( is_dir($row) && is_file($row . $this->controller . 'Controller.php') ):
-				$this->path = $row;
-			endif;
-		endforeach;
-		
-		if( empty($this->path) ):
-			$NbPath = count($path)-1;
-			$this->path = $path[$NbPath];
+
+	# On verifie si le controller est u bundle
+	if( is_dir(ROOT_PATH . 'bundle' . DS . $this->controller . DS) ):
+		# On est dans un bundle
+		if( $this->adm == 1 ):
+			$this->path = ROOT_PATH . 'bundle' . DS . $this->controller . DS . 'adm' . DS . 'controller' . DS;
+		else:
+			$this->path = ROOT_PATH . 'bundle' . DS . $this->controller . DS . 'app' . DS . 'controller' . DS;
 		endif;
-		
+	
+	else:
+
+	
+		if( !is_array($path) ):
+			/*** check if path i sa directory ***/
+			if (is_dir($path) == false)
+			{
+				throw new Exception ('Invalid controller path: `' . $path . '`');
+			}
+			/*** set the path ***/
+			$this->path = $path;
+		else:
+			foreach($path as $row):
+				if( is_dir($row) && is_file($row . $this->controller . 'Controller.php') ):
+					$this->path = $row;
+				endif;
+			endforeach;
+			
+			if( empty($this->path) ):
+				$NbPath = count($path)-1;
+				$this->path = $path[$NbPath];
+			endif;
+			
+		endif;
 	endif;
 }
  

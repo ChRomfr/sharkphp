@@ -61,6 +61,9 @@ $registry->form = new Form($registry);
 
 $Session = new Session();
 
+# Traitement Bundles
+require_once ROOT_PATH . 'kernel' . DS . 'core' . DS . 'bundle.php';
+
 # Verification sessions
 if( $Session->check() == false ):
     $Session->create('Visiteur'); // Creation d'une session visiteur

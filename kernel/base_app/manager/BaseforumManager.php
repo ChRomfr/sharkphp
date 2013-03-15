@@ -132,4 +132,15 @@ class BaseforumManager extends BaseModel{
 					->order('ordre, f.name')
 					->get();
 	}
+
+	public function getLastAlerteNonTraite($limit = 10){
+		return 	$this->db
+					->select('fma.*, u.identifiant')
+					->from(PREFIX . 'forum_message_alerte fma')
+					->left_join(PREFIX . 'user u','fma.auteur_id = u.id')
+					->where(array('fma.traite =' => 0))
+					->order('fma.date_alerte DESC')
+					->limit($limit)
+					->get();
+	}
 }

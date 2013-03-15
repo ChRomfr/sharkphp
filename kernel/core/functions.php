@@ -17,6 +17,12 @@ function getConfig($app){
 	
 }
 
+function getLinkAdm($link){
+	global $config;
+	
+	return $config['url'] . $config['url_dir'] .'adm/index.php/'. $link;
+}
+
 function getLink($str){
 	global $config;
 	
@@ -184,6 +190,33 @@ function sendEmail($destinataire, $expediteur, $sujet, $message, $messageHTML = 
 		return false;
 	else
 		return true;  
+}
+
+/**
+*	Listes les dossisers dans un dossier
+*
+*/
+function getDirsInDir($dirname, $path_return = ''){
+
+	# On verifie que le dossier existe
+    if( !is_dir($dirname) ):
+        return false;
+    endif;
+
+    # On ouvre le dossier
+    $dir = opendir($dirname);
+    // Init du tableau
+    $dirs = array();
+    // On liste les fichier
+    while($tmp = readdir($dir)){
+        if($tmp != '.' && $tmp != '..' && !is_file($dirname.$tmp) && $tmp != ' '){
+            $dirs[$tmp] = $path_return . $tmp;
+        }
+    }
+    // On ferme le dossier
+    closedir($dir);
+    // On retourne les fichiers
+    return $dirs;
 }
 
 function getFilesInDir($dirname, $path_return = ''){

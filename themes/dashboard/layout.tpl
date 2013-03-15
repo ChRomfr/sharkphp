@@ -154,6 +154,12 @@
 								<li><a href="{$Helper->getLinkAdm("systeme/errorPhp")}" title="">Erreurs PHP</a></li>
 							</ul>
 						</li>
+						<!-- Traitements des bundles -->
+						{foreach $Bundle as $Row}
+							{if $Row.menu_admin == 1}
+								{$Row.menu_admin_code}
+							{/if}
+						{/foreach}
 
 					</ul><!-- /nav -->
 				</div><!-- /well -->

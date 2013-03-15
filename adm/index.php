@@ -65,12 +65,6 @@ if( !$registry->HTTPRequest->getExists('nohtml') ){
 }else
 	echo $Content;
 
-function getLinkAdm($link){
-	global $config;
-	
-	return $config['url'] . $config['url_dir'] .'adm/index.php/'. $link;
-}
-
 if( !$registry->HTTPRequest->getExists('nohtml') ){
 echo'<div style="size:9px; margin:auto; width:1000px;">';
 echo'<div>

@@ -113,7 +113,7 @@ class BaseforumManager extends BaseModel{
 	public function getMessagesByThreadId($thread_id, $limit, $offset){
 
 		return 	$this->db
-					->select('fm.*, u.identifiant as auteur, u.avatar')
+					->select('fm.*, u.identifiant as auteur, u.avatar, (SELECT COUNT(fma.id) FROM '. PREFIX . 'forum_message_alerte fma WHERE fma.message_id = fm.id AND fma.traite = 0) as alerte')
 					->from(PREFIX . 'forum_message fm')
 					->left_join(PREFIX . 'user u', 'fm.auteur_id = u.id')
 					->where(array('fm.thread_id =' => $thread_id))
@@ -135,12 +135,26 @@ class BaseforumManager extends BaseModel{
 
 	public function getLastAlerteNonTraite($limit = 10){
 		return 	$this->db
-					->select('fma.*, u.identifiant')
+					->select('fma.*, u.identifiant, u2.identifiant as rapporteur, fm.thread_id')
 					->from(PREFIX . 'forum_message_alerte fma')
 					->left_join(PREFIX . 'user u','fma.auteur_id = u.id')
+					->left_join(PREFIX . 'user u2','fma.auteur_id = u2.id')
+					->left_join(PREFIX . 'forum_message fm','fm.id = fma.message_id')
 					->where(array('fma.traite =' => 0))
 					->order('fma.date_alerte DESC')
 					->limit($limit)
 					->get();
+	}
+
+	public function getLastLogModeration($limit = 10){
+
+		return 	$this->db
+					->select('flm.*, u.identifiant as moderateur')
+					->from(PREFIX . 'forum_log_moderation flm')
+					->left_join(PREFIX . 'user u','flm.moderateur_id = u.id')
+					->order('flm.date_action DESC')
+					->limit($limit)
+					->get();
+
 	}
 }

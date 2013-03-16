@@ -165,6 +165,12 @@
 				</div><!-- /well -->
 			</div><!-- /span2 -->
 			<div class="span10">
+				{if isset($FlashMessage) && !empty($FlashMessage)}
+				<div class="alert alert-info">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					{$FlashMessage}
+				</div>
+				{/if}
 				{$content}
 			</div><!-- /span10 -->
 		</div><!-- /row-fluid -->

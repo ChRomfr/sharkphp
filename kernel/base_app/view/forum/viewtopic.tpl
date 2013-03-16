@@ -41,7 +41,13 @@
 				</div>
 				<div class="clearfix"></div>
 				<div id="message{$Message.id}">
+					{if ($smarty.session.utilisateur.isAdmin > 0 || isset($smarty.session.utilisateur.groupe.moderateurs)) && $Message.alerte > 0}
+					<div class="alert">
+					{/if}
 					<p>{BBCode2Html($Message.message|html_entity_decode)}</p>
+					{if ($smarty.session.utilisateur.isAdmin > 0 || isset($smarty.session.utilisateur.groupe.moderateurs)) && $Message.alerte > 0}
+					</div>
+					{/if}
 				</div>
 			</td>
 			{if $config.forum_pub_after_1_message == 1 && !empty($config.forum_pub_code) && $smarty.foreach.loopmessage.iteration == 1}

@@ -81,7 +81,10 @@ $config = array(
 'theme'							=>	'sharkphp',
 'use_ckeditor'					=>	0,
 'use_sh'						=>	1,
-'fb_app_id'						=>	'',						# Id application facebook
+'fb_app_id'						=>	'', # Id application facebook
+'fb_url'						=>	'https://www.facebook.com/pages/Sharkphp/111778145678381',	
+'twitter_url'					=>	'http://',	
+'print_stat_page'				=>	1, # Affiche ou non les stats sur la generation de la page		
 #Forums
 'forum_name'					=>	'Forum',					# Nom de votre forum
 'forum_description'				=>	'Description du forum',	# Description du forum qui sera mit dans la gestion du site

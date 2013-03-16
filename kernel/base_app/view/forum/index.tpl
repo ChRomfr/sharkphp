@@ -12,7 +12,7 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th colspan="2">{$Data.name}</th>
+					<th colspan="2"><a href="#" data-toggle="tooltip" title="{$Data.description}">{$Data.name}</a></th>
 					<th>Sujets</th>
 					<th>Messages</th>
 					<th>Dernier message</th>
@@ -22,10 +22,13 @@
 			{foreach $Data.forums as $Forum}
 			<tr>
 				{if empty($Forum.image)}
-				<td colspan="2"><a href="{$Helper->getLink("forum/viewforum/{$Forum.id}")}" title="{$Forum.name}">{$Forum.name}</a></td>
+				<td colspan="2">
+					<a href="{$Helper->getLink("forum/viewforum/{$Forum.id}")}" title="{$Forum.name}">{$Forum.name}</a><br/>
+					<span class="muted"><small>{$Forum.description}</small></span>
+				</td>
 				{else}
-				<td></td>
-				<td><a href="{$Helper->getLink("forum/viewforum/{$Forum.id}")}" title="{$Forum.name}">{$Forum.name}</a></td>
+				<td style="width:35px;"><img src="{$config.url}{$config.url_dir}web/upload/categorie/{$Forum.image}" alt="" style="width:35px;"/></td>
+				<td><a href="{$Helper->getLink("forum/viewforum/{$Forum.id}")}" title="{$Forum.name}">{$Forum.name}</a><br/><span class="muted"><small>{$Forum.description}</small></span></td>
 				{/if}
 				<td style="text-align:center;">{$Forum.nb_thread}</td>
 				<td style="text-align:center;">{$Forum.nb_message}</td>

@@ -133,6 +133,19 @@ class BaseforumManager extends BaseModel{
 					->get();
 	}
 
+	public function getAlertes($limit = 10, $offset = 0){
+		return 	$this->db
+					->select('fma.*, u.identifiant, u2.identifiant as rapporteur, fm.thread_id')
+					->from(PREFIX . 'forum_message_alerte fma')
+					->left_join(PREFIX . 'user u','fma.auteur_id = u.id')
+					->left_join(PREFIX . 'user u2','fma.auteur_id = u2.id')
+					->left_join(PREFIX . 'forum_message fm','fm.id = fma.message_id')
+					->order('fma.date_alerte DESC')
+					->limit($limit)
+					->offset($offset)
+					->get();
+	}
+
 	public function getLastAlerteNonTraite($limit = 10){
 		return 	$this->db
 					->select('fma.*, u.identifiant, u2.identifiant as rapporteur, fm.thread_id')

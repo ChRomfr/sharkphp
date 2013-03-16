@@ -110,7 +110,14 @@
 						<li><a href="{$Helper->getLinkAdm("contact")}" title="Contact">Contact</a></li>
 
 						{if $config.mod_forum == 1}
-						<li><a href="{$Helper->getLinkAdm("forum")}" title="">Forum</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Forums&nbsp;<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{$Helper->getLinkAdm("forum")}" title="">Forums</a></li>
+								<li><a href="{$Helper->getLinkAdm("forum/alertes")}" title="">Alertes</a></li>
+								<li><a href="{$Helper->getLinkAdm("forum/logs")}" title="">Logs</a></li>
+							</ul>
+						</li>
 						{/if}
 
 						{if $config.mod_feed_rss == 1}

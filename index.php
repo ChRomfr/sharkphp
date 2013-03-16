@@ -72,9 +72,9 @@ if( !$registry->HTTPRequest->getExists('nohtml') && !$registry->HTTPRequest->get
 	# Affichage du resultat
 	echo $registry->smarty->display(ROOT_PATH . 'themes' . DS . $config['theme'] . DS . 'layout.tpl');
 	
-	if( IN_PRODUCTION == false ):
+	if( $registry->config['print_stat_page'] == 1 ):
 		# Affichage dy chrono et information sur execution et site en non production
-		echo'<div style="size:9px; margin:auto; width:1000px;"><div>
+		echo'<div style="size:9px; margin:auto; width:1000px;">
 			Page generee en : '. round( microtime(true) - $chrono1, 6) . ' sec | 
 			Requete SQL : '. $db->num_queries .' | 
 			Utilisation memoire : ' . round(memory_get_usage() / (1024*1024),2) .' mo

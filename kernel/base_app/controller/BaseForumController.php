@@ -36,10 +36,11 @@ abstract class Baseforumcontroller extends Controller{
 		$Pagination->records($NbThread);
 
 		$this->app->smarty->assign(array(
-			'ctitre'		=>	'Forum :: '. $Forum['name'],
-			'Threads'		=>	$Threads,
-			'Forum'			=>	$Forum,
-			'Pagination'	=>	$Pagination,
+			'ctitre'				=>	'Forum :: '. $Forum['name'],
+			'Threads'				=>	$Threads,
+			'Forum'					=>	$Forum,
+			'Pagination'			=>	$Pagination,
+			'Description_this_page'	=>	$Forum['description'],
 		));
 
 		return $this->app->smarty->fetch(BASE_APP_PATH . 'view' . DS . 'forum' . DS . 'viewforum.tpl');

@@ -204,6 +204,48 @@ abstract class AdmForumController extends Controller{
 		return $this->indexAction();
 	}
 
+	public function alertesAction(){
+
+		$per_page = 50;
+
+		$this->load_manager('forum','base_app');
+
+		$NbAlertes = $this->app->db->count(PREFIX . 'forum_message_alerte');
+		$Alertes = $this->manager->forum->getAlertes($per_page, getOffset($per_page));
+
+		$Pagination = new Zebra_Pagination();
+		$Pagination->records_per_page($per_page);
+		$Pagination->records($NbAlertes);
+
+		$this->app->smarty->assign(array(
+			'Alertes'		=>	$Alertes,
+			'Pagination'	=>	$Pagination,
+		));
+
+		return $this->app->smarty->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'view' . DS . 'forum' . DS . 'alertes.tpl');
+	}
+
+	public function logsAction(){
+
+		$per_page = 50;
+
+		$this->load_manager('forum','base_app');
+
+		$NbLogs = $this->app->db->count(PREFIX . 'forum_log_moderation');
+		$Logs = $this->manager->forum->getLastLogModeration($per_page, getOffset($per_page));
+
+		$Pagination = new Zebra_Pagination();
+		$Pagination->records_per_page($per_page);
+		$Pagination->records($NbLogs);
+
+		$this->app->smarty->assign(array(
+			'Logs'			=>	$Logs,
+			'Pagination'	=>	$Pagination,
+		));
+
+		return $this->app->smarty->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'view' . DS . 'forum' . DS . 'logs.tpl');
+	}
+
 	/**
 	 * Enregistrement l image sur le serveur
 	 * @param  string nom de la var $_FILE qui contient l image

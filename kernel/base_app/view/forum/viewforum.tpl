@@ -12,6 +12,8 @@
 
 	<h3>{$Forum.name}</h3>
 	
+	<div>{$Forum.description}</div>
+
 	<div class="pagination">{$Pagination->render()}</div>
 
 	<!-- Bouton nouveau sujet -->

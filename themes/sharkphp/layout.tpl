@@ -151,8 +151,13 @@
 			</div><!-- /row-fluid -->
 			<hr/>
 			<div class="fleft">
-				<a href="{getLink("xml/fluxRSSNews?nohtml")}" title=""><img src="{$config.url}{$config.url_dir}web/images/rss2.png" alt="" style="width:20px;" /></a>
-				<a href="https://www.facebook.com/pages/Sharkphp/111778145678381" title=""><img src="{$config.url}{$config.url_dir}web/images/facebook.png" alt="" style="width:20px;" /></a>
+				<a href="{getLink("xml/fluxRSSNews?nohtml")}" title=""><span class="icon icon-orange icon-rssfeed"/></a>&nbsp;
+				{if !empty($config.fb_url)}
+				<a href="{$config.fb_url}" target="_blank" title=""><i class="icon icon-facebook-sign"></i></a>&nbsp;
+				{/if}
+				{if !empty($config.twitter_url)}
+				<a href="{$config.twitter_url}" target="_blank" title=""><i class="icon icon-twitter-sign"></i></a>&nbsp;
+				{/if}
 			</div>
 			<div class="fright">
 				Réaliser avec <a href="http://www.sharkphp.com" title="Another CMS/FRAMEWORK">Sharkphp <img src="{$config.url}{$config.url_dir}web/images/sharkphp.png" alt="" style="width:20px;" /></a>
@@ -163,10 +168,16 @@
 	
 {/strip}
 {$config.code_stat}
-<script>
+<script type="text/javascript">
+<!--
 $(document).ready(function() {
 	$("a.fbimage").fancybox();
 });
+
+$(function (){
+   $('a').tooltip();
+});
+//-->
 </script>
 </body>
 </html>

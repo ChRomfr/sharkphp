@@ -30,7 +30,7 @@
 		{if count($Alertes) > 0}
 		<div class="span4 well">
 			<table class="table">
-				<caption><h4>Logs modération</h4></caption>
+				<caption><h4>Alertes</h4></caption>
 				<thead>
 					<tr>
 						<th>Date</th>

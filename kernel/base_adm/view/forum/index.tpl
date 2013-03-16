@@ -65,9 +65,9 @@
 							<div class="pull-right">
 								<a href="{$Helper->getLinkAdm("forum/forumadd/{$Data.id}")}" title="Ajouter un forum"><span class="icon icon-blue icon-plus"/></a>
 								&nbsp;
-								<a href="" title="Modifier la categorie"><span class="icon icon-green icon-edit"/></a>
+								<a href="{$Helper->getLinkAdm("forum/categorieedit/{$Data.id}")}" title="Modifier la categorie"><span class="icon icon-green icon-edit"/></a>
 								&nbsp;
-								<a href="" title="Supprimer la categorie"><span class="icon icon-red icon-trash"/></a>
+								<a href="javascript:deletecategorie({$Data.id})" title="Supprimer la categorie"><span class="icon icon-red icon-trash"/></a>
 							</div>
 							<div class="clearfix"></div>
 						</th>
@@ -76,18 +76,41 @@
 				<tbody>
 				{foreach $Data.forums as $Forum}
 				<tr>
-					{if empty($Forum.image)}
-					<td colspan="2"><a href="{$Helper->getLink("forum/viewforum/{$Forum.id}")}" title="{$Forum.name}">{$Forum.name}</a></td>
-					{else}
-					<td></td>
-					<td><a href="{$Helper->getLink("forum/viewforum/{$Forum.id}")}" title="{$Forum.name}">{$Forum.name}</a></td>
-					{/if}
+					<td>
+						<div class="pull-left">
+							<a href="#" title="{$Forum.name}">{$Forum.name}</a>
+						</div>
+						<div class="pull-right">
+							<a href="{$Helper->getLinkAdm("forum/forumedit/{$Forum.id}")}" title="Modifier le forum"><span class="icon icon-green icon-edit"/></a>
+							&nbsp;
+							<a href="javascript:deleteforum({$Forum.id})" title="Supprimer le forum"><span class="icon icon-red icon-trash"/></a>
+						</div>
+						<div class="clearfix"></div>
+					</td>
 				</tr>
 				{/foreach}
 				<tbody>
 			</table>
 			<br/>
 		{/foreach}
-		</div>
+		<div style="text-align:center">
+			<a href="{$Helper->getLinkAdm("forum/categorieadd")}" title="{$lang.Nouvelle_categorie}" class="btn">{$lang.Nouvelle_categorie}</a>
+		</div><!-- /span4 -->
 	</div><!-- /row-fluid -->
+
+<script type="text/javascript">
+<!--
+function deletecategorie(categorie_id){
+	if(confirm('{$lang.Confirm_suppression_categorie} ?' )){
+		window.location.href = '{$Helper->getLinkAdm("forum/categoriedelete/'+categorie_id+'")}';
+	}
+}
+
+function deleteforum(id){
+	if(confirm('{$lang.Confirm_suppression_forum} ?' )){
+		window.location.href = '{$Helper->getLinkAdm("forum/forumdelete/'+id+'")}';
+	}
+}
+//-->
+</script
 

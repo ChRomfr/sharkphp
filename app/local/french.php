@@ -79,24 +79,18 @@ $lang = array(
 'Configuration_enregistree'						=>	'Configuration enregistr&eacute;e',
 'Confirm_lock_commentaire'						=>	'Etes vous sur de vouloir bloquer les commentaires de cette news',
 'Confirm_unlock_commentaire'					=>	'Etes vous sur de vouloir d&eacute;bloquer les commentaires de cette news',
-
 'Confirm_suppression_article'					=>	'Etes vous sur de vouloir supprimer l\'article',
 'Confirm_suppression_bien'						=>	'Etes vous sur de vouloir supprimer ce bien',
 'Confirm_suppression_blok'						=>	'Etes vous sur de vouloir supprimer ce blok',
-
 'Confirm_suppression_categorie'					=>	utf8_encode('Etes vous sur de vouloir supprimer cette catégorie'),
 'Confirm_suppression_commentaire'				=>	'Etes vous sur de vouloir supprimer ce commentaire',
-
 'Confirm_suppression_discussion'				=>	'Etes vous sur de vouloir supprimer cette discussion',
-
-
+'Confirm_suppression_forum'						=>	'Etes vous sur de vouloir supprimer ce forum',
 'Confirm_suppression_image'						=>	'Etes vous sur de vouloir supprimer cette image',
-
 'Confirm_suppression_menu'						=>	'Etes vous sur de vouloir supprimer ce menu',
 'Confirm_suppression_message'					=>	'Etes vous sur de vouloir supprimer ce message',
 'Confirm_suppression_news'						=>	'Etes vous sur de vouloir supprimer cette news',
 'Confirm_suppression_page'						=>	'Etes vous sur de vouloir supprimer cette page',
-'Confirm_suppression_prospect'                  =>  'Etes vous sur de vouloir supprimer ce prospect',
 'Confirm_suppression_photo'                     =>  'Etes vous sur de vouloir supprimer cette photo',
 'Confirm_suppression_telechargement'			=>	'Etes vous sur de vouloir supprimer ce t&eacute;l&eacute;chargement',
 'Confirm_suppression_utilisateur'				=>	'Etes vous sur de vouloir supprimer cet utilisateur',
@@ -140,17 +134,17 @@ $lang = array(
 'Dimanche'										=>	'Dimanche',
 'Directeur'		=>	'Directeur',
 'Discussion'									=>	'Discussion',
-'Discussion_supprimee'							=>	'Discussion supprimï¿½e',
+'Discussion_supprimee'							=>	'Discussion supprimée',
 'Discussions'									=>	'Discussions',
 
 'Droite'										=>	'Droite',
 
 'Edition'										=>	'Edition',
-'Edition_agence'                                =>  'Edition agence',
-'Edition_article'								=>	'Edition article',
 
+'Edition_article'								=>	'Edition article',
+'Edition_categorie'								=>	utf8_encode('Edition catégorie'),
 'Edition_menu'									=>	'Edition menu',
-'Edition_prospect'                              =>  'Edition prospect',
+
 'Email'											=>	'Email',
 'Email_deja_utilise'							=>	'Email deja utilisee',
 'Email_envoye_procedure'						=>	'Un email avec la procedure vient d etre envoy&eacute;',
@@ -173,6 +167,8 @@ $lang = array(
 'Fichier_explication_dl'						=>	'Adresse du fichier : http://www.url.com/lefichier.zip',
 'Forum'											=>	'Forum',
 'Forum_ajoute'									=>	utf8_encode('Forum ajouté'),
+'Forum_modfie'									=>	utf8_encode('Forum modifié'),
+'Forum_supprime'								=>	utf8_encode('Forum supprimé'),
 'Galerie'										=>	'Galerie',
 'Gauche'										=>	'Gauche',
 'Generale'										=>	'G&eacute;n&eacute;rale',
@@ -260,8 +256,7 @@ $lang = array(
 'Nom_prenom'									=>	'Nom / pr&eacute;nom',
 'Nombre_lien_affiche'							=>	'Nombre de lien &agrave; afficher',
 'Non'											=>	'Non',
-'Nos_agences'                                   =>  'Nos agences',
-'Nos_annonces'                                  =>  'Nos annonces',
+
 'Note'											=>	'Note',
 'Nous_contacter'                                =>  'Nous contacter',
 'Nouveau'										=>	'Nouveau',
@@ -270,7 +265,7 @@ $lang = array(
 
 'Nouvel_article'								=>	'Nouvel article',
 'Nouvelle'										=>	'Nouvelle',
-'Nouvelle_agence'                               =>	'Nouvelle agence',
+'Nouvelle_categorie'							=>	utf8_encode('Nouvelle catégorie'),
 'Nouvelle_discussion'							=>	'Nouvelle discussion',
 
 'Nouvelle_page'									=>	'Nouvelle page',

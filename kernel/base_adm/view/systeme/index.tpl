@@ -45,7 +45,25 @@
 	</tr>
 	{/foreach}
 	</table>
-</table>
+</div>
+
+<!-- Information hebergements -->
+<div class="well">
+	<h4>Information system</h4>
+	<table class="table table-striped">
+		<tr>
+			<td>PHP :</td>
+			<td>{phpversion()}</td>
+		</tr>
+		{if apache_get_version()}
+		<tr>
+			<td>Apache :</td>
+			<td>{apache_get_version()}</td>
+		</tr>
+		{/if}
+	</table>
+</div>
+
 {/strip}
 
 <script>

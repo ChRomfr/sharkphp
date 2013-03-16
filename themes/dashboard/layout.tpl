@@ -106,8 +106,13 @@
 								<li><a href="{$Helper->getLinkAdm("categorie?c=article")}" title=""}>Categorie</a></li>
 							</ul>
 						</li>
-						<li><a href="{$Helper->getLinkAdm("contact")}" title="Contact">Contact</a></li>
 						<li><a href="{$Helper->getLinkAdm("blok")}" title="">Blok</a></li>
+						<li><a href="{$Helper->getLinkAdm("contact")}" title="Contact">Contact</a></li>
+
+						{if $config.mod_forum == 1}
+						<li><a href="{$Helper->getLinkAdm("forum")}" title="">Forum</a></li>
+						{/if}
+
 						{if $config.mod_feed_rss == 1}
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Flux&nbsp;<b class="caret"></b></a>

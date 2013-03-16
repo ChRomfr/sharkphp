@@ -1,6 +1,6 @@
 <?php
 
-abstract class AdmUtilisateurModel extends Record{
+abstract class AdmUtilisateurModel extends Baseutilisateur{
 
 	const Table = 'user';
 		

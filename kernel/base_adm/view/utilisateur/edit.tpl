@@ -54,6 +54,39 @@
 	</form>
 </div><!-- /well -->
 
+<!-- Groupes -->
+<div class="well">
+	<h4>{$lang.Groupes}</h4>
+	<ul class="unstyled">
+		{foreach $user->groupes as $row}
+		<li>{$row.name}</li>
+		{/foreach}
+	</ul>
+	<hr/>
+	<form method="post" action="{$Helper->getLinkAdm("utilisateur/useraddingroupe/{$user->id}")}" class="form-inline">
+		<label for="groupe_id">{$lang.Groupe} :</label>&nbsp;
+		<select name="groupe[groupe_id]" id="groupe_id" class="chzn-select">
+			<option><option>
+			{foreach $groupes as $row}
+			<option value="{$row.id}">{$row.name}</option>
+			{/foreach}
+		</select>&nbsp;
+		<button type="submit" class="btn btn-primary">{$lang.Ajouter}</button>
+	</form>
+	<hr/>
+	<form method="post" action="{$Helper->getLinkAdm("utilisateur/userremovegroupe/{$user->id}")}" class="form-inline">
+		<label for="gname">{$lang.Groupe} :</label>&nbsp;
+		<select name="groupe[groupe_id]" id="gname" class="chzn-select">
+			<option><option>
+			{foreach $user->groupes as $row}
+			<option value="{$row.id}">{$row.name}</option>
+			{/foreach}
+		</select>&nbsp;
+		<button type="submit" class="btn btn-primary">{$lang.Supprimer}</button>
+	</form>
+</div>
+
+<!-- Infos -->
 <div class="well">
 	<h4>{$lang.Infos}</h4>
 	<dl class="dl-horizontal">
@@ -66,3 +99,8 @@
 	</dl>
 </div><!-- /well -->
 {/strip}
+<script type="text/javascript">
+<!--
+$(".chzn-select").chosen();
+//-->
+</script>

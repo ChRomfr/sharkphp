@@ -117,6 +117,7 @@ $ClassList = array(
 	'Basemessage'				=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'model' . DS . 'Basemessage.php',
 	'Baselogmoderation'			=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'model' . DS . 'Baselogmoderation.php',
 	'Basemessagealerte'			=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'model' . DS . 'Basemessagealerte.php',
+	'Basegroupe'				=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'model' . DS . 'Basegroupe.php',
 	'AdmNewsModel'				=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'model' . DS . 'AdmNewsModel.php',
 	'AdmPageModel'				=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'model' . DS . 'AdmPageModel.php',
 	'AdmArticleModel'			=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'model' . DS . 'AdmArticleModel.php',

@@ -191,7 +191,7 @@ class Baseutilisateur extends Record{
 
 		# On boucle dessus pour les mettres dans le bon shema
 		foreach($Groupes as $Groupe):
-			$this->groupes[$Groupe['name']] = $Groupe['name'];
+			$this->groupes[$Groupe['name']] = array('id' => $Groupe['id'], 'name' => $Groupe['name']);;
 		endforeach;
 	}
 }

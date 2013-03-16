@@ -9,25 +9,21 @@ $lang = array(
 'Action'										=>	'Action',
 'Activation_des_comptes'						=>	'Activation des comptes',
 'Active'										=>	'Active',
-'Administrateur'								=>	'Administarteur',
+'Administrateur'								=>	'Administrrteur',
 'Administrateurs'								=>	'Administrateurs',
 'Administration'								=>	'Administration',
 'Adresse'										=>	'Adresse',
 'Afficher_les_dernieres_news'					=>	'Afficher les dernieres news',
-'Agence'										=>	'Agence',
-'Agence_enregistree'							=>	utf8_encode('Agence enregistrée'),
-'Agence_supprimee'                              =>  utf8_encode('Agence supprimée'),
-'Agences'										=>	'Agences',
+
 'Ajouter'										=>	'Ajouter',
 'Ajouter_des_photos'							=>	'Ajouter des photos',
 'Ajouter_le'                                    =>  'Ajouter le',
 'Ajouter_par'                                   =>  'Ajouter par',
-'Ajouter_une_visite'                            =>  'Ajouter une visite',
+
 'Ancien'										=>	'Ancien',
-'Annonce'                                       =>  'Annonce',
-'Annonces'                                      =>  'Annonces',
+
 'Apercu'										=>	'Aper&ccedil;u',
-'Appareil'										=>	'Appareil',
+
 'Arrive'										=>	'Arriv&eacute;',
 'Article'										=>	'Article',
 'Article_ajoute'								=>	'Article ajout&eacute;',
@@ -46,7 +42,7 @@ $lang = array(
 'Bien_supprime'                                 =>  utf8_encode('Bien supprimé'),
 'Biens'                                         =>	'Biens',
 
-'Bilan_annuel'									=>	'Bilan annuel',
+
 'Blok'											=>	'Blok',
 'Blok_ajoute'									=>	'Blok ajout&eacute;',
 'Blok_modifie'									=>	'Blok modifi&eacute;',
@@ -172,7 +168,8 @@ $lang = array(
 'Galerie'										=>	'Galerie',
 'Gauche'										=>	'Gauche',
 'Generale'										=>	'G&eacute;n&eacute;rale',
-
+'Groupe'										=>	'Groupe',
+'Groupes'										=>	'Groupes',
 'Haut'											=>	'Haut',
 'Heure'	=> 'Heure',
 'ID_private_calendar'                           =>  'Id du calendrier',

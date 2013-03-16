@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/bootstrap/css/bootstrap-responsive.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/dashboard/css/opa-icons.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/dashboard/css/charisma-app.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/dashboard/css/uniform.default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/sharkphp/sharkphp.css" type="text/css" media="screen" />
 {if !empty($css_add)}
 {foreach $css_add as $k => $v}

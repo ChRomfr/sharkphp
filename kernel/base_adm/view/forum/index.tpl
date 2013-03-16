@@ -60,7 +60,17 @@
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					<tr>
-						<th colspan="2">{$Data.name}</th>
+						<th colspan="2">
+							<div class="pull-left">{$Data.name}</div>
+							<div class="pull-right">
+								<a href="{$Helper->getLinkAdm("forum/forumadd/{$Data.id}")}" title="Ajouter un forum"><span class="icon icon-blue icon-plus"/></a>
+								&nbsp;
+								<a href="" title="Modifier la categorie"><span class="icon icon-green icon-edit"/></a>
+								&nbsp;
+								<a href="" title="Supprimer la categorie"><span class="icon icon-red icon-trash"/></a>
+							</div>
+							<div class="clearfix"></div>
+						</th>
 					</tr>
 				</thead>
 				<tbody>

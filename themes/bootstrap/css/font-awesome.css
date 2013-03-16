@@ -375,7 +375,7 @@ ul.icons li [class*=" icon-"] {
 .icon-share-alt:before            { content: "\f064"; }
 .icon-resize-full:before          { content: "\f065"; }
 .icon-resize-small:before         { content: "\f066"; }
-.icon-plus:before                 { content: "\f067"; }
+/*.icon-plus:before                 { content: "\f067"; }*/
 .icon-minus:before                { content: "\f068"; }
 .icon-asterisk:before             { content: "\f069"; }
 .icon-exclamation-sign:before     { content: "\f06a"; }

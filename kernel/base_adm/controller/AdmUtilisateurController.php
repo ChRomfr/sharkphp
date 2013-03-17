@@ -8,11 +8,20 @@ abstract class AdmUtilisateurController extends Controller{
 	 */
 	public function indexAction(){
 
+		$per_page = 30;
+
 		$this->load_manager('utilisateur','admin');
 
-		$Utilisateurs = $this->manager->utilisateur->getAll();
+		$NbUsers = $this->app->db->count(PREFIX . 'user');
+
+		$Utilisateurs = $this->manager->utilisateur->getAll($per_page, getOffset($per_page));
+
+		$Pagination = new Zebra_Pagination();
+		$Pagination->records($NbUsers);
+		$Pagination->records_per_page($per_page);
 
 		$this->app->smarty->assign('Utilisateurs', $Utilisateurs);
+		$this->app->smarty->assign('Pagination', $Pagination);
 
 		# Generation de la page
 		if( is_file( VIEW_PATH . 'utilisateur' . DS . 'index.tpl' ) ) :

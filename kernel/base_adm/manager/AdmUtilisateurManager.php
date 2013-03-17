@@ -2,8 +2,8 @@
 
 abstract class AdmUtilisateurManager extends BaseModel{
 	
-	public function getAll(){		
-		return	$this->db->get(PREFIX . 'user', null, 'identifiant');		
+	public function getAll($limit=10,$offset=0){		
+		return	$this->db->get(PREFIX . 'user', null, 'identifiant',$limit,$offset);		
 	}
 	
 	public function delete($id){		

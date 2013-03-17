@@ -2,6 +2,12 @@
 
 abstract class Basexmlcontroller extends Controller{
 
+    public function indexAction(){
+
+
+
+    }
+
 	/**
 	 * Genere le flux des 10 dernieres news du site
 	 * @return [type] [description]
@@ -272,6 +278,24 @@ abstract class Basexmlcontroller extends Controller{
 
             foreach( $Data as $Row ):
                 $XML .= '<url><loc>'. getLink("link/detail/" . $Row['id']) . '</loc></url>';
+            endforeach;
+
+        endif;
+
+        # Forum
+        if( $this->app->config['mod_forum'] == 1):
+            # Recuperation des forums
+            $Data = $this->app->db->get(PREFIX . 'forum', array('visible =' => 1));
+
+            foreach( $Data as $Row ):
+                $XML .= '<url><loc>'. getLink("forum/viewforum/" . $Row['id']) . '</loc></url>';
+            endforeach;
+
+            # Topic
+            $Data = $this->app->db->select('id')->from(PREFIX . 'forum_thread')->order('add_on DESC')->get();
+
+            foreach( $Data as $Row ):
+                $XML .= '<url><loc>'. getLink("forum/viewtopic/" . $Row['id']) . '</loc></url>';
             endforeach;
 
         endif;

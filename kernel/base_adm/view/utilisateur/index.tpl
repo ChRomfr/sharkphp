@@ -7,11 +7,15 @@
 
 
 <div class="well">
-	<div class="fright">
+
+	<div class="pull-right">
 		<a href="{$Helper->getLinkAdm("utilisateur/add")}" title=""><i class="icon-plus"></i></a>
 	</div>
+	
 	<h4>{$lang.Utilisateurs}</h4>
-	<div class="clear"></div>
+
+	<div class="clearfix"></div>
+
 	<table class="table table-bordered table-striped table-condensed">
 		<thead>
 			<tr>
@@ -43,6 +47,9 @@
 		{/foreach}
 		</tbody>
 	</table>
+	<div class="pagination">
+		{$Pagination->render()}
+	</div>
 </div><!-- /well -->
 {/strip}
 <script type="text/javascript">

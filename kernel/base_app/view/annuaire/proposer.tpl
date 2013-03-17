@@ -183,7 +183,7 @@ jQuery(document).ready(function(){
 			},
 			"site[description]":{
 				required:true,
-				minlength:{$annuaire_min_length_description},
+				minlength:{$config.annuaire_min_length_description},
 			},
 			"site[facebook]":{
 				url:true,

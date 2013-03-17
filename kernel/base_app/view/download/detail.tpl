@@ -62,6 +62,7 @@
 
 </div>
 {/strip}
+
 <script>
 $.get(
     '{$Helper->getLink("download/updateVue/{$Download->id}")}',{literal}

@@ -22,8 +22,14 @@
 		<legend>Proposer un site</legend>
 
 		{if $config.annuaire_site_backlink_required}
-		<div class="alert alert-info">
+		<div class="alert alert-warning">
 			<div style="text-align:center">Lien de retour obligatoire</div>
+		</div>
+		{/if}
+
+		{if !empty($config.annuaire_regle_soumission)}
+		<div class="alert alert-info">
+			<div style="text-align:center">{$config.annuaire_regle_soumission}</div>
 		</div>
 		{/if}
 		

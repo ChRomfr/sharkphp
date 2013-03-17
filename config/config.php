@@ -60,20 +60,21 @@ $config = array(
 	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	</script>'
 									,
-'annuaire_code_backlink'		=> '<a href="http://www.sharkphp.com/annuaire" title="Annuaire de lien en dur sharkphp">Sharkphp annuaire</a>',
+'annuaire_code_backlink'			=> '<a href="http://www.sharkphp.com/annuaire" title="Annuaire de lien en dur sharkphp">Sharkphp annuaire</a>',
 'annuaire_min_length_resume'		=>	100,	# Nb caractere mini resume
 'annuaire_min_length_description'	=>	600,	# Nb caractere mini description
+'annuaire_regle_soumission'			=>	'',		# Regle de soumission a l annuaire peut etre du code HTML
 # Utilisateur
-'user_use_group'				=>	1, 		# Utilisateur des groupes utilisateurs
-'user_activation'				=>	'auto',	# Valeur possible : auto|mail|admin
-'user_id'						=>	'int',	# Valeur possible : int|uniq dans le cas uniq modifier le type dans la base de donnee en varchar(50)
-'user_edit_profil'				=>	1,		# Affiche ou non le lien d edition de profil
-'user_register_by_fb'			=>	0,		# Determine si on peut s enregistrer via FB
-'user_avatar'					=>	1,		# Defini si le membre peut upload un avatar	
-'user_delete_account'			=>	0,		# Defini si l utilisateur peut supprimer mon compte
-'user_group_default_visiteur'	=>	1, 		# Groupe par defaut pour les visiteurs
-'user_group_default_membre'		=>	2, 		# Groupe par defaut pour les membres
-'user_group_default_admin'		=> 	4, 		# Groupe par defaut pour les administrateurs
+'user_use_group'				=>	1, 			# Utilisateur des groupes utilisateurs
+'user_activation'				=>	'auto',		# Valeur possible : auto|mail|admin
+'user_id'						=>	'int',		# Valeur possible : int|uniq dans le cas uniq modifier le type dans la base de donnee en varchar(50)
+'user_edit_profil'				=>	1,			# Affiche ou non le lien d edition de profil
+'user_register_by_fb'			=>	0,			# Determine si on peut s enregistrer via FB
+'user_avatar'					=>	1,			# Defini si le membre peut upload un avatar	
+'user_delete_account'			=>	0,			# Defini si l utilisateur peut supprimer mon compte
+'user_group_default_visiteur'	=>	1, 			# Groupe par defaut pour les visiteurs
+'user_group_default_membre'		=>	2, 			# Groupe par defaut pour les membres
+'user_group_default_admin'		=> 	4, 			# Groupe par defaut pour les administrateurs
  # General
 'titre_site'					=>	'Sharkphp',
 'slogan_site'					=>	'Encore un site sur le php',

@@ -26,7 +26,6 @@
 			<input type="hidden" name="groupe[systeme]" value="0" />
 			<input type="hidden" name="groupe[ouvert]" value="0" />
 			<input type="hidden" name="groupe[visible]" value="1" />
-			<input type="hidden" name="groupe[systeme]" value="0" />
 			<button class="btn btn-primary">{$lang.Enregistrer}</button>
 		</div>
 	</fieldset>

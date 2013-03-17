@@ -157,7 +157,15 @@
 								<li><a href="{$Helper->getLinkAdm("categorie?c=download")}" title=""}>Categorie</a></li>
 							</ul>
 						</li>
-						<li><a href="{$Helper->getLinkAdm("utilisateur")}" title="">Utilisateurs</a></li>
+
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="">{$lang.Utilisateurs}&nbsp;<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{$Helper->getLinkAdm("utilisateur")}" title="">{$lang.Utilisateurs}</a></li>
+								<li><a href="{$Helper->getLinkAdm("utilisateur/groupe")}" title="">{$lang.Groupes}</a></li>
+							</ul>
+						</li>
+						
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="">Système&nbsp;<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -178,12 +186,6 @@
 				</div><!-- /well -->
 			</div><!-- /span2 -->
 			<div class="span10">
-				{if isset($FlashMessage) && !empty($FlashMessage)}
-				<div class="alert alert-info">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					{$FlashMessage}
-				</div>
-				{/if}
 				{$content}
 			</div><!-- /span10 -->
 		</div><!-- /row-fluid -->
@@ -220,10 +222,15 @@
 	
 {/strip}
 {$config.code_stat}
-<script>
+<script type="text/javascript">
+<!--
 $(document).ready(function() {
 	$("a.fbimage").fancybox();
 });
+{if isset($FlashMessage) && !empty($FlashMessage)}
+$(".breadcrumb").after('<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>{$FlashMessage}</div>');
+{/if}
+//-->
 </script>
 </body>
 </html>

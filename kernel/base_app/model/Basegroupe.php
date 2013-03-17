@@ -14,7 +14,7 @@ class Basegroupe extends Record{
 
 	public $principal;
 
-	public $system;
+	public $systeme;
 
 	public $ouvert;
 

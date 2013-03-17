@@ -186,7 +186,7 @@ abstract class AdmUtilisateurController extends Controller{
 
 			$groupe->save();
 
-			$this->app->smarty->assign('FlashMessage', $this->lang['Groupe_ajoute']);
+			$this->app->smarty->assign('FlashMessage', $this->lang['Groupe_modifie']);
 
 			return $this->groupeAction();
 		endif;	
@@ -194,16 +194,35 @@ abstract class AdmUtilisateurController extends Controller{
 		printform:
 
 		$groupe = new Basegroupe();
-		$groupe->id($id);
+		$groupe->get($id);
 
 		if( $groupe->systeme == 1):
 			$this->app->smarty->assign('FlashMessage','Vous ne pouvez pas modifier ce groupe');
+			return $this->groupeAction();
 		endif;
+
+		$this->app->smarty->assign('groupe', $groupe);
 
 		return $this->app->smarty->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS  . 'view' . DS . 'utilisateur' . DS . 'groupeedit.tpl');
 	}
 
-	public function groupedeleteAction(){}
+	public function groupedeleteAction($id){
+		$groupe = new Basegroupe();
+		$groupe->get($id);
+
+		if( $groupe->systeme == 1):
+			$this->app->smarty->assign('FlashMessage','Vous ne pouvez pas modifier ce groupe');
+			return $this->groupeAction();
+		endif;
+
+		# Suppression
+		$groupe->delete($id);
+		$this->app->db->delete(PREFIX . 'user_groupe', null, array('groupe_id =' => $id));
+
+		$this->app->smarty->assign('FlashMessage', $this->lang['Groupe_supprime']);
+		return $this->groupeAction();
+
+	}
 
 	/**
 	 * [useraddingroupeAction description]

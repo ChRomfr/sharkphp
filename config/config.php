@@ -42,10 +42,10 @@ $config = array(
 'download_per_page'			=>	10,
 'download_view_by'			=>	'all',
 # Annuaire
-'annuaire_submit_onlymember'		=>	1,
-'annuaire_site_rss'					=>	0,
-'annuaire_site_keyword'				=>	0,
-'annuaure_site_backlink_required'	=>	0,
+'annuaire_submit_onlymember'		=>	1,	# Soumission que pour les membres
+'annuaire_site_rss'					=>	0,	# Autoriser les flux rss dans la soumission
+'annuaire_site_keyword'				=>	0,	# Mot clé
+'annuaire_site_backlink_required'	=>	1, 	# Oblige ou non le rien de retour
 'annuaire_pub_afert_first'			=>	0,	# Difni si on affiche un pub apres le 1er site
 'annuaire_code_pub'					=>	'
 	<script type="text/javascript"><!--
@@ -60,6 +60,9 @@ $config = array(
 	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	</script>'
 									,
+'annuaire_code_backlink'		=> '<a href="http://www.sharkphp.com/annuaire" title="Annuaire de lien en dur sharkphp">Sharkphp annuaire</a>',
+'annuaire_min_length_resume'		=>	100,	# Nb caractere mini resume
+'annuaire_min_length_description'	=>	600,	# Nb caractere mini description
 # Utilisateur
 'user_use_group'				=>	1, 		# Utilisateur des groupes utilisateurs
 'user_activation'				=>	'auto',	# Valeur possible : auto|mail|admin

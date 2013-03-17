@@ -69,7 +69,7 @@ class Basesite extends Record{
 			$Error .= '<li>Veuillez indiquer le resume de votre site</li>';
 		endif; 
 
-		if( strlen($this->resume) < 100):
+		if( strlen($this->resume) < $config['annuaire_min_length_resume']):
 			$Error .= '<li>Resume trop court</li>';
 		endif;
 
@@ -77,7 +77,7 @@ class Basesite extends Record{
 			$Error .= '<li>Veuillez indiquer la description de votre site</li>';
 		endif; 
 
-		if( strlen($this->description) < 600):
+		if( strlen($this->description) < $config['annuaire_min_length_description']):
 			$Error .= '<li>Description trop courte</li>';
 		endif;
 

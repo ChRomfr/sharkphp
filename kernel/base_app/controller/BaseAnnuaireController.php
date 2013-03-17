@@ -126,4 +126,8 @@ abstract class Baseannuairecontroller extends Controller{
 		return $this->app->smarty->fetch(BASE_APP_PATH . 'view' . DS . 'annuaire' . DS . 'proposer.tpl');
 	}
 
+	public function lienderetourAction(){
+		return $this->app->smarty->fetch(BASE_APP_PATH . 'view' . DS . 'annuaire' . DS . 'lienderetour.tpl');
+	}
+
 }

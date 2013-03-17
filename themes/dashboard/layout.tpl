@@ -176,11 +176,13 @@
 							</ul>
 						</li>
 						<!-- Traitements des bundles -->
+						{if !empty($Bundle) && is_array($Bundle)}
 						{foreach $Bundle as $Row}
-							{if $Row.menu_admin == 1}
+							{if isset($Row.menu_admin) && isset($Row.menu_admin_code) && $Row.menu_admin == 1}
 								{$Row.menu_admin_code}
 							{/if}
 						{/foreach}
+						{/if}
 
 					</ul><!-- /nav -->
 				</div><!-- /well -->

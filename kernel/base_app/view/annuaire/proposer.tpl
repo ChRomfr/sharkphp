@@ -20,6 +20,12 @@
 	<fielset>
 		
 		<legend>Proposer un site</legend>
+
+		{if $config.annuaire_site_backlink_required}
+		<div class="alert alert-info">
+			<div style="text-align:center">Lien de retour obligatoire</div>
+		</div>
+		{/if}
 		
 		<!-- Nom du site -->
 		<div class="control-group">
@@ -124,6 +130,7 @@
 			<label for="backlink" class="control-label">Adresse du lien de retour :</label>
 			<div class="controls">
 				<input type="url" name="site[backlink]" id="backlink" />
+				<span class="help-block"><a href="{$Helper->getLink("annuaire/lienderetour")}" target="_blank"><small>{$lang.Lien_de_retour}</small></a></span>
 			</div>
 		</div>
 
@@ -133,7 +140,6 @@
 				<input type="email" name="site[email]" id="email" required {if isset($smarty.session.utilisateur.email)}value="{$smarty.session.utilisateur.email}"{/if}/>
 			</div>
 		</div>
-		
 
 	</fielset>
 
@@ -167,11 +173,11 @@ jQuery(document).ready(function(){
 			},
 			"site[resume]":{
 				required:true,
-				minlength:100,
+				minlength:{$config.annuaire_min_length_resume},
 			},
 			"site[description]":{
 				required:true,
-				minlength:600,
+				minlength:{$annuaire_min_length_description},
 			},
 			"site[facebook]":{
 				url:true,
@@ -183,7 +189,7 @@ jQuery(document).ready(function(){
 				url:true,
 			},
 			"site[backlink]":{
-				{if $config.annuaure_site_backlink_required == 1}
+				{if $config.annuaire_site_backlink_required == 1}
 				required:true,
 				{/if}
 				url:true,

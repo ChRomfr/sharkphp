@@ -20,4 +20,19 @@ class Basegroupe extends Record{
 
 	public $visible;
 
+	public function isValid(){
+
+		$error = null;
+
+		if( empty($this->name) ):
+			$error = 'Veuillez donner un nom au groupe';
+		endif;
+
+		if( is_null($error) ):
+			return true;
+		endif;
+
+		return $error;
+	}
+
 }

@@ -139,11 +139,69 @@ abstract class AdmUtilisateurController extends Controller{
 		return $this->redirect(getLinkAdm('utilisateur'),3,$this->lang['Utilisateur_supprime']);
 	}
 
-	public function groupeAction(){}
+	public function groupeAction(){
 
-	public function groupeaddAction(){}
+		$groupe = new Basegroupe();
+		$Groupes = $groupe->get();
 
-	public function groupeeditAction(){}
+		$this->app->smarty->assign(array(
+			'ctitre'  	=>	'Utilisateur :: Groupes',
+			'Groupes'	=>	$Groupes,
+		));
+
+		return $this->app->smarty->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS  . 'view' . DS . 'utilisateur' . DS . 'groupe.tpl');
+	}
+
+	public function groupeaddAction(){
+
+		if( $this->app->HTTPRequest->postExists('groupe') ):
+			$groupe = new Basegroupe($this->app->HTTPRequest->postData('groupe'));
+
+			if($Result = $groupe->isValid() !== true):
+				$this->smarty->assign('FlashMessage',$Result);
+				goto printform;
+			endif;
+
+			$groupe->save();
+
+			$this->app->smarty->assign('FlashMessage', $this->lang['Groupe_ajoute']);
+
+			return $this->groupeAction();
+		endif;	
+
+		printform:
+
+		return $this->app->smarty->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS  . 'view' . DS . 'utilisateur' . DS . 'groupeadd.tpl');	
+	}
+
+	public function groupeeditAction($id){
+
+		if( $this->app->HTTPRequest->postExists('groupe') ):
+			$groupe = new Basegroupe($this->app->HTTPRequest->postData('groupe'));
+
+			if($Result = $groupe->isValid() !== true):
+				$this->smarty->assign('FlashMessage',$Result);
+				goto printform;
+			endif;
+
+			$groupe->save();
+
+			$this->app->smarty->assign('FlashMessage', $this->lang['Groupe_ajoute']);
+
+			return $this->groupeAction();
+		endif;	
+
+		printform:
+
+		$groupe = new Basegroupe();
+		$groupe->id($id);
+
+		if( $groupe->systeme == 1):
+			$this->app->smarty->assign('FlashMessage','Vous ne pouvez pas modifier ce groupe');
+		endif;
+
+		return $this->app->smarty->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS  . 'view' . DS . 'utilisateur' . DS . 'groupeedit.tpl');
+	}
 
 	public function groupedeleteAction(){}
 

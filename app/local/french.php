@@ -19,7 +19,7 @@ $lang = array(
 'Ajouter_des_photos'							=>	'Ajouter des photos',
 'Ajouter_le'                                    =>  'Ajouter le',
 'Ajouter_par'                                   =>  'Ajouter par',
-
+'Ajouter_un_groupe'								=>	'Ajouter un groupe',
 'Ancien'										=>	'Ancien',
 
 'Apercu'										=>	'Aper&ccedil;u',
@@ -169,6 +169,7 @@ $lang = array(
 'Gauche'										=>	'Gauche',
 'Generale'										=>	'G&eacute;n&eacute;rale',
 'Groupe'										=>	'Groupe',
+'Groupe_ajoute'									=>	utf8_encode('Groupe ajouté'),
 'Groupes'										=>	'Groupes',
 'Haut'											=>	'Haut',
 'Heure'	=> 'Heure',
@@ -258,6 +259,7 @@ $lang = array(
 'Nous_contacter'                                =>  'Nous contacter',
 'Nouveau'										=>	'Nouveau',
 'Nouveau_forum'									=>	'Nouveau forum',
+'Nouveau_groupe'								=>	'Nouveau groupe',
 'Nouveau_menu'									=>	'Nouveau menu',
 
 'Nouvel_article'								=>	'Nouvel article',

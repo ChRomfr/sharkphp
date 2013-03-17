@@ -10,4 +10,4 @@ foreach ($Bundles as $key => $value) :
 endforeach;
 
 # Envoie des bundles a smarty
-$registry->smarty->assign('Bundle', $Bundle);
+$registry->smarty->assign('Bundle', $Bundles);

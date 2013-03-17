@@ -5,7 +5,6 @@
 	<li>{$lang.Utilisateurs}</li>
 </ul>
 
-
 <div class="well">
 
 	<div class="pull-right">
@@ -47,9 +46,7 @@
 		{/foreach}
 		</tbody>
 	</table>
-	<div class="pagination">
-		{$Pagination->render()}
-	</div>
+	<div class="pagination">{$Pagination->render()}</div>
 </div><!-- /well -->
 {/strip}
 <script type="text/javascript">

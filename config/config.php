@@ -16,7 +16,7 @@ define('BREAD_SEP','&nbsp;<&nbsp;');
 define('SESSION_IN_DB',true);
 # Permet l identification d un utilisateur plusieurs fois
 define('SESSION_MULTI',false);
-define('USE_TABLE_CONFIG',false);
+define('USE_TABLE_CONFIG',true);
 
 $jquery_theme = 'overcast';
 

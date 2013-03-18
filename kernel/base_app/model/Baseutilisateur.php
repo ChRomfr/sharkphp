@@ -132,7 +132,7 @@ class Baseutilisateur extends Record{
 
 		# On recupere les informations de utilisateur
 		$data = $db->get_one( $this->getTable(), array('identifiant =' => $this->identifiant, 'password =' => $this->password) );
-		var_dump($data);
+		
 		if( empty($data) ):
 			return 'Impossible de recuperer vos informations';
 		endif;

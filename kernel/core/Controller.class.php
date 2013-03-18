@@ -1,6 +1,6 @@
-<?php if(!defined('IN_VA')) exit;
+<?php 
 
-class Controller{
+abstract class Controller{
 	
 	public	$registry,
 			$smarty,
@@ -15,7 +15,16 @@ class Controller{
     public $app;
 
     public function  __construct($registry) {
-		global $db, $lang, $smarty, $Session;
+		global $db, $lang, $smarty, $Session, $config;
+
+		$this->db 			= $db;
+		$this->smarty 		= $registry->smarty;
+		$this->tpl 			= $registry->smarty;
+		$this->HTTPRequest 	= $registry->HTTPRequest;
+		$this->Helper    	= new Helper($config);
+		$this->Http 		= new Http();
+		$this->cache 		= $registry->cache;
+
 		
 		$this->registry = $registry;
 		$this->lang = $lang;        
@@ -37,17 +46,10 @@ class Controller{
 		$this->smarty->assign('token_form', $token);
 	}
 	
-	public function _post($str){
-		if( isset($_POST[''. $str .'']) ) return $_POST[''. $str .''];
-		
-		return false;
-	}
+	public function _post($str){ return $this->Http->post(); }		
 	
-	public function _get($str){
-		if( isset($_GET[''. $str .'']) ) return $_GET[''. $str .''];
-		
-		return false;
-	}
+	public function _get($str){ return $this->Http->get(); }
+
 	
 	public function load_lang($module){
 		global $lang;
@@ -145,66 +147,12 @@ class Controller{
 		$this->manager->$manager = new $m();
 	}
 	
-	public function sendHttpRequest($controller, $action, array $param = null, $chemin = ''){
-			$host =  HOST_HTTP_REQUEST;
-			$v = '';
-			
-			if( !is_null($chemin))
-				$v .= $chemin;
-			
-			$v.= 'index.php?c='. $controller . '&a='. $action;
-			
-			if( !is_null($param) && is_array($param) ){
-				foreach($param as $k => $v){
-					$v .= '&'.$k.'='.$v;
-				}
-			}	
-
-            $fp = fsockopen($host, 80, $errno, $errstr, 10);
-            stream_set_blocking ($fp, false);
-            $header  = "GET $v HTTP /1.1\r\n";
-			$header .= "Host: ". $host ."\r\n";
-            $header .= "User-Agent: monScriptPHP\r\n";
-            $header .= "Connection: Close\r\n\r\n";
-            fputs($fp, $header);
-            fclose($fp);
+	public function sendHttpRequest($host, $controller, $action, array $param = null, $chemin = ''){
+		$this->Http->sendHttpRequest($host, $controller,$action, $param, $chemin);
 	}
 	
 	public function redirect($url, $tps = 0, $message = ''){
-
-		$temps = $tps * 1000;
-
-		if($message != ''){
-			
-			$r = explode('|',$message);
-			$text = $r[0];
-
-			if( isset($r[1]) ){
-				$affichage = $r[1];
-			}else{
-				$affichage = 'success';
-			}
-			
-			$this->registry->smarty->assign('error_class', 'error_' . $affichage);
-			$this->registry->smarty->assign('error_image', 'comment_' . $affichage);
-			$this->registry->smarty->assign('message', $text);
-			$this->registry->smarty->assign('url', $url);
-			$this->registry->smarty->assign('temp', $temps);
-			return $this->registry->smarty->fetch(VIEW_PATH . 'redirect.tpl');
-		}else{
-
-			echo "<script type=\"text/javascript\">\n"
-			. "<!--\n"
-			. "\n"
-			. "function redirect() {\n"
-			. "window.location='" . $url . "'\n"
-			. "}\n"
-			. "setTimeout('redirect()','" . $temps ."');\n"
-			. "\n"
-			. "// -->\n"
-			. "</script>\n";
-			exit;
-		}
+		return $this->Helper->redirect($url, $tps, $message);		
 	}
 	
 	protected function getFormValidatorJs(){

@@ -2,12 +2,6 @@
 
 abstract class Basexmlcontroller extends Controller{
 
-    public function indexAction(){
-
-
-
-    }
-
 	/**
 	 * Genere le flux des 10 dernieres news du site
 	 * @return [type] [description]

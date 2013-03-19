@@ -49,7 +49,7 @@ abstract class AdmAnnuaireController extends Controller{
 			$Actuel = new myObject( $this->manager->site->getById($id) );
 
 			if( $Actuel->status != 'valid' && $Site->status == 'valid'):
-				$Site->valid_by = $_SESSION['utilisateur']['id'];
+				$Site->valid_by   = $_SESSION['utilisateur']['id'];
 				$Site->date_valid = TimeToDATETIME();
 			endif;
 

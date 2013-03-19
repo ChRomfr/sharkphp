@@ -49,10 +49,18 @@ $registry->smarty->assign('App',$registry);
 
 if( !$registry->HTTPRequest->getExists('nohtml') && !$registry->HTTPRequest->getExists('print') ):
 
-	# Stats
-	$NbArticles = $registry->db->count(PREFIX . 'article');
-	$NbNews = $registry->db->count(PREFIX . 'news');
-	$NbDownload = $registry->db->count(PREFIX . 'download');
+	// Stats
+	if( !$Stats = $registry->cache->get('statistiques') ):
+		$Stats = array(
+			'NbArticles' => $registry->db->count(PREFIX . 'article'),
+			'NbNews'     => $registry->db->count(PREFIX . 'news'),
+			'NbDownload' => $registry->db->count(PREFIX . 'download'),
+		);
+		$registry->cache->save(serialize($Stats));
+	else:
+		$Stats = unserialize($Stats);
+	endif;
+	
     
     $BlocGauche = $registry->getBlok('left');    
     
@@ -64,9 +72,7 @@ if( !$registry->HTTPRequest->getExists('nohtml') && !$registry->HTTPRequest->get
 		'css_add'		=>	registry::$css,
 		'js_add'		=>	registry::$js,
 		'content'		=>	$Content,
-		'NbArticle'		=>	$NbArticles,
-		'NbNews'		=>	$NbNews,
-		'NbDownload'	=>	$NbDownload
+		'Stats'			=>	$Stats,
 	));
 	
 	# Affichage du resultat

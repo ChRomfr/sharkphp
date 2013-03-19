@@ -20,7 +20,8 @@ class MySmarty extends Smarty{
 		$this->compile_dir = CACHE_PATH; // Repertoire du cache compilé
 		$this->cache_dir = CACHE_PATH;   // Repertoire du cache
 		$this->cache_lifetime = 3600; // Duree de vie du cache
-		//$this->allow_php_tag=true; // Permet l utilisatuin de php dans le template
+		$this->caching = false;
+
 		$this->php_handling = self::PHP_ALLOW;
 		
 		if( $this->_use_tpl_perso == 1 && $this->_cache_tpl_db == 1 ):
@@ -49,8 +50,6 @@ class MySmarty extends Smarty{
 	*	Surcharge de la fonction FETCH pour verifier si le TPL existe en base de donnees
 	*
 	*/ 
-	//public function fetch($tpl_dir, $cache_id = null, $compile_id = null, $parent = null, $display = false){
-	//public function fetch($template, $cache_id = null, $compile_id = null, $parent = null, $display = false, $merge_tpl_vars = true, $no_output_filter = false){
 	public function fetch( $template = null, $cache_id = null, $compile_id = null, $parent = null, $display = false, $merge_tpl_vars = true, $no_output_filter = false ){
 
 		# On traite le cas particulier du previews depuis l administration

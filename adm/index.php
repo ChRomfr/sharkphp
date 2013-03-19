@@ -66,8 +66,8 @@ $Content = $registry->router->loader();
 if( !$registry->HTTPRequest->getExists('nohtml') ){
 	$registry->smarty->assign('in_adm', true);
 	$registry->smarty->assign('app', $registry);
-    $BlocGauche = $registry->smarty->fetch(VIEW_PATH . 'navigationadmin.tpl');
-	$registry->smarty->assign('blokGauche', $BlocGauche);
+    //$BlocGauche = $registry->smarty->fetch(VIEW_PATH . 'navigationadmin.tpl');
+	$registry->smarty->assign('blokGauche', '');
 	$registry->smarty->assign('css_add', registry::$css);
 	$registry->smarty->assign('js_add', registry::$js);
 	$registry->smarty->assign('content', $Content);

@@ -143,9 +143,9 @@
 					
 					<!-- Stats -->
 					<ul class="unstyled">
-						<li>Actualité : {$NbNews}</li>
-						<li>Tutoriaux : {$NbArticle}</li>
-						<li>Téléchargement : {$NbDownload}</li>
+						<li>Actualité : {$Stats.NbNews}</li>
+						<li>Tutoriaux : {$Stats.NbArticles}</li>
+						<li>Téléchargement : {$Stats.NbDownload}</li>
 					</ul>			
 				</div><!-- /span4 -->
 			</div><!-- /row-fluid -->

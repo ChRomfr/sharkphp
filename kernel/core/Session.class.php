@@ -197,6 +197,13 @@ class Session {
 		if( isset($_SESSION['utilisateur']['isAdmin']) && $_SESSION['utilisateur']['isAdmin'] > 0) return true;
 		else return false;
 	}
+    /*
+    public function userUpdate(){
+        $this->session['utilisateur'] = getUserInfo( $this->session['utilisateur']['id'] );
+        $this->session['utilisateur']['niveau'] = $this->session['utilisateur']['level'];
+        $_SESSION['utilisateur'] = $this->session['utilisateur'];
+    }
+	*/
 
 	private function deleteBySessionId(){
 		$this->db->query( 'DELETE FROM '. PREFIX .'sessions WHERE session_id = "'. $_SESSION['session_id'] .'" ');

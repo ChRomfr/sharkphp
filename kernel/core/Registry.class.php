@@ -44,11 +44,11 @@ Class Registry {
 	return $this->vars[$index];
  }
 
- public static function addJS($js){
+ public function addJS($js){
 	self::$js[] = $js;
  }
  
- public static function addCSS($css){
+ public function addCSS($css){
 	self::$css[] = $css;
  }
 
@@ -114,6 +114,7 @@ Class Registry {
 	*/
 	public function constructConstAdm(){	
 		if( !$Datas = $this->cache->get('acladmindata') ):
+			echo "DANS LA REQUETES";
 			$Datas = $this->db->get(PREFIX . 'acl_admin');
 			$this->cache->save( serialize($Datas) );
 		else:

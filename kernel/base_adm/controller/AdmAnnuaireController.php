@@ -2,13 +2,6 @@
 
 abstract class AdmAnnuaireController extends Controller{
 
-	private  $tpl_dir;
-
-	public function __construct($registry=null){
-		parent::__construct($registry);
-		$this->tpl_dir = ROOT_PATH . 'kernel' . DS . 'base_adm' . DS  . 'view' . DS . 'annuaire' . DS;
-	}
-
 	public function indexAction(){
 
 		if( $this->app->HTTPRequest->getExists('param') ):
@@ -87,29 +80,5 @@ abstract class AdmAnnuaireController extends Controller{
 	public function deleteAction($id){
 		$this->app->db->delete(PREFIX . 'annuaire_site', $id);
 		return $this->redirect( getLinkAdm('annuaire'), 3, 'Site supprimé');
-	}
-
-	/**
-	 * Affiche et traite le formulaire pour les preferences
-	 * de l annuaire
-	 * @return [type] [description]
-	 */
-	public function settingAction(){
-
-		$Config = new Config();
-
-		if(  $this->Http->postExists('config') ):
-
-			$Config->set( $this->Http->post('config') );
-			$Config->save();
-			$this->cache->remove('config');
-
-			return $this->Helper->redirect( $this->Helper->getLinkAdm('annuaire/setting'),3, 'Configuration sauvegardée' );
-
-		endif;
-
-
-		$this->Helper->getFormValidatorJs();
-		return $this->tpl->fetch( $this->tpl_dir . 'setting.tpl' );
 	}
 }

@@ -95,7 +95,6 @@
 							<ul class="dropdown-menu">
 								<li><a href="{$Helper->getLinkAdm("annuaire")}">Annuaire</a></li>
 								<li><a href="{$Helper->getLinkAdm("categorie?c=annuaire")}" title=""}>Categorie</a></li>
-								<li><a href="{$Helper->getLinkAdm("annuaire/setting")}" title=""}>Préférences</a></li>
 							</ul>
 						</li>
 						{/if}
@@ -177,13 +176,11 @@
 							</ul>
 						</li>
 						<!-- Traitements des bundles -->
-						{if !empty($Bundle) && is_array($Bundle)}
 						{foreach $Bundle as $Row}
-							{if isset($Row.menu_admin) && isset($Row.menu_admin_code) && $Row.menu_admin == 1}
+							{if $Row.menu_admin == 1}
 								{$Row.menu_admin_code}
 							{/if}
 						{/foreach}
-						{/if}
 
 					</ul><!-- /nav -->
 				</div><!-- /well -->

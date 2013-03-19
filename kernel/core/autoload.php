@@ -46,8 +46,6 @@ $ClassList = array(
 	'Tree'					=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Tree.class.php',
 	'Captcha'				=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Captcha.class.php',
 	'Helper'				=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Helper.class.php',
-	'Http'					=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Http.class.php',
-	'Config'				=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Config.class.php',
 	
 	// Kernel / lib
 	'Smarty'				=>	ROOT_PATH . 'kernel' . DS . 'lib' . DS . 'smarty' . DS . 'smarty.php',

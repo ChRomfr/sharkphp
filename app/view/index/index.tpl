@@ -46,18 +46,11 @@
 <div class="container">
     <div class="row-fluid">
         <div class="span8 well">
-            <h4>Présentation</h4>
-            <p>Sharkphp est un cms/framework qui vous permet de créer votre site. Sharkphp n'est pas vraiment un CMS car il n'est pas possible de créer son site internet sans editer le code des pages. Sharkphp est conçu sur le modèle MCV et integrer différente controller de base que vous pouvez surcharger pour créer les votres</p>
+            <h4>Bienvenu sur votre nouveau site</h4>
+            <p>Pour modifier le contenu de cette page, editer le fichier app/view/index/index.tpl</p>
         </div><!-- /span8 -->
         <div class="span4 well">
-            <h4>Ils utilisent Sharkphp</h4>
-            <p>Quelques site basé sur Sharkphp</p>
-            <ul class="unstyled">
-                <li><a href="http://www.carpbook.fr" title="Livre de session en ligne" target="_blank">www.carpbook.fr</a></li>
-                <li><a href="http://www.immophp.fr" title="CMS pour les agences immobilieres" target="_blank">www.immophp.fr</a></li>
-                <li><a href="http://www.goliath-software.com" title="Logiciel de gestion de club/centre sportif et de suivi de la performance" target="_blank">www.goliath-software.com</a></li>
-                <li><a href="http://va.sharkphp.com" title="CMS pour les compagnies virtuel" target="_blank">va.sharkphp.com</a></li>
-            </ul>
+            <p>&nbsp;</p>
         </div><!-- /span4 -->
     </div><!-- /row-fluid -->
 </div><!-- /container -->

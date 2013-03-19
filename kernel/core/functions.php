@@ -1,4 +1,4 @@
-<?php
+<?php if( !defined('IN_VA') ) exit;
 
 function getConfig($app){
 
@@ -52,7 +52,7 @@ function getLink($str){
 				$string_url .= $_SERVER['REQUEST_URI'];
 		}*/
 	}
-
+		//echo $string_url;
 	return $string_url . $str;
 }
 

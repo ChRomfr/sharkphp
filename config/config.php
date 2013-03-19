@@ -16,14 +16,14 @@ define('BREAD_SEP','&nbsp;<&nbsp;');
 define('SESSION_IN_DB',true);
 # Permet l identification d un utilisateur plusieurs fois
 define('SESSION_MULTI',false);
-define('USE_TABLE_CONFIG',true);
+define('USE_TABLE_CONFIG',false);
 
 $jquery_theme = 'overcast';
 
 $config = array(
 'format_date'				=>	"%d/%m/%Y - %H:%M",
 'format_date_day'			=>	"%d/%m/%Y",
-'url'						=>	'http://chrom-pc/',
+'url'						=>	'http://127.0.0.1/',
 'url_dir'					=>	'sharkphp/',
 'rewrite_url'				=>	0,
 # News
@@ -47,19 +47,7 @@ $config = array(
 'annuaire_site_keyword'				=>	0,	# Mot clé
 'annuaire_site_backlink_required'	=>	1, 	# Oblige ou non le rien de retour
 'annuaire_pub_afert_first'			=>	0,	# Difni si on affiche un pub apres le 1er site
-'annuaire_code_pub'					=>	'
-	<script type="text/javascript"><!--
-	google_ad_client = "ca-pub-1710313297381782";
-	/* carpe 468x60 */
-	google_ad_slot = "4753583552";
-	google_ad_width = 468;
-	google_ad_height = 60;
-	//-->
-	</script>
-	<script type="text/javascript"
-	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-	</script>'
-									,
+'annuaire_code_pub'					=>	'',
 'annuaire_code_backlink'			=> '<a href="http://www.sharkphp.com/annuaire" title="Annuaire de lien en dur sharkphp">Sharkphp annuaire</a>',
 'annuaire_min_length_resume'		=>	100,	# Nb caractere mini resume
 'annuaire_min_length_description'	=>	600,	# Nb caractere mini description
@@ -78,7 +66,7 @@ $config = array(
  # General
 'titre_site'					=>	'Sharkphp',
 'slogan_site'					=>	'Encore un site sur le php',
-'email'							=>	'w.shark@hotmail.fr',
+'email'							=>	'email@domaine.com',
 'description_site'				=>	'',
 'keywords'						=>	'',
 'code_stat'						=>	'',
@@ -86,27 +74,15 @@ $config = array(
 'use_ckeditor'					=>	0,
 'use_sh'						=>	1,
 'fb_app_id'						=>	'', # Id application facebook
-'fb_url'						=>	'https://www.facebook.com/pages/Sharkphp/111778145678381',	
-'twitter_url'					=>	'http://',	
+'fb_url'						=>	'',	
+'twitter_url'					=>	'',	
 'print_stat_page'				=>	1, # Affiche ou non les stats sur la generation de la page		
 #Forums
 'forum_name'					=>	'Forum',					# Nom de votre forum
 'forum_description'				=>	'Description du forum',	# Description du forum qui sera mit dans la gestion du site
 'forum_group_modo'				=>	3,						# Tous les membres du groupe #3 seront moderateurs global du forum
 'forum_pub_after_1_message'		=>	1,
-'forum_pub_code'				=>'
-	<script type="text/javascript"><!--
-	google_ad_client = "ca-pub-1710313297381782";
-	/* carpe 468x60 */
-	google_ad_slot = "4753583552";
-	google_ad_width = 468;
-	google_ad_height = 60;
-	//-->
-	</script>
-	<script type="text/javascript"
-	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-	</script>'
-									,
+'forum_pub_code'				=>	'',
 # Activation des modules pour administration
 'mod_feed_rss'					=>	1,
 'mod_link'						=>	1,

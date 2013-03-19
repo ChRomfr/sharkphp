@@ -74,9 +74,9 @@ $registry->db->delete(PREFIX . 'sessions', null, array('last_used <' => time() -
 
 $registry->smarty->assign('lang', $lang);
 
-# On merge les configs
-$config = array_merge($config, getConfig($registry) );
-
+if( USE_TABLE_CONFIG ):
+    $config = array_merge($config, getConfig($registry) );
+endif;
 
 $registry->smarty->assign('Helper', new Helper($config) );
 

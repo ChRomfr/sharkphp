@@ -6,14 +6,7 @@ class Helper{
 
 	public static $string_url = null;
 
-	protected $smarty;
-
 	public function __construct($config){
-
-		global $registry;
-
-		$this->smarty = $registry->smarty;
-
 		self::$config = $config;
 
 		if( self::$config['rewrite_url'] == 1):
@@ -27,6 +20,7 @@ class Helper{
 	*	Genere un lien
 	*/
 	public function getLink($str){
+
 		return self::$string_url . $str;
 	}
 
@@ -37,53 +31,58 @@ class Helper{
 		return self::$config['url'] . self::$config['url_dir'] . 'adm/index.php/' . $str;		
 	}
 
-	public function redirect($url, $tps = 0, $message = ''){
+	public function formOpen($form_id = null, $form_action = '#', $form_class= null, $form_files = false, $form_method = "post"){
+		$Code = '<form ';
 
-		$temps = $tps * 1000;
-
-		if($message != ''):
-			
-			$r = explode('|',$message);
-			$text = $r[0];
-
-			if( isset($r[1]) ){
-				$affichage = $r[1];
-			}else{
-				$affichage = 'success';
-			}
-			
-			$this->smarty->assign('error_class', 'error_' . $affichage);
-			$this->smarty->assign('error_image', 'comment_' . $affichage);
-			$this->smarty->assign('message', $text);
-			$this->smarty->assign('url', $url);
-			$this->smarty->assign('temp', $temps);
-			return $this->smarty->fetch(VIEW_PATH . 'redirect.tpl');
-		else:
-
-			echo "<script type=\"text/javascript\">\n"
-			. "<!--\n"
-			. "\n"
-			. "function redirect() {\n"
-			. "window.location='" . $url . "'\n"
-			. "}\n"
-			. "setTimeout('redirect()','" . $temps ."');\n"
-			. "\n"
-			. "// -->\n"
-			. "</script>\n";
-			exit;
+		if( !is_null($form_id) ):
+			$Code .= ' id="'. $form_id .'" ';
 		endif;
+
+		$Code .= ' action="'. $form_action .'" ';
+
+		if( !is_null($form_class) ):
+			$Code .= ' class="'. $form_class .'" ';
+		endif;
+
+		$Code .= ' method="'. $form_method .'" ';
+
+		$Code .= ' >';
+
+		return $Code;
 	}
 
-	public function getFormValidatorJs(){
-		registry::addJS('jquery.validationEngine.js');
-		registry::addJS('jquery.validationEngine-fr.js');
-		registry::addCSS('formValidator/template.css');
-		registry::addCSS('formValidator/validationEngine.jquery.css');
-		registry::addJS('validation/jquery.validate.js');
+	public function formClose(){
+		return '</form>';
 	}
-    
-    protected function getCkEditorJs(){
-        registry::addJS('ckeditor/ckeditor.js');
-    }
+
+	public function formSelect($param){
+		$Code = '<div class="control-group"><label class="control-label" for="'. $param['id'] .'">'. $param['label'] . ': </label><div class="controls"><select id="'. $param['id'] . '" name="'. $param['name'] .'"';
+
+		if( isset($param['required']) ):
+			$Code .= ' required class="validate[required]" ';
+		endif;
+
+		$Code .= '>';
+
+		if( $param['lists'] == 'yn'):
+
+			$Code .= '<option value="0"';
+			if( isset($Param['value']) && $param['value'] == 0):
+				$Code .= ' selected="selected" ';
+			endif;
+			$Code .= ' >Non</option>';
+
+			$Code .= '<option value="1"';
+			if( isset($Param['value']) && $param['value'] == 1):
+				$Code .= ' selected="selected" ';
+			endif;
+			$Code .= ' >Oui</option>';
+		endif;
+
+		$Code .= '</select></div></div>';
+
+		return $Code;
+
+	}
 
 }

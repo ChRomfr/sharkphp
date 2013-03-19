@@ -21,7 +21,7 @@ $lang = array(
 'Ajouter_par'                                   =>  'Ajouter par',
 'Ajouter_un_groupe'								=>	'Ajouter un groupe',
 'Ancien'										=>	'Ancien',
-'Annuaire'										=>	'Annuaire',
+
 'Apercu'										=>	'Aper&ccedil;u',
 
 'Arrive'										=>	'Arriv&eacute;',
@@ -200,7 +200,6 @@ $lang = array(
 
 'Libelle'										=>	'Lib&eacute;lle',
 'Lien'											=>	'Lien',
-'Lien_de_retour'								=>	'Lien de retour',
 'Lien_source'									=>	'Lien source',
 'Lier'											=>	'Lier',
 'Lier_a_un_telechagement'						=>	'Lier &agrave; un t&eacute;l&eacute;chargement',

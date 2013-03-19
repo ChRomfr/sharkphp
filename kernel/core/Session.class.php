@@ -31,21 +31,20 @@ Cette class gere les sessions sur sharkphp
 
 class Session {
 
-	private $registry;
-
-	public $session;
+	private 	$registry;
 	
-	private $db;
+	public 		$session;
 	
-	public $user_id;
+	private 	$db;
 	
-	public $_session;
+	public 		$user_id;
 	
-	public function __construct($registry = null){
-		global $db;
-		if( !is_null($registry) ) $this->registry = $registry;
+	public 		$_session;
+	
+	public function __construct($registry){
+		$this->registry = $registry;
 		$this->session = $_SESSION;
-		$this->db = $db;
+		$this->db = $this->registry->db;
 	}
 	
 	public function check(){

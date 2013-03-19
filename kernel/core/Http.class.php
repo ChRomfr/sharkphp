@@ -2,6 +2,7 @@
 
 class Http {
 
+    
 	public function get(){
 		return isset($_GET[$key]) ? $_GET[$key] : null;
 	}

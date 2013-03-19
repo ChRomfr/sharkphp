@@ -50,40 +50,35 @@ require_once ROOT_PATH . 'kernel' . DS . 'lib' . DS . 'markitup.bbcode-parser.ph
 
 define('BASE_APP_PATH', ROOT_PATH . 'kernel' . DS . 'base_app' . DS);
 
-$registry = new Registry();
-$registry->router = new Router($registry);
-$registry->session = new Session($registry);
-$registry->cache = new MyCache($registry);
-$registry->db = $db->getInstance();
-$registry->smarty = new MySmarty($registry);
+$registry              = new Registry();
+$registry->router      = new Router($registry);
+$registry->session     = new Session($registry);
+$registry->cache       = new MyCache($registry);
+$registry->db          = $db->getInstance();
+$registry->smarty      = new MySmarty($registry);
 $registry->HTTPRequest = new HTTPRequest($registry);
-$registry->form = new Form($registry);
-$Session = $registry->session;
-$cache = $registry->cache;
-
-$config = new Baseconfig($config_file, $cache, $db);
+$registry->form        = new Form($registry);
+$cache                 = $registry->cache;
+$registry->Http        = new Http();
+$config                = new Baseconfig($config_file, $cache, $db);
 $config->get();
+$registry->config      = $config->config;
+$registry->Helper      = new Helper($registry->config);
 
 # Traitement Bundles
 require_once ROOT_PATH . 'kernel' . DS . 'core' . DS . 'bundle.php';
 
 # Verification sessions
-if( $Session->check() == false ):
-    $Session->create('Visiteur'); // Creation d'une session visiteur
+if( $registry->session->check() == false ):
+    $registry->session->create('Visiteur'); // Creation d'une session visiteur
 endif;
-
-var_dump($config);
 
 # Suppression des sessions de plus de 3h = 10800sec
 $registry->db->delete(PREFIX . 'sessions', null, array('last_used <' => time() - 10800) );
 
-$registry->smarty->assign('lang', $lang);
-
-/*
-if( USE_TABLE_CONFIG ):
-    $config = array_merge($config, getConfig($registry) );
-endif;
-*/
-
-$registry->smarty->assign('Helper', new Helper($config->config) );
-
+# Envoie des Elements du kernel a smarty
+$registry->smarty->assign(array(
+  'lang'    =>  $lang,
+  'Helper'  =>  $registry->Helper,
+  'config'  =>  $registry->config,
+));

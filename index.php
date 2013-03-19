@@ -81,7 +81,7 @@ if( !$registry->HTTPRequest->getExists('nohtml') && !$registry->HTTPRequest->get
 			</div>';
 	endif;
 
-elseif( $registry->HTTPRequest->getExists('print') && !$registry->HTTPRequest->getExists('nohtml')):
+elseif( $registry->Http->getExists('print') && !$registry->Http->getExists('nohtml')):
 	# Affichage specifique pour les impressions
 	$registry->smarty->assign('css_add', registry::$css);
 	$registry->smarty->assign('js_add', registry::$js);

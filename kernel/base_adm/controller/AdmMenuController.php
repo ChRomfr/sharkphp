@@ -72,7 +72,7 @@ abstract class AdmMenuController extends Controller{
 			// Enregistrement
 			$Menu->id = $Menu->save();
 						
-			return $this->redirect( getLinkAdm("menu/edit/" . $Menu->id), 3, $this->lang['Menu_ajoute'] );
+			return $this->redirect( $Helper->getLinkAdm("menu/edit/" . $Menu->id), 3, $this->lang['Menu_ajoute'] );
 			
 		endif;
 		
@@ -123,7 +123,7 @@ abstract class AdmMenuController extends Controller{
 			$Menu->save();
 			
 			// On redirige l utilisateur
-			return $this->redirect( getLinkAdm('menu'), 3, $this->lang['Menu_modifie']);
+			return $this->redirect( $Helper->getLinkAdm('menu'), 3, $this->lang['Menu_modifie']);
 		
 		endif;
 
@@ -154,7 +154,7 @@ abstract class AdmMenuController extends Controller{
 	
 	public function deleteAction( $menu_id ){
 		$this->app->db->delete(PREFIX . 'menu', $menu_id);
-		return $this->redirect( getLinkAdm('menu'), 3, $this->lang['Menu_supprime']);
+		return $this->redirect( $Helper->getLinkAdm('menu'), 3, $this->lang['Menu_supprime']);
 	}
 	
 	public function getNewLinkAction(){

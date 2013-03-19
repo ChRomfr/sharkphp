@@ -35,7 +35,7 @@ abstract class BasepageController extends Controller{
 		$page->get($id); 
 		
 		if(empty($page) || $page['visible'] == 0):
-			header('location:' . getLink('index?error_html=404') );
+			header('location:' . $Helper->getLink('index?error_html=404') );
 			exit;
 		endif;
 		

@@ -79,7 +79,7 @@ class Basearticlecontroller extends Controller{
 			$this->app->smarty->assign('Parents', $Categories);
 		endif;
 		
-		if( empty($Article) ) return $this->redirect( getLink('index/index'), 0, '');
+		if( empty($Article) ) return $this->redirect( $Helper->getLink('index/index'), 0, '');
 		
 		$this->app->addJS('mustache.js');
 		
@@ -128,7 +128,7 @@ class Basearticlecontroller extends Controller{
 	public function lockCommentaireAction($id){
 		if( ADM_ARTICLE_LEVEL < $_SESSION['utilisateur']['isAdmin']):
 			$this->app->db->update(PREFIX . 'article', array('commentaire' => 0), array('id =' => $id));
-			header('location:'. getLink("article/read/". $id) );
+			header('location:'. $Helper->getLink("article/read/". $id) );
 			exit;
 		endif;
 		
@@ -138,7 +138,7 @@ class Basearticlecontroller extends Controller{
 	public function unlockCommentaireAction($id){
 		if( ADM_ARTICLE_LEVEL < $_SESSION['utilisateur']['isAdmin']):
 			$this->app->db->update(PREFIX . 'article', array('commentaire' => 1), array('id =' => $id));
-			header('location:'. getLink("article/read/". $id) );
+			header('location:'. $Helper->getLink("article/read/". $id) );
 			exit;
 		endif;
 		

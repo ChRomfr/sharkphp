@@ -75,7 +75,7 @@ abstract class AdmCategorieController extends Controller{
 			# On enregistre la categorie
 			$this->Tree->add($categorie);
 
-			return $this->redirect( getLinkAdm('categorie?c='. $this->app->HTTPRequest->getData('c')), 3,$this->lang['Categorie_ajoutee']);
+			return $this->redirect( $Helper->getLinkAdm('categorie?c='. $this->app->HTTPRequest->getData('c')), 3,$this->lang['Categorie_ajoutee']);
 		endif;
 	}
 	
@@ -98,13 +98,13 @@ abstract class AdmCategorieController extends Controller{
 
 			$this->manager->categorie->update($categorie);
 
-			return $this->redirect( getLinkAdm('categorie?c='. $this->app->HTTPRequest->getData('c')), 3,$this->lang['Categorie_modifiee']);
+			return $this->redirect( $Helper->getLinkAdm('categorie?c='. $this->app->HTTPRequest->getData('c')), 3,$this->lang['Categorie_modifiee']);
 		endif;
 	}
 	
 	public function deleteAction($id){
 		$this->Tree->remove($id);
-		return $this->redirect( getLinkAdm('categorie?c='. $this->registry->HTTPRequest->getData('c')), 3,$this->lang['Categorie_supprimee']);
+		return $this->redirect( $Helper->getLinkAdm('categorie?c='. $this->registry->HTTPRequest->getData('c')), 3,$this->lang['Categorie_supprimee']);
 	}
 	
 	public function getDataAction($categorie_id){

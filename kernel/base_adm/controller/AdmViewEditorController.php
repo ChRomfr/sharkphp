@@ -47,7 +47,7 @@ abstract class AdmViewEditorController extends Controller{
 			$this->app->db->insert(PREFIX . 'view_template', $Tpl);
 
 			# On redirige l utilisateur
-			return $this->redirect( getLinkAdm('viewEditor/index'),3, 'Vue enregistree' );
+			return $this->redirect( $Helper->getLinkAdm('viewEditor/index'),3, 'Vue enregistree' );
 
 		endif;
 
@@ -93,7 +93,7 @@ abstract class AdmViewEditorController extends Controller{
 			$this->app->db->update(PREFIX . 'view_template', $Tpl);
 
 			# On redirige l utilisateur
-			return $this->redirect( getLinkAdm('viewEditor/index'),3, 'Vue enregistree' );
+			return $this->redirect( $Helper->getLinkAdm('viewEditor/index'),3, 'Vue enregistree' );
 
 		endif;
 
@@ -127,7 +127,7 @@ abstract class AdmViewEditorController extends Controller{
 
 	public function deleteAction($vue_id){
 		$this->app->db->delete(PREFIX . 'view_template', $vue_id);
-		return $this->redirect( getLinkAdm('viewEditor/index'), 3, 'Vue supprimee');
+		return $this->redirect( $Helper->getLinkAdm('viewEditor/index'), 3, 'Vue supprimee');
 	}
 
 }

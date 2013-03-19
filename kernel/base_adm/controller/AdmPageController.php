@@ -44,7 +44,7 @@ abstract class AdmPageController extends Controller{
 			
 			addLinkAvailable($page->titre, 'page/index/' . $page->id);
 			
-			return $this->redirect(getLinkAdm('page/index'), 3, $this->lang['Page_ajoutee']);
+			return $this->redirect($Helper->getLinkAdm('page/index'), 3, $this->lang['Page_ajoutee']);
 			
 		endif;
 		
@@ -79,7 +79,7 @@ abstract class AdmPageController extends Controller{
 			
 			$this->manager->page->save($page);
 						
-			return $this->redirect(getLinkAdm('page/index'), 3, $this->lang['Page_modifiee']);			
+			return $this->redirect($Helper->getLinkAdm('page/index'), 3, $this->lang['Page_modifiee']);			
 		endif;
 		
 		printform:
@@ -107,7 +107,7 @@ abstract class AdmPageController extends Controller{
 		
 		deleteLinkAvailable('page/index/' . $id);
 		
-		return $this->redirect(getLinkAdm('page/index'), 3, $this->lang['Page_supprimee']);
+		return $this->redirect($Helper->getLinkAdm('page/index'), 3, $this->lang['Page_supprimee']);
 	}
 	
 }

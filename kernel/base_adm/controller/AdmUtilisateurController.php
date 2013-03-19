@@ -66,7 +66,7 @@ abstract class AdmUtilisateurController extends Controller{
 			# On le sauvegarde dans la base
 			$user->save();	
             
-			return $this->redirect(getLinkAdm('utilisateur/edit/' . $user->id), 3, $this->lang['Compte_cree']);
+			return $this->redirect($Helper->getLinkAdm('utilisateur/edit/' . $user->id), 3, $this->lang['Compte_cree']);
 		}
         
         print_form:
@@ -96,7 +96,7 @@ abstract class AdmUtilisateurController extends Controller{
 
 			$this->app->db->update(PREFIX . 'user', $user);
 
-			return $this->redirect(getLinkAdm('utilisateur'),3,$this->lang['Utilisateur_modifie']);
+			return $this->redirect($Helper->getLinkAdm('utilisateur'),3,$this->lang['Utilisateur_modifie']);
 		}
 		
 		$user = new utilisateur();
@@ -115,7 +115,7 @@ abstract class AdmUtilisateurController extends Controller{
 		endforeach;
 
 		if( empty($user->identifiant) ):
-			return $this->redirect( getLinkAdm('utilisateur'),3, 'Utilisateur non trouve' );
+			return $this->redirect( $Helper->getLinkAdm('utilisateur'),3, 'Utilisateur non trouve' );
 		endif;
 
 		$this->app->smarty->assign(array(
@@ -145,7 +145,7 @@ abstract class AdmUtilisateurController extends Controller{
 	public function deleteAction($id){
 		$this->load_manager('utilisateur','admin');
 		$this->manager->utilisateur->delete($id);
-		return $this->redirect(getLinkAdm('utilisateur'),3,$this->lang['Utilisateur_supprime']);
+		return $this->redirect($Helper->getLinkAdm('utilisateur'),3,$this->lang['Utilisateur_supprime']);
 	}
 
 	public function groupeAction(){

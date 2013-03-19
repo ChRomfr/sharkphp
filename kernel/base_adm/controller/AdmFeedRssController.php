@@ -21,7 +21,7 @@ abstract class AdmFeedRssController extends Controller{
 		if( $this->app->HTTPRequest->postExists('link') ):
 			$Flux = new AdmFluxLinkModel($this->app->HTTPRequest->postData('link'));
 			$Flux->save();
-			return $this->redirect( getLinkAdm('feedRss'), 3, 'Flux enregistre');
+			return $this->redirect( $Helper->getLinkAdm('feedRss'), 3, 'Flux enregistre');
 		endif;
 
 		$this->getFormValidatorJs();
@@ -42,7 +42,7 @@ abstract class AdmFeedRssController extends Controller{
 		if( $this->app->HTTPRequest->postExists('link') ):
 			$Flux = new AdmFluxLinkModel($this->app->HTTPRequest->postData('link'));
 			$Flux->save();
-			return $this->redirect( getLinkAdm('feedRss'), 3, 'Flux enregistre');
+			return $this->redirect( $Helper->getLinkAdm('feedRss'), 3, 'Flux enregistre');
 		endif;
 
 		$Flux = new AdmFluxLinkModel();
@@ -68,7 +68,7 @@ abstract class AdmFeedRssController extends Controller{
 		$this->app->db->delete(PREFIX . 'feed_rss_link', $id);
 		$this->app->db->delete(PREFIX . 'feed_rss_item', null, array('feed_rss_link_id = ' => $id));
 
-		return $this->redirect( getLinkAdm('feedRss'), 3, 'Flux supprime');
+		return $this->redirect( $Helper->getLinkAdm('feedRss'), 3, 'Flux supprime');
 	}
 
 }

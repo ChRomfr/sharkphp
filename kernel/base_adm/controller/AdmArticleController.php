@@ -58,7 +58,7 @@ abstract class AdmArticleController extends Controller{
 			# Ajout du liens	
 			addLinkAvailable($Article->title, 'article/read/' . $Article->id);
 			
-			return $this->redirect( getLinkAdm('article/index'), 3, $this->lang['Article_ajoute']);
+			return $this->redirect( $Helper->getLinkAdm('article/index'), 3, $this->lang['Article_ajoute']);
 		endif;
 		
 		printform:
@@ -115,7 +115,7 @@ abstract class AdmArticleController extends Controller{
 			
 			$Article->save();
 		
-			return $this->redirect( getLinkAdm('article/index'), 3, $this->lang['Article_modifie']);
+			return $this->redirect( $Helper->getLinkAdm('article/index'), 3, $this->lang['Article_modifie']);
 		endif;
 		
 		printform:
@@ -153,7 +153,7 @@ abstract class AdmArticleController extends Controller{
 				
 		deleteLinkAvailable('article/read/' . $article_id);
 		
-		return $this->redirect( getLinkAdm('article/index'), 3, $this->lang['Article_supprime']);		
+		return $this->redirect( $Helper->getLinkAdm('article/index'), 3, $this->lang['Article_supprime']);		
 	}
 
 	private function upload($article_id, $file, $image = false){

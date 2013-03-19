@@ -22,39 +22,14 @@ function getConfig($app){
  * @param  [type] $link [description]
  * @return [type]       [description]
  */
-function getLinkAdm($link){
-	trigger_error("getLinkAdm() ne doit plus être utilisé !", E_USER_DEPRECATED );
-	global $registry;
-	
-	$config = $registry->config;
-	
-	return $config['url'] . $config['url_dir'] .'adm/index.php/'. $link;
-}
+function getLinkAdm($link){ global $registry; return $registry->Helper->getLinkAdm($link); }
 
 /**
  * [getLink description]
  * @param  [type] $str [description]
  * @return [type]      [description]
  */
-function getLink($str){
-	trigger_error("getLink() ne doit plus être utilisé !", E_USER_DEPRECATED );
-	global $registry;
-	
-	$config = $registry->config;
-
-	static $string_url = null;
-	
-	if( is_null($string_url) ){
-		
-		if( $config['rewrite_url'] == 1){
-			$string_url = $config['url'] . $config['url_dir'];
-		}else{
-			$string_url = $config['url'] . $config['url_dir'] . 'index.php/';
-		}
-	}
-
-	return $string_url . $str;
-}
+function getLink($link){ global $registry; return $registry->Helper->getLink($link); }
 
 /**
 *	getUniqueID

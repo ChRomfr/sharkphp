@@ -81,9 +81,7 @@
 		</div>
 	</div><!-- /navbar -->
 	<!-- Header -->
-	<div id="header" style="padding-top:40px;">
-		
-	</div>
+	<div id="header" style="padding-top:40px;"></div>
 
 	<!-- Contenu -->
 	<div class="container">

@@ -54,7 +54,7 @@ abstract class AdmDownloadController extends Controller{
 
 			$download->save();
 			
-			return $this->redirect( $Helper->getLinkAdm('download'), 3, $this->lang['Telechargement_ajoute']);
+			return $this->redirect( $this->app->Helper->getLinkAdm('download'), 3, $this->lang['Telechargement_ajoute']);
 		endif;
 		
 		print_form:
@@ -116,7 +116,7 @@ abstract class AdmDownloadController extends Controller{
 				
 			$download->save();
 			
-			return $this->redirect($Helper->getLinkAdm('download'), 3, $this->lang['Telechargement_modifie']);
+			return $this->redirect($this->app->Helper->getLinkAdm('download'), 3, $this->lang['Telechargement_modifie']);
 		}
 		
 		print_form:
@@ -160,7 +160,7 @@ abstract class AdmDownloadController extends Controller{
 		endforeach;
 		@rmdir(ROOT_PATH . 'web' . DS . 'upload' . DS . 'download' . DS . $id . DS);
 
-		return $this->redirect($Helper->getLinkAdm('download'), 3, $this->lang['Telechargement_supprime']);
+		return $this->redirect($this->app->Helper->getLinkAdm('download'), 3, $this->lang['Telechargement_supprime']);
 	}
 
 	private function upload($download_id, $file, $image = false){

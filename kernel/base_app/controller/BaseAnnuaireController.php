@@ -102,7 +102,7 @@ abstract class Baseannuairecontroller extends Controller{
 
 			$Site->save();
 
-			return $this->redirect( $Helper->$Helper->getLink('annuaire'), 3, 'Votre site vient d etre proposé' );
+			return $this->redirect( $Helper->$this->app->Helper->getLink('annuaire'), 3, 'Votre site vient d etre proposé' );
 
 		endif;
 

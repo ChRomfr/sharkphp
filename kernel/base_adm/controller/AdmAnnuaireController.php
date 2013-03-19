@@ -57,7 +57,7 @@ abstract class AdmAnnuaireController extends Controller{
 
 			$this->app->db->update(PREFIX . 'annuaire_site', $Site, array('id =' => $Site->id));
 
-			return $this->redirect( $Helper->getLinkAdm('annuaire'), 3, 'Site modifié');
+			return $this->redirect( $this->app->Helper->getLinkAdm('annuaire'), 3, 'Site modifié');
 
 		endif;
 
@@ -79,6 +79,6 @@ abstract class AdmAnnuaireController extends Controller{
 
 	public function deleteAction($id){
 		$this->app->db->delete(PREFIX . 'annuaire_site', $id);
-		return $this->redirect( $Helper->getLinkAdm('annuaire'), 3, 'Site supprimé');
+		return $this->redirect( $this->app->Helper->getLinkAdm('annuaire'), 3, 'Site supprimé');
 	}
 }

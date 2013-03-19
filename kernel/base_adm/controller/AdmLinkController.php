@@ -33,7 +33,7 @@ abstract class AdmLinkController extends Controller{
 
 			$link->save();
 			
-			return $this->redirect( $Helper->getLinkAdm('link'), 3, 'Lien enregistré');
+			return $this->redirect( $this->app->Helper->getLinkAdm('link'), 3, 'Lien enregistré');
 		endif;
 		
 		print_form:
@@ -77,7 +77,7 @@ abstract class AdmLinkController extends Controller{
 				
 			$link->save();
 			
-			return $this->redirect( $Helper->getLinkAdm('link'), 3, 'Lien modifié');
+			return $this->redirect( $this->app->Helper->getLinkAdm('link'), 3, 'Lien modifié');
 		}
 		
 		print_form:
@@ -114,7 +114,7 @@ abstract class AdmLinkController extends Controller{
 		endforeach;
 		@rmdir(ROOT_PATH . 'web' . DS . 'upload' . DS . 'link' . DS . $id . DS);
 
-		return $this->redirect($Helper->getLinkAdm('link'), 3, 'Lien supprimé');
+		return $this->redirect($this->app->Helper->getLinkAdm('link'), 3, 'Lien supprimé');
 	}
 
 	private function upload($link_id, $file, $image = false){

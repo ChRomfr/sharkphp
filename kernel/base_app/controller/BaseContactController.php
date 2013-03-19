@@ -59,7 +59,7 @@ class Basecontactcontroller extends Controller{
 			endif;
 			
 			# On redirige l utilisateur vers l index du site
-			return $this->redirect($Helper->getLink('index/index'), 3, $this->lang['Message_envoye']);
+			return $this->redirect($this->app->Helper->getLink('index/index'), 3, $this->lang['Message_envoye']);
 		endif;
 		
 		printform:

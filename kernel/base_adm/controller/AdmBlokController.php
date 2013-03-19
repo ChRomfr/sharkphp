@@ -88,7 +88,7 @@ abstract class AdmBlokController extends Controller{
 
 			$blok->save();
 			
-			return $this->redirect($Helper->getLinkAdm('blok/index'), 3, $this->lang['Blok_ajoute']);
+			return $this->redirect($this->app->Helper->getLinkAdm('blok/index'), 3, $this->lang['Blok_ajoute']);
 		}
 		
 		printform:
@@ -134,7 +134,7 @@ abstract class AdmBlokController extends Controller{
 				
 			$blok->save();
 			
-			return $this->redirect($Helper->getLinkAdm('blok/index'), 3, $this->lang['Blok_modifie']);
+			return $this->redirect($this->app->Helper->getLinkAdm('blok/index'), 3, $this->lang['Blok_modifie']);
 		}
 		
 		printform:
@@ -162,7 +162,7 @@ abstract class AdmBlokController extends Controller{
 	
 	public function deleteAction($id){
 		$this->registry->db->delete(PREFIX . 'blok', $id);
-		return $this->redirect($Helper->getLinkAdm('blok'), 3, $this->lang['Blok_supprime']);
+		return $this->redirect($this->app->Helper->getLinkAdm('blok'), 3, $this->lang['Blok_supprime']);
 	}
 	
 	private function formatRss($blok){

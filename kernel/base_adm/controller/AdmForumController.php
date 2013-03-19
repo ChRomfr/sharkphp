@@ -62,7 +62,7 @@ abstract class AdmForumController extends Controller{
 
 			$this->app->db->insert(PREFIX . 'forum_categorie', $Categorie);
 
-			return $this->redirect( $Helper->getLinkAdm('forum'), 3, $this->lang['Categorie_ajoutee'] );
+			return $this->redirect( $this->app->Helper->getLinkAdm('forum'), 3, $this->lang['Categorie_ajoutee'] );
 		endif;
 
 		return $this->app->smarty->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'view' . DS . 'forum' . DS . 'categorieadd.tpl');
@@ -89,7 +89,7 @@ abstract class AdmForumController extends Controller{
 
 			$this->app->db->update(PREFIX . 'forum_categorie', $Categorie);
 
-			return $this->redirect( $Helper->getLinkAdm('forum'), 3, $this->lang['Categorie_modifiee'] );
+			return $this->redirect( $this->app->Helper->getLinkAdm('forum'), 3, $this->lang['Categorie_modifiee'] );
 		endif;
 
 		$Categorie = new myObject( $this->app->db->get_one(PREFIX . 'forum_categorie', array('id =' => $categorie_id)) );
@@ -141,7 +141,7 @@ abstract class AdmForumController extends Controller{
 
 			$this->app->db->insert(PREFIX . 'forum', $Forum);
 
-			return $this->redirect( $Helper->getLinkAdm('forum'), 3, $this->lang['Forum_ajoute'] );
+			return $this->redirect( $this->app->Helper->getLinkAdm('forum'), 3, $this->lang['Forum_ajoute'] );
 		endif;
 
 		return $this->app->smarty->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'view' . DS . 'forum' . DS . 'forumadd.tpl');
@@ -173,7 +173,7 @@ abstract class AdmForumController extends Controller{
 
 			$this->app->db->update(PREFIX . 'forum', $Forum);
 
-			return $this->redirect( $Helper->getLinkAdm('forum'), 3, $this->lang['Forum_modfie'] );
+			return $this->redirect( $this->app->Helper->getLinkAdm('forum'), 3, $this->lang['Forum_modfie'] );
 		endif;
 
 		$Forum = new myObject( $this->app->db->get_one(PREFIX . 'forum', array('id =' => $id)) );

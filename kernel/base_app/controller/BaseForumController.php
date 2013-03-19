@@ -84,7 +84,7 @@ abstract class Baseforumcontroller extends Controller{
 			$Message->save();
 
 			# Redirection de l utilisateur
-			return $this->redirect( $Helper->getLink('forum/viewtopic/'. $Thread->id),3, 'Sujet ajouté' );
+			return $this->redirect( $this->app->Helper->getLink('forum/viewtopic/'. $Thread->id),3, 'Sujet ajouté' );
 
 		endif;
 
@@ -164,17 +164,17 @@ abstract class Baseforumcontroller extends Controller{
 			$Thread = new Basethread($this->app->db->get_one(PREFIX . 'forum_thread', array('id =' => $thread_id)));
 
 			if( empty($Thread) ):
-				return $this->redirect( $Helper->getLink('forum'), 3, 'Le sujet n\'existe pas ou plus !' );
+				return $this->redirect( $this->app->Helper->getLink('forum'), 3, 'Le sujet n\'existe pas ou plus !' );
 			endif;
 
 			if( $Thread->closed == 1 ):
-				return $this->redirect( $Helper->getLink('forum/viewtopic/'. $thread_id), 3, 'Ce sujet est fermé !' );
+				return $this->redirect( $this->app->Helper->getLink('forum/viewtopic/'. $thread_id), 3, 'Ce sujet est fermé !' );
 			endif;
 
 			$Message = new Basemessage($this->app->HTTPRequest->postData('reply')); 
 
 			if( empty($Message->message) ):
-				return $this->redirect( $Helper->getLink('forum/viewtopic/'. $thread_id), 3, 'Votre réponse est vide !' );
+				return $this->redirect( $this->app->Helper->getLink('forum/viewtopic/'. $thread_id), 3, 'Votre réponse est vide !' );
 			endif;
 
 			# On traite le message
@@ -192,7 +192,7 @@ abstract class Baseforumcontroller extends Controller{
 			# On calcul la page de redirection
 			$page = floor($this->app->db->count(PREFIX . 'forum_message', array('thread_id =' => $thread_id)) / $per_page) + 1;
 			# On redirige l utilisateur
-			return $this->redirect( $Helper->getLink('forum/viewtopic/'. $thread_id.'?page='.$page.'#message-'. $Message->id), 3, 'Réponse enregistrée' );
+			return $this->redirect( $this->app->Helper->getLink('forum/viewtopic/'. $thread_id.'?page='.$page.'#message-'. $Message->id), 3, 'Réponse enregistrée' );
 
 		endif;
 
@@ -230,7 +230,7 @@ abstract class Baseforumcontroller extends Controller{
 			$Thread = new Basethread();
 			$Thread->get($Message->thread_id);
 
-			return $this->redirect( $Helper->getLink('forum/viewtopic/'. $Thread->id), 3, 'Message modifié' );
+			return $this->redirect( $this->app->Helper->getLink('forum/viewtopic/'. $Thread->id), 3, 'Message modifié' );
 		endif;
 
 		return $this->indexAction();

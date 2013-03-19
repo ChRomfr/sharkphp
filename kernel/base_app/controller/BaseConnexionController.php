@@ -10,7 +10,7 @@ class BaseconnexionController extends Controller{
 		
 		# Si utilisateur deja connecter on le renvoie a l index
 		if( $_SESSION['utilisateur']['id'] != 'Visiteur' ):
-			header('location:' . $Helper->getLink('index') );
+			header('location:' . $this->app->Helper->getLink('index') );
 			exit;
 		endif;
 		
@@ -42,7 +42,7 @@ class BaseconnexionController extends Controller{
 			if( isset($_SESSION['utilisateur']['isAdmin']) && $_SESSION['utilisateur']['isAdmin'] > 0):
 				return $this->redirect( $this->app->config['url'] . $this->app->config['url_dir'] . 'adm/');
 			else:
-				return $this->redirect($Helper->getLink('index'));
+				return $this->redirect($this->app->Helper->getLink('index'));
 			endif;
 		endif;
 		
@@ -54,7 +54,7 @@ class BaseconnexionController extends Controller{
 		# Destruction de la session
 		$this->app->session->destroy();
 		# Redirection de l utilisateur
-		return $this->redirect($Helper->getLink('index'), 0, $this->lang['Vous_etes_maintenant_deconnecte']);
+		return $this->redirect($this->app->Helper->getLink('index'), 0, $this->lang['Vous_etes_maintenant_deconnecte']);
 	}
 	
 	public function lostPasswordAction(){
@@ -84,7 +84,7 @@ class BaseconnexionController extends Controller{
 				// Enregistrement dans la base
 				$this->app->db->insert(PREFIX . 'user_reset_password', $Data);
 				
-				return $this->redirect( $Helper->getLink("connexion/index"), 5, $this->lang['Email_envoye_procedure'] );
+				return $this->redirect( $this->app->Helper->getLink("connexion/index"), 5, $this->lang['Email_envoye_procedure'] );
 			else:
 				$this->app->smarty->assign('Error', 'E-mail not found');
 				goto printform;
@@ -133,7 +133,7 @@ class BaseconnexionController extends Controller{
 			$corp_message = $this->app->smarty->fetch( BASE_APP_PATH . 'view' . DS . 'connexion' . DS . 'email_sendpassword_french.tpl' );
 				sendEmail($User['email'] , $this->app->config['email'], 'New password :: '. $this->app->config['titre_site'], strip_tags($corp_message), $corp_message);
 			
-			return $this->redirect( $Helper->getLink('connexion/index'),5, $this->lang['Votre_mot_de_passe_vient_etre_envoyer'] );
+			return $this->redirect( $this->app->Helper->getLink('connexion/index'),5, $this->lang['Votre_mot_de_passe_vient_etre_envoyer'] );
 		else:
 			exit;
 		endif;

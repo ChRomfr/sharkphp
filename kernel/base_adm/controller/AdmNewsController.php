@@ -46,7 +46,7 @@ abstract class AdmNewsController extends Controller{
 			
 			$news->save();
 			
-			return $this->redirect($Helper->getLinkAdm('news'), 3, $this->lang['News_ajoutee']);
+			return $this->redirect($this->app->Helper->getLinkAdm('news'), 3, $this->lang['News_ajoutee']);
 		}
 		
 		print_form:
@@ -98,7 +98,7 @@ abstract class AdmNewsController extends Controller{
 			
 			$news->save();
 			
-			return $this->redirect($Helper->getLinkAdm('news'), 3, $this->lang['News_modifiee']);
+			return $this->redirect($this->app->Helper->getLinkAdm('news'), 3, $this->lang['News_modifiee']);
 		}
 		
 		print_form:
@@ -133,6 +133,6 @@ abstract class AdmNewsController extends Controller{
 		
 		$this->app->db->delete(PREFIX . 'news', $id);
 		$this->app->db->delete(PREFIX . 'news_commentaire', null, array('model_id =' => $id));
-		return $this->redirect($Helper->getLinkAdm('news'), 3, $this->lang['News_supprimee']);
+		return $this->redirect($this->app->Helper->getLinkAdm('news'), 3, $this->lang['News_supprimee']);
 	}
 }

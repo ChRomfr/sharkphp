@@ -127,7 +127,7 @@
 					<!-- AddThis Button END -->				
 				</div>
 				<div class="span4">
-					{if $smarty.session.utilisateur.id == 'Visiteur'}<div style="padding-bottom:2px;"><a href="{$Helper->$Helper->getLink("utilisateur/register")}" title="" class="btn btn-small btn-info"><i class="icon-user icon-white"></i>&nbsp;Rejoingez-nous</a></div>{/if}
+					{if $smarty.session.utilisateur.id == 'Visiteur'}<div style="padding-bottom:2px;"><a href="{$Helper->getLink("utilisateur/register")}" title="" class="btn btn-small btn-info"><i class="icon-user icon-white"></i>&nbsp;Rejoingez-nous</a></div>{/if}
 				</div>
 				<div class="span4">
 					<!-- Form recherche -->

@@ -70,7 +70,7 @@ abstract class AdmMailingController extends Controller{
 			// Envoie du mail
 			sendEmail($Emails , $this->app->config['email'], $Mailing['sujet'], strip_tags($Mailing['message']), $Mailing['message']);
 			
-			return $this->redirect( $Helper->getLinkAdm("mailing",3,'Mailing envoyer'));
+			return $this->redirect( $this->app->Helper->getLinkAdm("mailing",3,'Mailing envoyer'));
 		endif;
 		
 		printform:

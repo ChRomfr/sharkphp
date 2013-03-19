@@ -34,6 +34,6 @@ abstract class AdmContactController extends Controller{
 
 	public function deleteAction($id){
         $this->app->db->delete(PREFIX . 'contact', $id);
-		return $this->redirect($Helper->getLinkAdm("contact"),3,$this->lang['Message_supprime']);
+		return $this->redirect($this->app->Helper->getLinkAdm("contact"),3,$this->lang['Message_supprime']);
     }
 }

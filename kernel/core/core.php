@@ -65,7 +65,7 @@ $registry->Http        = new Http();
 $config                = new Baseconfig($config_file, $cache, $db);
 $config->get();
 $registry->config      = $config->config;
-$registry->Helper      = new Helper($registry->config);
+$registry->Helper      = new Helper($registry);
 
 # Traitement Bundles
 require_once ROOT_PATH . 'kernel' . DS . 'core' . DS . 'bundle.php';

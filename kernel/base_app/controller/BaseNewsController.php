@@ -43,7 +43,7 @@ class Basenewscontroller extends Controller{
 		# On envoie a smarty les donnees et on verifie la pagination
 		$this->app->smarty->assign(array( 
 			'news'			=>	$news,
-			'pagination'	=>	$NewsInDb > $this->app->config['news_per_page'] ? getPagination( array('perPage'=>$this->app->config['news_per_page'], 'fileName'=>$Helper->getLink('news') .'?page=%d', 'totalItems'=>$NewsInDb) ) : null
+			'pagination'	=>	$NewsInDb > $this->app->config['news_per_page'] ? getPagination( array('perPage'=>$this->app->config['news_per_page'], 'fileName'=>$this->app->Helper->getLink('news') .'?page=%d', 'totalItems'=>$NewsInDb) ) : null
 		));
 
 		# Generation du design
@@ -92,7 +92,7 @@ class Basenewscontroller extends Controller{
 	public function lockCommentaireAction($id){
 		if( ADM_NEWS_LEVEL < $_SESSION['utilisateur']['isAdmin']){
 			$this->registry->db->update(PREFIX . 'news', array('commentaire' => 0), array('id =' => $id));
-			header('location:'. $Helper->getLink("news/view/". $id) );
+			header('location:'. $this->app->Helper->getLink("news/view/". $id) );
 			exit;
 		}
 		
@@ -102,7 +102,7 @@ class Basenewscontroller extends Controller{
 	public function unlockCommentaireAction($id){
 		if( ADM_NEWS_LEVEL < $_SESSION['utilisateur']['isAdmin']){
 			$this->registry->db->update(PREFIX . 'news', array('commentaire' => 1), array('id =' => $id));
-			header('location:'. $Helper->getLink("news/view/". $id) );
+			header('location:'. $this->app->Helper->getLink("news/view/". $id) );
 			exit;
 		}
 		

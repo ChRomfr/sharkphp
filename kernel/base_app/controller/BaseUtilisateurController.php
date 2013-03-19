@@ -60,17 +60,17 @@ class BaseutilisateurController extends Controller{
 					$this->app->smarty->assign(array('user' => $user));
 					$corp_message = $this->app->smarty->fetch( BASE_APP_PATH . 'view' . DS . 'utilisateur' . DS . 'mail_activation.tpl' );
 					sendEmail($user->email , $config['email'], $this->lang['Enregistrement_sur'] .' '. $config['titre_site'], strip_tags($corp_message), $corp_message);
-					return $this->redirect($Helper->getLink('index'), 3, "Votre compte a ete cree, vous devez maintenant l activer en cliquant sur le lien dans l'email qui vient d'etre envoyer");
+					return $this->redirect($this->app->Helper->getLink('index'), 3, "Votre compte a ete cree, vous devez maintenant l activer en cliquant sur le lien dans l'email qui vient d'etre envoyer");
 				endif;
 				
 				# Cas admin
 				if( $this->app->config['user_activation'] == 'admin'):
-					return $this->redirect($Helper->getLink('index'), 3, "Votre compte a ete cree, il doit maintenant etre active par un administrateur");
+					return $this->redirect($this->app->Helper->getLink('index'), 3, "Votre compte a ete cree, il doit maintenant etre active par un administrateur");
 				endif;
 
 			endif;
 			
-			return $this->redirect($Helper->getLink('index'), 3, $this->lang['Compte_cree']);
+			return $this->redirect($this->app->Helper->getLink('index'), 3, $this->lang['Compte_cree']);
 		}
 		
 		print_form:		
@@ -93,7 +93,7 @@ class BaseutilisateurController extends Controller{
 			$this->app->session->create($User);
 
 			# Redirection utilisateur
-			return $this->redirect( $Helper->getLink('utilisateur'),3, 'Profil mise a jour' );
+			return $this->redirect( $this->app->Helper->getLink('utilisateur'),3, 'Profil mise a jour' );
 		endif;
 
 		$this->getFormValidatorJs();
@@ -108,7 +108,7 @@ class BaseutilisateurController extends Controller{
 	public function activationAction( ){
 
 		if(  $this->app->HTTPRequest->getExists('reg') == false ):
-			return $this->redirect( $Helper->getLink('index'),0,'' );
+			return $this->redirect( $this->app->Helper->getLink('index'),0,'' );
 		endif;
 		
 		$Reg = explode('|', $this->app->HTTPRequest->getData('reg') );
@@ -123,14 +123,14 @@ class BaseutilisateurController extends Controller{
 		
 		$this->app->db->update(PREFIX . 'user', $user);
 		
-		return $this->redirect($Helper->getLink('connexion/index'),10, $this->lang['Votre_compte_est_active']);
+		return $this->redirect($this->app->Helper->getLink('connexion/index'),10, $this->lang['Votre_compte_est_active']);
 		
 	}
 
 	public function changePasswordAction(){
 
 		if( $_SESSION['utilisateur']['id'] == 'Visiteur'):
-			header('location:'. $Helper->getLink('index') ); exit;
+			header('location:'. $this->app->Helper->getLink('index') ); exit;
 		endif;
 		
 		if( $this->app->HTTPRequest->postExists('password') ):
@@ -144,7 +144,7 @@ class BaseutilisateurController extends Controller{
 				
 			$this->app->db->update(PREFIX . 'user', array('password' => cryptPassword($data['nouveau'], $_SESSION['utilisateur']['identifiant'])), array('id =' => $_SESSION['utilisateur']['id']));
 			
-			return $this->redirect($Helper->getLink('utilisateur'), 3, $this->lang['Mot_de_passe_change']); 
+			return $this->redirect($this->app->Helper->getLink('utilisateur'), 3, $this->lang['Mot_de_passe_change']); 
 		endif;
 		
 		print_form:

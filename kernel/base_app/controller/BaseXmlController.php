@@ -27,7 +27,7 @@ abstract class Basexmlcontroller extends Controller{
         foreach($Data as $Row):
             $XML .= '<item>';
                 $XML .= '<title>' . $Row['sujet'] .'</title>';
-                $XML .= '<link>' . $this->Helper->getLink("news/detail/". $Row['id'] ."/". urlencode($Row['sujet']) ." " ) .'</link>';
+                $XML .= '<link>' . $this->app->Helper->getLink("news/detail/". $Row['id'] ."/". urlencode($Row['sujet']) ." " ) .'</link>';
                 $XML .= '<description><![CDATA[';
                 $XML .= $Row['contenu'] . ']]></description>';
                 $XML .= '<guid>'. $Row['id'] . '</guid>';
@@ -61,7 +61,7 @@ abstract class Basexmlcontroller extends Controller{
         foreach($Data as $Row):
             $XML .= '<item>';
                 $XML .= '<title>' . $Row['title'] .'</title>';
-                $XML .= '<link>' . $this->Helper->getLink("news/detail/". $Row['id'] ."/". urlencode($Row['title']) ." " ) .'</link>';
+                $XML .= '<link>' . $this->app->Helper->getLink("news/detail/". $Row['id'] ."/". urlencode($Row['title']) ." " ) .'</link>';
                 $XML .= '<description><![CDATA[';
                 	if( isset($Row['image']) && !empty($Row['image']) ):
                     $XML .= '<img src="'. $this->app->config['url'] . $this->app->config['url_dir'] . 'web/upload/article/'. $Row['id'] .'/'. $Row['image'] .'" style="width:150px;"/>';

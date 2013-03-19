@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-03-19 17:17:18
+<?php /* Smarty version Smarty-3.1.13, created on 2013-03-19 18:33:26
          compiled from "D:\wamp\www\sharkphp\themes\dashboard\layout.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:116765147adc96ca347-31500990%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:99875148af76ca5264-38404352%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,12 +11,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '116765147adc96ca347-31500990',
+  'nocache_hash' => '99875148af76ca5264-38404352',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5147adc9a219e2_50326884',
   'variables' => 
   array (
     'config' => 0,
@@ -31,8 +29,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'FlashMessage' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5148af777c76d3_30283129',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5147adc9a219e2_50326884')) {function content_5147adc9a219e2_50326884($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5148af777c76d3_30283129')) {function content_5148af777c76d3_30283129($_smarty_tpl) {?><!DOCTYPE html>
 <head>
 <title><?php echo $_smarty_tpl->tpl_vars['config']->value['titre_site'];?>
  :: Administration</title>

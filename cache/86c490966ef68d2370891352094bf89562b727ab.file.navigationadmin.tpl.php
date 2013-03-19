@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-03-19 00:14:01
+<?php /* Smarty version Smarty-3.1.13, created on 2013-03-19 18:33:26
          compiled from "D:\wamp\www\sharkphp\adm\app\view\navigationadmin.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:227995147adc954ea03-14369616%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:193785148af763f0c57-16516610%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '227995147adc954ea03-14369616',
+  'nocache_hash' => '193785148af763f0c57-16516610',
   'function' => 
   array (
   ),
@@ -23,9 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5147adc968b3d3_86254176',
+  'unifunc' => 'content_5148af7692f7f7_18544541',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5147adc968b3d3_86254176')) {function content_5147adc968b3d3_86254176($_smarty_tpl) {?><?php if ($_SESSION['utilisateur']['isAdmin']>4){?><br/><div id="menu_adm"><div class="menu_admin_immo_titre bloc_gauche_titre">Navigation</div><div class="menu_admin_immo_navigation bloc_gauche_corp"><ul class="rang1"><li><a href="<?php echo getLinkAdm("index");?>
+<?php if ($_valid && !is_callable('content_5148af7692f7f7_18544541')) {function content_5148af7692f7f7_18544541($_smarty_tpl) {?><?php if ($_SESSION['utilisateur']['isAdmin']>4){?><br/><div id="menu_adm"><div class="menu_admin_immo_titre bloc_gauche_titre">Navigation</div><div class="menu_admin_immo_navigation bloc_gauche_corp"><ul class="rang1"><li><a href="<?php echo getLinkAdm("index");?>
 " title=""><?php echo $_smarty_tpl->tpl_vars['lang']->value['Administration'];?>
 </a></li><!-- ARTICLES --><li class="smenu"><a href="<?php echo getLinkAdm("article");?>
 " title=""><?php echo $_smarty_tpl->tpl_vars['lang']->value['Article'];?>

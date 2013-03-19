@@ -48,7 +48,16 @@ class Baseconfig extends Record{
 	}
 
 	public function get($cle = null){
-		$Datas = $this->db->get(PREFIX . 'config');
+
+		if( !$Datas = $this->cache->get('config') ):
+			// Recuperation de la config dans la base
+			$Datas = $this->db->get(PREFIX . 'config');
+
+			// Sauvegarde en cache
+			$this->cache->save(serialize($Datas));
+		else:
+			$Datas = unserialize($Datas);
+		endif; 			
 
 		foreach( $Datas as $Row ):
 			$this->config[$Row['cle']] = $Row['valeur'];

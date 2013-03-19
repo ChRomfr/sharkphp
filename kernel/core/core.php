@@ -61,7 +61,7 @@ $registry->session     = new Session($registry);
 $registry->HTTPRequest = new HTTPRequest($registry);
 $registry->form        = new Form($registry);
 $cache                 = $registry->cache;
-$registry->Http        = new Http();
+$registry->Http        = new Http($registry);
 $config                = new Baseconfig($config_file, $cache, $db);
 $config->get();
 $registry->config      = $config->config;

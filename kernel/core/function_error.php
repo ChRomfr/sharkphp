@@ -35,7 +35,7 @@ function myErrorHandler($errno, $errstr, $errfile, $errline, $errcontext){
 
     default:
     	$fulldata = serialize($errcontext);
-        $mytext .= "Type d'erreur inconnu : [$errno] $errstr - ligne $errline dans le fichier $errfile - $fulldata\n";
+        $mytext .= "Type d'erreur inconnu : [$errno] $errstr - ligne $errline dans le fichier $errfile\n";
 		WriteInFile($mytext);
         break;
     }

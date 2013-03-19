@@ -61,7 +61,7 @@ abstract class Basexmlcontroller extends Controller{
         foreach($Data as $Row):
             $XML .= '<item>';
                 $XML .= '<title>' . $Row['title'] .'</title>';
-                $XML .= '<link>' . $this->app->Helper->getLink("news/detail/". $Row['id'] ."/". urlencode($Row['title']) ." " ) .'</link>';
+                $XML .= '<link>' . $this->app->Helper->getLink("article/read/". $Row['id'] ."/". urlencode($Row['title']) ." " ) .'</link>';
                 $XML .= '<description><![CDATA[';
                 	if( isset($Row['image']) && !empty($Row['image']) ):
                     $XML .= '<img src="'. $this->app->config['url'] . $this->app->config['url_dir'] . 'web/upload/article/'. $Row['id'] .'/'. $Row['image'] .'" style="width:150px;"/>';
@@ -98,7 +98,7 @@ abstract class Basexmlcontroller extends Controller{
         foreach($Data as $Row):
             $XML .= '<item>';
                 $XML .= '<title>' . $Row['name'] .'</title>';
-                $XML .= '<link>' . $this->Helper->getLink("download/detail/". $Row['id'] ."/". urlencode($Row['name']) ." " ) .'</link>';
+                $XML .= '<link>' . $this->app->Helper->getLink("download/detail/". $Row['id'] ."/". urlencode($Row['name']) ." " ) .'</link>';
                 $XML .= '<description><![CDATA[';
                 	if( isset($Row['apercu']) && !empty($Row['apercu']) ):
                     $XML .= '<img src="'. $this->app->config['url'] . $this->app->config['url_dir'] . 'web/upload/download/'. $Row['id'] .'/'. $Row['apercu'] .'" style="width:150px;"/>';
@@ -141,7 +141,7 @@ abstract class Basexmlcontroller extends Controller{
          foreach($Topics as $Row):
             $XML .= '<item>';
                 $XML .= '<title>' . $Row['titre'] .'</title>';
-                $XML .= '<link>' . $this->Helper->getLink("forum/viewtopic/". $Row['id'] ."/". urlencode($Row['titre']) ." " ) .'</link>';
+                $XML .= '<link>' . $this->app->Helper->getLink("forum/viewtopic/". $Row['id'] ."/". urlencode($Row['titre']) ." " ) .'</link>';
                 $XML .= '<description><![CDATA[';
                 $XML .= BBCode2Html($Row['message']['message']) . ']]></description>';
                 $XML .= '<guid>'. $Row['id'] . '</guid>';
@@ -164,66 +164,66 @@ abstract class Basexmlcontroller extends Controller{
 	public function sitemapAction(){
 
         $XML = '<url><loc>'. $this->app->config['url'] . $this->app->config['url_dir'] . '</loc></url>';
-        $XML .= '<url><loc>'. $this->Helper->getLink("contact") . '</loc></url>';
-        $XML .= '<url><loc>'. $this->Helper->getLink("connexion") . '</loc></url>';
-        $XML .= '<url><loc>'. $this->Helper->getLink("utilisateur") . '</loc></url>';
+        $XML .= '<url><loc>'. $this->app->Helper->getLink("contact") . '</loc></url>';
+        $XML .= '<url><loc>'. $this->app->Helper->getLink("connexion") . '</loc></url>';
+        $XML .= '<url><loc>'. $this->app->Helper->getLink("utilisateur") . '</loc></url>';
 
         # News
-        $XML .= '<url><loc>'. $this->Helper->getLink("news") . '</loc></url>';
+        $XML .= '<url><loc>'. $this->app->Helper->getLink("news") . '</loc></url>';
 
         $Data = $this->app->db->get(PREFIX . 'news');
 
         foreach( $Data as $Row ):
-            $XML .= '<url><loc>'. $this->Helper->getLink("news/view/" . $Row['id']) . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("news/view/" . $Row['id']) . '</loc></url>';
         endforeach;
 
         # Articles
-        $XML .= '<url><loc>'. $this->Helper->getLink("article") . '</loc></url>';
+        $XML .= '<url><loc>'. $this->app->Helper->getLink("article") . '</loc></url>';
 
         $Data = $this->app->db->get(PREFIX . 'article');
 
         foreach( $Data as $Row ):
-            $XML .= '<url><loc>'. $this->Helper->getLink("article/read/" . $Row['id']) . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("article/read/" . $Row['id']) . '</loc></url>';
         endforeach;
 
         $Data = $this->app->db->get(PREFIX . 'article_categorie');
 
         foreach( $Data as $Row ):
-            $XML .= '<url><loc>'. $this->Helper->getLink("article/index?cid=" . $Row['id']) . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("article/index?cid=" . $Row['id']) . '</loc></url>';
         endforeach;
 
         # Telechargement
-        $XML .= '<url><loc>'. $this->Helper->getLink("download") . '</loc></url>';
+        $XML .= '<url><loc>'. $this->app->Helper->getLink("download") . '</loc></url>';
 
         $Data = $this->app->db->get(PREFIX . 'download');
 
         foreach( $Data as $Row ):
-            $XML .= '<url><loc>'. $this->Helper->getLink("download/detail/" . $Row['id']) . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("download/detail/" . $Row['id']) . '</loc></url>';
         endforeach;
 
         $Data = $this->app->db->get(PREFIX . 'download_categorie');
 
         foreach( $Data as $Row ):
-            $XML .= '<url><loc>'. $this->Helper->getLink("download/index?cid=" . $Row['id']) . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("download/index?cid=" . $Row['id']) . '</loc></url>';
         endforeach;
 
         # Page
         $Data = $this->app->db->get(PREFIX . 'page');
 
         foreach( $Data as $Row ):
-            $XML .= '<url><loc>'. $this->Helper->getLink("page/index/" . $Row['id']) . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("page/index/" . $Row['id']) . '</loc></url>';
         endforeach;
 
         # mod_feed_rss
         if( $this->app->config['mod_feed_rss'] == 1):
             
-            $XML .= '<url><loc>'. $this->Helper->getLink("feedRss") . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("feedRss") . '</loc></url>';
 
             # Liste des categories
             $Data = $this->app->db->get(PREFIX . 'feed_rss_link_categorie');
 
             foreach( $Data as $Row ):
-                $XML .= '<url><loc>'. $this->Helper->getLink("feedRss/index?cid=" . $Row['id']) . '</loc></url>';
+                $XML .= '<url><loc>'. $this->app->Helper->getLink("feedRss/index?cid=" . $Row['id']) . '</loc></url>';
             endforeach;
 
             # On compte le nombre de liens pour la pagination
@@ -234,7 +234,7 @@ abstract class Basexmlcontroller extends Controller{
 
             for($i = 0; $i <= $NbPage; $i++):
                 if( $i > 0):
-                    $XML .= '<url><loc>'. $this->Helper->getLink("feedRss/index?page=" . $i) . '</loc></url>';
+                    $XML .= '<url><loc>'. $this->app->Helper->getLink("feedRss/index?page=" . $i) . '</loc></url>';
                 endif;
             endfor;
 
@@ -243,20 +243,20 @@ abstract class Basexmlcontroller extends Controller{
         # Annuaire
         if( $this->app->config['mod_annuaire'] == 1):
 
-            $XML .= '<url><loc>'. $this->Helper->getLink("annuaire") . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("annuaire") . '</loc></url>';
 
             # Liste des categories
             $Data = $this->app->db->get(PREFIX . 'annuaire_categorie');
 
             foreach( $Data as $Row ):
-                $XML .= '<url><loc>'. $this->Helper->getLink("annuaire/index?cid=" . $Row['id']) . '</loc></url>';
+                $XML .= '<url><loc>'. $this->app->Helper->getLink("annuaire/index?cid=" . $Row['id']) . '</loc></url>';
             endforeach;
 
             # On recuperer les sites et on boucle
             $Data = $this->app->db->get(PREFIX . 'annuaire_site', array('visible =' => 1, 'status =' => 'valid') );
 
             foreach( $Data as $Row ):
-                $XML .= '<url><loc>'. $this->Helper->getLink("annuaire/detail/" . $Row['id']) . '</loc></url>';
+                $XML .= '<url><loc>'. $this->app->Helper->getLink("annuaire/detail/" . $Row['id']) . '</loc></url>';
             endforeach;
 
         endif;
@@ -264,20 +264,20 @@ abstract class Basexmlcontroller extends Controller{
         # Link
         if( $this->app->config['mod_link'] == 1):
 
-            $XML .= '<url><loc>'. $this->Helper->getLink("link") . '</loc></url>';
+            $XML .= '<url><loc>'. $this->app->Helper->getLink("link") . '</loc></url>';
 
             # Liste des categories
             $Data = $this->app->db->get(PREFIX . 'link_categorie');
 
             foreach( $Data as $Row ):
-                $XML .= '<url><loc>'. $this->Helper->getLink("link/index?cid=" . $Row['id']) . '</loc></url>';
+                $XML .= '<url><loc>'. $this->app->Helper->getLink("link/index?cid=" . $Row['id']) . '</loc></url>';
             endforeach;
 
             # On recuperer les sites et on boucle
             $Data = $this->app->db->get(PREFIX . 'link', array('actif =' => 1) );
 
             foreach( $Data as $Row ):
-                $XML .= '<url><loc>'. $this->Helper->getLink("link/detail/" . $Row['id']) . '</loc></url>';
+                $XML .= '<url><loc>'. $this->app->Helper->getLink("link/detail/" . $Row['id']) . '</loc></url>';
             endforeach;
 
         endif;
@@ -288,14 +288,14 @@ abstract class Basexmlcontroller extends Controller{
             $Data = $this->app->db->get(PREFIX . 'forum', array('visible =' => 1));
 
             foreach( $Data as $Row ):
-                $XML .= '<url><loc>'. $this->Helper->getLink("forum/viewforum/" . $Row['id']) . '</loc></url>';
+                $XML .= '<url><loc>'. $this->app->Helper->getLink("forum/viewforum/" . $Row['id']) . '</loc></url>';
             endforeach;
 
             # Topic
             $Data = $this->app->db->select('id')->from(PREFIX . 'forum_thread')->order('add_on DESC')->get();
 
             foreach( $Data as $Row ):
-                $XML .= '<url><loc>'. $this->Helper->getLink("forum/viewtopic/" . $Row['id']) . '</loc></url>';
+                $XML .= '<url><loc>'. $this->app->Helper->getLink("forum/viewtopic/" . $Row['id']) . '</loc></url>';
             endforeach;
 
         endif;

@@ -66,6 +66,10 @@ class Basearticlecontroller extends Controller{
 	}
 	
 	public function readAction($article_id){
+
+		if( empty($article_id) ):
+			return $this->app->Http->error404();
+		endif;
 		
 		$this->load_manager('article', 'base_app');
 		

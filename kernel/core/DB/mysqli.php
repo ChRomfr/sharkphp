@@ -23,6 +23,10 @@ class dbmysqli extends Db{
 	}
 	
 	public function quote($str){
+		if( is_array($str) ):
+		WriteInFile('MYSQLI : ' . serialize($str). " \n\n\n Requete : ". $this->query ."\n\n\n PAGE : ". $_SERVER['REQUEST_URI'] ."\n");
+		endif;
+
 		return $this->mysqli->real_escape_string($str);
 	}
 	
@@ -38,6 +42,7 @@ class dbmysqli extends Db{
 		$Result = $this->mysqli->query($query);
 
 		if( $Result === false):
+			WriteInFile('Error mysqli : ' . $this->mysqli->error . ' Requete : ' . $query . "\n");
 			print( 'Error mysqli : ' . $this->mysqli->error );
 		endif;
 

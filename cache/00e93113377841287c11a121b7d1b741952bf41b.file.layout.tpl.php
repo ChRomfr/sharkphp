@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-03-19 00:14:01
+<?php /* Smarty version Smarty-3.1.13, created on 2013-03-19 17:17:18
          compiled from "D:\wamp\www\sharkphp\themes\dashboard\layout.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:116765147adc96ca347-31500990%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '00e93113377841287c11a121b7d1b741952bf41b' => 
     array (
       0 => 'D:\\wamp\\www\\sharkphp\\themes\\dashboard\\layout.tpl',
-      1 => 1363519422,
+      1 => 1363713435,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5147adc9a219e2_50326884',
   'variables' => 
   array (
     'config' => 0,
@@ -29,8 +31,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'FlashMessage' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5147adc9a219e2_50326884',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5147adc9a219e2_50326884')) {function content_5147adc9a219e2_50326884($_smarty_tpl) {?><!DOCTYPE html>
 <head>
@@ -127,20 +127,21 @@ themes/bootstrap/js/bootstrap.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target=".navbar">
-<!-- NAVBAR --><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar" data-toggle="collapse" date-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="<?php echo getLink("index");?>
-">SHARKPHP</a><div class="nav-collapse"><ul class="nav"><li><a href="<?php echo getLink("index");?>
-"><i class="icon-home icon-white"></i></a></li><li><a href="<?php echo getLink("article");?>
-" title="Tutoriaux">Tutoriaux</a></li><li><a href="<?php echo getLink("download");?>
-" title="Telechargement">Telechargement</a></li><li><a href="<?php echo getLink("contact");?>
-" title="Contact">Contact</a></li></ul><ul class="nav pull-right"><?php if ($_SESSION['utilisateur']['id']!='Visiteur'){?><li><a href="<?php echo getLink("utilisateur");?>
-" title=""><i class="icon-user icon-white"></i></a><li><a href="<?php echo getLink("connexion/logout");?>
+<!-- NAVBAR --><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><div class="container"><a class="btn btn-navbar" data-toggle="collapse" date-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLink("index");?>
+" title="Retour au site">SHARKPHP</a><div class="nav-collapse"><ul class="nav"><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("index");?>
+"><i class="icon-home icon-white"></i></a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("news");?>
+" title="News">News</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("article");?>
+" title="Tutoriaux">Tutoriaux</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("download");?>
+" title="Telechargement">Telechargement</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("contact");?>
+" title="Contact">Contact</a></li></ul><ul class="nav pull-right"><?php if ($_SESSION['utilisateur']['id']!='Visiteur'){?><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLink("utilisateur");?>
+" title=""><i class="icon-user icon-white"></i></a><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLink("connexion/logout");?>
 " title=""><i class="icon-off icon-white"></i></a><?php }?><?php if ($_SESSION['utilisateur']['isAdmin']>0){?><li><a href="<?php echo $_smarty_tpl->tpl_vars['config']->value['url'];?>
 <?php echo $_smarty_tpl->tpl_vars['config']->value['url_dir'];?>
-adm/" title="Administration"><i class="icon-wrench icon-white"></i></a></li><?php }?></ul><?php if ($_SESSION['utilisateur']['id']=='Visiteur'){?><form class="navbar-form pull-right" method="post" action="<?php echo getLink("connexion");?>
-"><div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span><input type="text" class="span2" placeholder="Login" name="login[identifiant]" required /></div><div class="input-prepend input-append"><span class="add-on"><i class="icon-keys"></i></span><input type="password" class="span2" placeholder="Password" name="login[password]" required /><button type="submit" class="btn"><i class="icon-ok"></i></button></div></form><?php }?></div></div></div></div><!-- /navbar --><!-- Header --><div id="header" style="padding-top:50px;"></div><div class="container-fluid"><div class="row-fluid"><div class="span2 main-menu-span" style="padding-top:20px;"><div class="well nav-collapse sidebar-nav"><ul class="nav nav-tabs nav-stacked main-menu"><li class="nav-header hidden-tablet">Main</li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("index");?>
+adm/" title="Administration"><i class="icon-wrench icon-white"></i></a></li><?php }?></ul></div></div></div></div><!-- /navbar --><!-- Header --><div id="header" style="padding-top:50px;"></div><!-- Conteneur centrale --><div class="container-fluid"><div class="row-fluid"><div class="span2 main-menu-span" style="padding-top:20px;"><div class="well nav-collapse sidebar-nav"><ul class="nav nav-tabs nav-stacked main-menu"><li class="nav-header hidden-tablet">Main</li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("index");?>
 " title="">Dashboard</a></li><?php if ($_smarty_tpl->tpl_vars['config']->value['mod_annuaire']==1){?><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" title="">Annuaire&nbsp;<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("annuaire");?>
 ">Annuaire</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("categorie?c=annuaire");?>
-" title=""}>Categorie</a></li></ul></li><?php }?><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" title="">Article&nbsp;<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("article");?>
+" title=""}>Categorie</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("annuaire/setting");?>
+" title=""}>Configuration</a></li></ul></li><?php }?><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" title="">Article&nbsp;<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("article");?>
 ">Article</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("categorie?c=article");?>
 " title=""}>Categorie</a></li></ul></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("blok");?>
 " title="">Blok</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("contact");?>
@@ -167,18 +168,15 @@ adm/" title="Administration"><i class="icon-wrench icon-white"></i></a></li><?ph
 " title="">Système</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("filemanager");?>
 " title="">File manager</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("viewEditor");?>
 " title="">Editeur de vue</a></li><li><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLinkAdm("systeme/errorPhp");?>
-" title="">Erreurs PHP</a></li></ul></li><!-- Traitements des bundles --><?php  $_smarty_tpl->tpl_vars['Row'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['Row']->_loop = false;
+" title="">Erreurs PHP</a></li></ul></li><!-- Traitements des bundles --><?php if (isset($_smarty_tpl->tpl_vars['Bundle']->value)&&is_array($_smarty_tpl->tpl_vars['Bundle']->value)){?><?php  $_smarty_tpl->tpl_vars['Row'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['Row']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['Bundle']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['Row']->key => $_smarty_tpl->tpl_vars['Row']->value){
 $_smarty_tpl->tpl_vars['Row']->_loop = true;
 ?><?php if ($_smarty_tpl->tpl_vars['Row']->value['menu_admin']==1){?><?php echo $_smarty_tpl->tpl_vars['Row']->value['menu_admin_code'];?>
-<?php }?><?php } ?></ul><!-- /nav --></div><!-- /well --></div><!-- /span2 --><div class="span10"><?php echo $_smarty_tpl->tpl_vars['content']->value;?>
-</div><!-- /span10 --></div><!-- /row-fluid --></div><!-- /container-fluid --><!-- Footer --><footer class="footer_site"><div class="container"><div class="row-fluid"><div class="span8"><?php if ($_SESSION['utilisateur']['id']=='Visiteur'){?><a href="<?php echo $_smarty_tpl->tpl_vars['Helper']->value->getLink("utilisateur/register");?>
-" title="">S'enregistrer</a><?php }?></div><!-- /span8 --><div class="span4"></div><!-- /span4 --></div><!-- /row-fluid--></div><!-- /container --><div class="container"><div class="row-fluid"><div class="span8"></div><div class="span4"></div></div><!-- /row-fluid --><hr/><div class="fleft"></div><div class="fright">Réaliser avec <a href="http://www.sharkphp.com" title="Another CMS/FRAMEWORK">Sharkphp <img src="<?php echo $_smarty_tpl->tpl_vars['config']->value['url'];?>
+<?php }?><?php } ?><?php }?></ul><!-- /nav --></div><!-- /well --></div><!-- /span2 --><div class="span10"><?php echo $_smarty_tpl->tpl_vars['content']->value;?>
+</div><!-- /span10 --></div><!-- /row-fluid --></div><!-- /container-fluid --><!-- Footer --><footer class="footer_site"><div class="container"><div class="row-fluid"><div class="span8"></div><!-- /span8 --><div class="span4"></div><!-- /span4 --></div><!-- /row-fluid--></div><!-- /container --><div class="container"><div class="row-fluid"><div class="span8"></div><div class="span4"></div></div><!-- /row-fluid --><hr/><div class="fleft"></div><div class="fright">Réaliser avec <a href="http://www.sharkphp.com" title="Another CMS/FRAMEWORK">Sharkphp <img src="<?php echo $_smarty_tpl->tpl_vars['config']->value['url'];?>
 <?php echo $_smarty_tpl->tpl_vars['config']->value['url_dir'];?>
 web/images/sharkphp.png" alt="" style="width:20px;" /></a></div><div class="clear"></div></div><!-- /container --></footer>
-<?php echo $_smarty_tpl->tpl_vars['config']->value['code_stat'];?>
-
 <script type="text/javascript">
 <!--
 $(document).ready(function() {

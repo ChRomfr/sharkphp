@@ -2,7 +2,7 @@
 
 // DONNEE DE CONNEXION A LA BASE DE DONNEES
 $DB_Configuration = array(
-'type'			=>	'mysqli',
+'type'			=>	'mysql',
 'serveur' 		=> '127.0.0.1',
 'utilisateur' 	=> 'root',
 'password' 		=> '',

@@ -26,8 +26,8 @@ define('LOG_ACCESS', false);	# Permet de logge tout les requetes HTTP et de le e
 require_once ROOT_PATH . 'kernel' . DS . 'core'. DS . 'core.php';
 
 $registry->constructConstAdm();
-$registry->smarty->assign('config',$config);
-$registry->config = $config;
+$registry->smarty->assign('config',$config->config);
+//$registry->config = $config;
 
 # Envoie du JS & CSS
 $registry->addJS('jquery-last.min.js');				# Jquery
@@ -70,9 +70,9 @@ if( !$registry->HTTPRequest->getExists('nohtml') && !$registry->HTTPRequest->get
 	));
 	
 	# Affichage du resultat
-	echo $registry->smarty->display(ROOT_PATH . 'themes' . DS . $config['theme'] . DS . 'layout.tpl');
+	echo $registry->smarty->display(ROOT_PATH . 'themes' . DS . $config->config['theme'] . DS . 'layout.tpl');
 	
-	if( $registry->config['print_stat_page'] == 1 ):
+	if( $config->config['print_stat_page'] == 1 ):
 		# Affichage dy chrono et information sur execution et site en non production
 		echo'<div style="size:9px; margin:auto; width:1000px;">
 			Page generee en : '. round( microtime(true) - $chrono1, 6) . ' sec | 

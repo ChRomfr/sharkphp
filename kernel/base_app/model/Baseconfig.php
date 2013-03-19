@@ -28,10 +28,23 @@ class Baseconfig extends Record{
 	 */
 	public $db;
 
+
 	public function __construct($config_file=null, MyCache $cache, $db){
 		$this->cache = $cache;
 		$this->config_file = $config_file;
 		$this->db = $db;
+		$this->merge();
+	}
+
+	/**
+	 * Methode magic pour aller voir dans le tableau $config
+	 * @param
+	 * @return
+	 */
+	public function __get($name){
+		if( isset($this->config[$name]) ):
+			return $this->config[$name];
+		endif;
 	}
 
 	public function get($cle = null){

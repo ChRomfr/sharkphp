@@ -44,11 +44,11 @@ Class Registry {
 	return $this->vars[$index];
  }
 
- public function addJS($js){
+ public static function addJS($js){
 	self::$js[] = $js;
  }
  
- public function addCSS($css){
+ public static function addCSS($css){
 	self::$css[] = $css;
  }
 

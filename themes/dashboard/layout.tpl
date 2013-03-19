@@ -86,6 +86,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="{$Helper->getLinkAdm("annuaire")}">Annuaire</a></li>
 								<li><a href="{$Helper->getLinkAdm("categorie?c=annuaire")}" title=""}>Categorie</a></li>
+								<li><a href="{$Helper->getLinkAdm("annuaire/setting")}" title=""}>Configuration</a></li>
 							</ul>
 						</li>
 						{/if}

@@ -1,20 +1,21 @@
 <?php if(!defined('IN_VA')) exit;
 
-class Controller{
+class Controller extends App{
 	
 	public	$registry,
-			$smarty,
+
 			$session,
 			$data,
 			$input,
 			$lang,
 			$manager;
 			
-	protected	$db;
     
     public $app;
 
     public function  __construct($registry) {
+    	parent::__construct($registry);
+    	
 		global $db, $lang, $smarty, $Session;
 		
 		$this->registry = $registry;

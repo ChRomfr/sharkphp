@@ -31,6 +31,10 @@ function MyAutoload($class){
 
 # Definition d un table avec le nom de la class et son chemin
 $ClassList = array(
+
+	'App'					=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'App.class.php',
+	'Config'				=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Config.class.php',
+
 	// Kernel / core
 	'EPO'					=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'DB' . DS . 'EPDO.php',
 	'EPOStatement'			=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'DB' . DS . 'EPDO.php',
@@ -133,9 +137,9 @@ $ClassList = array(
 
 foreach( $ClassList as $k => $v ):
 	if( $class = $k ):
-		if( is_file($v) ):
+		//if( is_file($v) ):
 			require_once $v;
-		endif;
+		//endif;
 	endif;
 endforeach;
 	

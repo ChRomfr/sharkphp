@@ -77,8 +77,37 @@ abstract class AdmAnnuaireController extends Controller{
 
 	}
 
+	/**
+	 * Traite la suppression d un site de l annuaire
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
 	public function deleteAction($id){
 		$this->app->db->delete(PREFIX . 'annuaire_site', $id);
 		return $this->redirect( $this->app->Helper->getLinkAdm('annuaire'), 3, 'Site supprimé');
+	}
+
+	/**
+	 * Affiche et traite le formulaire pour les preferences
+	 * de l annuaire
+	 * @return [type] [description]
+	 */
+	public function settingAction(){
+
+		
+
+		if(  $this->Http->post('config') !== null):
+			$Config = new Config();
+
+			$Config->set( $this->Http->post('config') );
+			$Config->save();
+			$this->cache->remove('config');
+
+			return $this->Helper->redirect( $this->Helper->getLinkAdm('annuaire/setting'), 3, 'Configuration sauvegardée' );
+
+		endif;
+
+		$this->Helper->getFormValidatorJs();
+		return $this->tpl->fetch(ROOT_PATH . 'kernel' . DS . 'base_adm' . DS  . 'view' . DS . 'annuaire' . DS . 'setting.tpl');
 	}
 }

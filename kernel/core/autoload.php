@@ -46,6 +46,7 @@ $ClassList = array(
 	'Tree'					=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Tree.class.php',
 	'Captcha'				=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Captcha.class.php',
 	'Helper'				=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Helper.class.php',
+	'Http'					=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Http.class.php',
 	
 	// Kernel / lib
 	'Smarty'				=>	ROOT_PATH . 'kernel' . DS . 'lib' . DS . 'smarty' . DS . 'smarty.php',
@@ -108,6 +109,7 @@ $ClassList = array(
 	'AdmLinkManager'			=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'manager' . DS . 'AdmLinkManager.php',
 	'AdmSiteManager'			=>	ROOT_PATH . 'kernel' . DS . 'base_adm' . DS . 'manager' . DS . 'AdmSiteManager.php',
 
+	'Baseconfig'				=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'model' . DS . 'Baseconfig.php',
 	'Baseutilisateur'			=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'model' . DS . 'Baseutilisateur.php',
 	'Basecontact'				=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'model' . DS . 'Basecontact.php',
 	'Basecommentaire'			=>	ROOT_PATH . 'kernel' . DS . 'base_app' . DS . 'model' . DS . 'Basecommentaire.php',

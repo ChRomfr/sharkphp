@@ -20,7 +20,7 @@ define('USE_TABLE_CONFIG',false);
 
 $jquery_theme = 'overcast';
 
-$config = array(
+$config_file = array(
 'format_date'				=>	"%d/%m/%Y - %H:%M",
 'format_date_day'			=>	"%d/%m/%Y",
 'url'						=>	'http://127.0.0.1/',

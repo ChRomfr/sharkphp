@@ -58,8 +58,11 @@ $registry->db = $db->getInstance();
 $registry->smarty = new MySmarty($registry);
 $registry->HTTPRequest = new HTTPRequest($registry);
 $registry->form = new Form($registry);
+$Session = $registry->session;
+$cache = $registry->cache;
 
-$Session = new Session();
+$config = new Baseconfig($config_file, $cache, $db);
+$config->get();
 
 # Traitement Bundles
 require_once ROOT_PATH . 'kernel' . DS . 'core' . DS . 'bundle.php';
@@ -69,15 +72,18 @@ if( $Session->check() == false ):
     $Session->create('Visiteur'); // Creation d'une session visiteur
 endif;
 
+var_dump($config);
+
 # Suppression des sessions de plus de 3h = 10800sec
 $registry->db->delete(PREFIX . 'sessions', null, array('last_used <' => time() - 10800) );
 
 $registry->smarty->assign('lang', $lang);
 
+/*
 if( USE_TABLE_CONFIG ):
     $config = array_merge($config, getConfig($registry) );
 endif;
+*/
 
-$registry->smarty->assign('Helper', new Helper($config) );
+$registry->smarty->assign('Helper', new Helper($config->config) );
 
-$cache = $registry->cache;

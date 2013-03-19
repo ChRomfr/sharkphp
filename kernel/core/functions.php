@@ -17,15 +17,31 @@ function getConfig($app){
 	
 }
 
+/**
+ * [getLinkAdm description]
+ * @param  [type] $link [description]
+ * @return [type]       [description]
+ */
 function getLinkAdm($link){
-	global $config;
+	trigger_error("getLinkAdm() ne doit plus être utilisé !", E_USER_DEPRECATED );
+	global $registry;
+	
+	$config = $registry->config;
 	
 	return $config['url'] . $config['url_dir'] .'adm/index.php/'. $link;
 }
 
+/**
+ * [getLink description]
+ * @param  [type] $str [description]
+ * @return [type]      [description]
+ */
 function getLink($str){
-	global $config;
+	trigger_error("getLink() ne doit plus être utilisé !", E_USER_DEPRECATED );
+	global $registry;
 	
+	$config = $registry->config;
+
 	static $string_url = null;
 	
 	if( is_null($string_url) ){
@@ -35,24 +51,8 @@ function getLink($str){
 		}else{
 			$string_url = $config['url'] . $config['url_dir'] . 'index.php/';
 		}
-		/*
-		if($config['rewrite_url'] == 1){
-			$string_url = 'http://'. $_SERVER['HTTP_HOST'];
-			if( isset($_SERVER['REDIRECT_QUERY_STRING']) )
-				$string_url .= str_replace($_SERVER['REDIRECT_QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
-			else
-				$string_url .= $_SERVER['REQUEST_URI'];
-		}elseif( !isset($_SERVER['REDIRECT_QUERY_STRING']) ){
-			$string_url = 'http://'. $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] .'/';
-		}else{
-			$string_url = 'http://'. $_SERVER['HTTP_HOST'];
-			if( isset($_SERVER['REDIRECT_QUERY_STRING']) )
-				$string_url .= str_replace($_SERVER['REDIRECT_QUERY_STRING'], '', $_SERVER['REQUEST_URI']);
-			else
-				$string_url .= $_SERVER['REQUEST_URI'];
-		}*/
 	}
-		//echo $string_url;
+
 	return $string_url . $str;
 }
 

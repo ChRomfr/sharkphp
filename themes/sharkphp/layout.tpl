@@ -12,9 +12,9 @@
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/bootstrap/css/bootstrap-responsive.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/sharkphp/css/opa-icons.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/sharkphp/sharkphp.css" type="text/css" media="screen" />
-<link rel="alternate" type="application/rss+xml" title="News" href="{getLink("xml/fluxRSSNews?nohtml")}" />
-<link rel="alternate" type="application/rss+xml" title="Tutoriaux" href="{getLink("xml/fluxRSSArticle?nohtml")}" />
-<link rel="alternate" type="application/rss+xml" title="Telechargement" href="{getLink("xml/fluxRSSDownload?nohtml")}" />
+<link rel="alternate" type="application/rss+xml" title="News" href="{$Helper->getLink("xml/fluxRSSNews?nohtml")}" />
+<link rel="alternate" type="application/rss+xml" title="Tutoriaux" href="{$Helper->getLink("xml/fluxRSSArticle?nohtml")}" />
+<link rel="alternate" type="application/rss+xml" title="Telechargement" href="{$Helper->getLink("xml/fluxRSSDownload?nohtml")}" />
 {if !empty($css_add)}
 {foreach $css_add as $k => $v}
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}web/css/{$v}" type="text/css" media="screen" />
@@ -48,18 +48,18 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="{getLink("index")}" title="Sharkphp CMS"><img style="height:25px;" src="{$config.url}{$config.url_dir}web/images/sharkphp_white.png" alt="Sharkphp" /></a>
+				<a class="brand" href="{$Helper->getLink("index")}" title="Sharkphp CMS"><img style="height:25px;" src="{$config.url}{$config.url_dir}web/images/sharkphp_white.png" alt="Sharkphp" /></a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li><a href="{getLink("index")}"><i class="icon-home icon-white"></i></a></li>
-						<li><a href="{getLink("article")}" title="Tutoriaux">Tutoriaux</a></li>
-						<li><a href="{getLink("download")}" title="Telechargement">Telechargement</a></li>
-						<li><a href="{getLink("contact")}" title="Contact">Contact</a></li>
+						<li><a href="{$Helper->getLink("index")}"><i class="icon-home icon-white"></i></a></li>
+						<li><a href="{$Helper->getLink("article")}" title="Tutoriaux">Tutoriaux</a></li>
+						<li><a href="{$Helper->getLink("download")}" title="Telechargement">Telechargement</a></li>
+						<li><a href="{$Helper->getLink("contact")}" title="Contact">Contact</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						{if $smarty.session.utilisateur.id != 'Visiteur'}
-						<li><a href="{getLink("utilisateur")}" title=""><i class="icon-user icon-white"></i></a>
-						<li><a href="{getLink("connexion/logout")}" title=""><i class="icon-off icon-white"></i></a>
+						<li><a href="{$Helper->getLink("utilisateur")}" title=""><i class="icon-user icon-white"></i></a>
+						<li><a href="{$Helper->getLink("connexion/logout")}" title=""><i class="icon-off icon-white"></i></a>
 						{/if}
 
 						{if $smarty.session.utilisateur.isAdmin > 0}
@@ -67,7 +67,7 @@
 						{/if}
 					</ul>
 					{if $smarty.session.utilisateur.id == 'Visiteur'}
-					<form class="navbar-form pull-right" method="post" action="{getLink("connexion")}">
+					<form class="navbar-form pull-right" method="post" action="{$Helper->getLink("connexion")}">
                 		<div class="input-prepend">
                 			<span class="add-on"><i class="icon-user"></i></span><input type="text" class="span2" placeholder="Login" name="login[identifiant]" required />
                 		</div>
@@ -127,7 +127,7 @@
 					<!-- AddThis Button END -->				
 				</div>
 				<div class="span4">
-					{if $smarty.session.utilisateur.id == 'Visiteur'}<div style="padding-bottom:2px;"><a href="{$Helper->getLink("utilisateur/register")}" title="" class="btn btn-small btn-info"><i class="icon-user icon-white"></i>&nbsp;Rejoingez-nous</a></div>{/if}
+					{if $smarty.session.utilisateur.id == 'Visiteur'}<div style="padding-bottom:2px;"><a href="{$Helper->$Helper->getLink("utilisateur/register")}" title="" class="btn btn-small btn-info"><i class="icon-user icon-white"></i>&nbsp;Rejoingez-nous</a></div>{/if}
 				</div>
 				<div class="span4">
 					<!-- Form recherche -->
@@ -151,7 +151,7 @@
 			</div><!-- /row-fluid -->
 			<hr/>
 			<div class="fleft">
-				<a href="{getLink("xml/fluxRSSNews?nohtml")}" title=""><span class="icon icon-orange icon-rssfeed"/></a>&nbsp;
+				<a href="{$Helper->getLink("xml/fluxRSSNews?nohtml")}" title=""><span class="icon icon-orange icon-rssfeed"/></a>&nbsp;
 				{if !empty($config.fb_url)}
 				<a href="{$config.fb_url}" target="_blank" title=""><i class="icon icon-facebook-sign"></i></a>&nbsp;
 				{/if}

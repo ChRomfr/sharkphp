@@ -44,43 +44,34 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="{getLink("index")}">SHARKPHP</a>
+				<a class="brand" href="{$Helper->getLink("index")}" title="Retour au site">SHARKPHP</a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li><a href="{getLink("index")}"><i class="icon-home icon-white"></i></a></li>
-						<li><a href="{getLink("article")}" title="Tutoriaux">Tutoriaux</a></li>
-						<li><a href="{getLink("download")}" title="Telechargement">Telechargement</a></li>
-						<li><a href="{getLink("contact")}" title="Contact">Contact</a></li>
+						<li><a href="{$Helper->getLinkAdm("index")}"><i class="icon-home icon-white"></i></a></li>
+						<li><a href="{$Helper->getLinkAdm("news")}" title="News">News</a></li>
+						<li><a href="{$Helper->getLinkAdm("article")}" title="Tutoriaux">Tutoriaux</a></li>
+						<li><a href="{$Helper->getLinkAdm("download")}" title="Telechargement">Telechargement</a></li>
+						<li><a href="{$Helper->getLinkAdm("contact")}" title="Contact">Contact</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						{if $smarty.session.utilisateur.id != 'Visiteur'}
-						<li><a href="{getLink("utilisateur")}" title=""><i class="icon-user icon-white"></i></a>
-						<li><a href="{getLink("connexion/logout")}" title=""><i class="icon-off icon-white"></i></a>
+						<li><a href="{$Helper->getLink("utilisateur")}" title=""><i class="icon-user icon-white"></i></a>
+						<li><a href="{$Helper->getLink("connexion/logout")}" title=""><i class="icon-off icon-white"></i></a>
 						{/if}
 
 						{if $smarty.session.utilisateur.isAdmin > 0}
 						<li><a href="{$config.url}{$config.url_dir}adm/" title="Administration"><i class="icon-wrench icon-white"></i></a></li>
 						{/if}
 					</ul>
-					{if $smarty.session.utilisateur.id == 'Visiteur'}
-					<form class="navbar-form pull-right" method="post" action="{getLink("connexion")}">
-                		<div class="input-prepend">
-                			<span class="add-on"><i class="icon-user"></i></span><input type="text" class="span2" placeholder="Login" name="login[identifiant]" required />
-                		</div>
-                		<div class="input-prepend input-append">
-                			<span class="add-on"><i class="icon-keys"></i></span><input type="password" class="span2" placeholder="Password" name="login[password]" required /><button type="submit" class="btn"><i class="icon-ok"></i></button>
-                		</div>
-            		</form>
-        			{/if}
+					
 				</div>
 			</div>
 		</div>
 	</div><!-- /navbar -->
 	<!-- Header -->
-	<div id="header" style="padding-top:50px;">
-		
-	</div>
+	<div id="header" style="padding-top:50px;"></div>
 
+	<!-- Conteneur centrale -->
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span2 main-menu-span" style="padding-top:20px;">
@@ -176,12 +167,13 @@
 							</ul>
 						</li>
 						<!-- Traitements des bundles -->
-						{foreach $Bundle as $Row}
-							{if $Row.menu_admin == 1}
-								{$Row.menu_admin_code}
-							{/if}
-						{/foreach}
-
+						{if isset($Bundle) && is_array($Bundle)}
+							{foreach $Bundle as $Row}
+								{if $Row.menu_admin == 1}
+									{$Row.menu_admin_code}
+								{/if}
+							{/foreach}
+						{/if}
 					</ul><!-- /nav -->
 				</div><!-- /well -->
 			</div><!-- /span2 -->
@@ -196,7 +188,6 @@
 		<div class="container">
 			<div class="row-fluid">
 				<div class="span8">
-				{if $smarty.session.utilisateur.id == 'Visiteur'}<a href="{$Helper->getLink("utilisateur/register")}" title="">S'enregistrer</a>{/if}
 				</div><!-- /span8 -->
 				<div class="span4">
 				</div><!-- /span4 -->
@@ -219,9 +210,7 @@
 			<div class="clear"></div>
 		</div><!-- /container -->
 	</footer>
-	
 {/strip}
-{$config.code_stat}
 <script type="text/javascript">
 <!--
 $(document).ready(function() {

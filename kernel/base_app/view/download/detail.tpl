@@ -7,12 +7,12 @@
 	<li><a href="{$Helper->getLink("download")}" title="{$lang.Telechargement}">{$lang.Telechargement}</a><span class="divider">/</span></li>
 	{if isset($Parents) && !empty($Parents)}
 		{foreach $Parents as $Parent}
-		<li><a href="{getLink("download/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("download/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
 		{/foreach}
 	{/if}
 	
 	{if !empty($Download->categorie_id)}
-		<li><a href="{getLink("download/index?cid={$Download->categorie_id}")}" title="{$Download->categorie}">{$Download->categorie}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("download/index?cid={$Download->categorie_id}")}" title="{$Download->categorie}">{$Download->categorie}</a><span class="divider">/</span></li>
 	{/if}
 	<li>{$Download->name}</li>
 </ul>

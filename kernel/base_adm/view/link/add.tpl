@@ -2,8 +2,8 @@
 base_adm/link/add.tpl
 -->
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
-	<li><a href="{getLinkAdm('link')}" title="Liens">Liens</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('link')}" title="Liens">Liens</a><span class="divider">/</span></li>
 	<li>{$lang.Nouveau}</li>
 </ul>
 

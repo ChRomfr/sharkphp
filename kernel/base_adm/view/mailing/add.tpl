@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
 	<li><a href="{$Helper->getLinkAdm("index/index")}" title="">Administration</a><span class="divider">/</span></li>
-	<li><a href="{getLinkAdm("mailing/index")}" title="">Mailing</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm("mailing/index")}" title="">Mailing</a><span class="divider">/</span></li>
 	<li>Nouveau</li>
 </ul>
 	

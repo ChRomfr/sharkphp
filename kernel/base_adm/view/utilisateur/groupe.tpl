@@ -1,6 +1,6 @@
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
-	<li><a href="{getLinkAdm('utilisateur')}" title="{$lang.Utilisateurs}">{$lang.Utilisateurs}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('utilisateur')}" title="{$lang.Utilisateurs}">{$lang.Utilisateurs}</a><span class="divider">/</span></li>
 	<li>{$lang.Groupes}</li>
 </ul>
 

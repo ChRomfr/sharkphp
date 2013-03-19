@@ -11,7 +11,7 @@ base_app/view/annuaire/index.tpl
 	{/if}
 	{if isset($Parents)}
 		{foreach $Parents as $Parent}
-		<li><a href="{getLink("annuaire/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("annuaire/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
 		{/foreach}
 	{/if}
 	{if isset($Categorie)}<li>{$Categorie.name}</li>{/if}
@@ -28,7 +28,7 @@ base_app/view/annuaire/index.tpl
 			</div>
 			{/if}
 			<div style="float:left">
-				<a href="{getLink("annuaire/index?cid={$Categorie.id}")}" title="{$Categorie.name}"><strong>{$Categorie.name}</strong></a><br/>
+				<a href="{$Helper->getLink("annuaire/index?cid={$Categorie.id}")}" title="{$Categorie.name}"><strong>{$Categorie.name}</strong></a><br/>
 				{$Categorie.description}
 			</div>
 			<div style="clear:both"></div>
@@ -42,7 +42,7 @@ base_app/view/annuaire/index.tpl
 {if isset($Sites) && count($Sites) > 0}
 	{foreach $Sites as $Site name=loopsite}
 		<div class="well">
-			<h4><a href="{getLink("annuaire/detail/{$Site.id}/{$Site.name|urlencode}")}" title="Fiche de {$Site.name}">{$Site.name}</a></h4>
+			<h4><a href="{$Helper->getLink("annuaire/detail/{$Site.id}/{$Site.name|urlencode}")}" title="Fiche de {$Site.name}">{$Site.name}</a></h4>
 			<hr/>
 			<div class="pull-left" style="width:250px;">
 				<img src="http://www.apercite.fr/api/apercite/160x120/oui/oui/{$Site.url}" alt="{$Site.name}" />
@@ -53,7 +53,7 @@ base_app/view/annuaire/index.tpl
 				<a href="{$Site.url}" title="{$Site.name}" target="_blank">{$Site.url}</a>
 			</div>
 			<div class="pull-right">
-				<a href="{getLink("annuaire/detail/{$Site.id}/{$Site.name|urlencode}")}" title="Fiche de {$Site.name}" class="btn">Consulter la fiche</a>
+				<a href="{$Helper->getLink("annuaire/detail/{$Site.id}/{$Site.name|urlencode}")}" title="Fiche de {$Site.name}" class="btn">Consulter la fiche</a>
 			</div>
 			<div class="clearfix"></div>
 		</div>
@@ -75,6 +75,6 @@ base_app/view/annuaire/index.tpl
 <div class="pagination">{$Pagination->render()}</div>
 {/if}
 <div style="text-align:center;">
-	<a href="{getLink("annuaire/proposer")}" title="Proposer un site" class="btn">Proposer un site</a>
+	<a href="{$Helper->getLink("annuaire/proposer")}" title="Proposer un site" class="btn">Proposer un site</a>
 </div>
 {/strip}

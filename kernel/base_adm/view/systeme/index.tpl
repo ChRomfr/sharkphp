@@ -69,7 +69,7 @@
 <script>
 function clearCache(){
     $.get(
-        '{getLinkAdm("systeme/deleteCache")}', {literal}
+        '{$Helper->getLinkAdm("systeme/deleteCache")}', {literal}
         {nohtml:'nohtml'},
         function(data){ $('#resultClearCache').html(data); }
     );

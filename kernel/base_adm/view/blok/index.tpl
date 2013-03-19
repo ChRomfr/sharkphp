@@ -57,7 +57,7 @@
 <!--
 function deleteBlok(id){
 	if( confirm('{$lang.Confirm_suppression_blok} ?') ){
-		window.location.href='{getLinkAdm("blok/delete/")}'+id;
+		window.location.href='{$Helper->getLinkAdm("blok/delete/")}'+id;
 	}
 }
 //-->

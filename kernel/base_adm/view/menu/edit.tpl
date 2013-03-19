@@ -1,8 +1,8 @@
 {strip}
 
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
-	<li><a href="{getLinkAdm('menu/index')}" title="{$lang.Menu}">{$lang.Menu}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('menu/index')}" title="{$lang.Menu}">{$lang.Menu}</a><span class="divider">/</span></li>
 	<li>{$lang.Edition}</li>
 </ul>
 
@@ -91,7 +91,7 @@ function add_link(){
 	nb_links = nb_links + 1
 	
 	$.get(
-            '{getLinkAdm("menu/getNewLink")}',{literal}
+            '{$Helper->getLinkAdm("menu/getNewLink")}',{literal}
             {id_for_link:nb_links, nohtml:'nohtml'},
             function(data){ $("#links_list tbody").append(data); }
         )
@@ -102,7 +102,7 @@ function add_link(){
 function getlinks(ligne_number){
 	
 	$('#link_name_' + ligne_number).autocomplete({
-		source:'{getLinkAdm("menu/getLinkList?nohtml=nohtml")}',
+		source:'{$Helper->getLinkAdm("menu/getLinkList?nohtml=nohtml")}',
 		minLength:0,
 		dataType:"json",
 		delay:0,

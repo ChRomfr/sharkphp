@@ -1,14 +1,14 @@
 <ul class="breadcrumb">
-	<li><a href="{getLink("index")}" title="{$lang.Accueil}">{$lang.Accueil}</a><span class="divider">/</span></li>
-	<li><a href="{getLink("article")}" title="{$lang.Article}">{$lang.Article}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLink("index")}" title="{$lang.Accueil}">{$lang.Accueil}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLink("article")}" title="{$lang.Article}">{$lang.Article}</a><span class="divider">/</span></li>
 	{if isset($Parents)}
 		{foreach $Parents as $Parent}
-		<li><a href="{getLink("article/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("article/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
 		{/foreach}
 	{/if}
 	
 	{if !empty($Article.categorie_id)}
-		<li><a href="{getLink("article/index?cid={$Article.categorie_id}")}" title="{$Article.categorie}">{$Article.categorie}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("article/index?cid={$Article.categorie_id}")}" title="{$Article.categorie}">{$Article.categorie}</a><span class="divider">/</span></li>
 	{/if}
 	<li>{$Article.title}</li>
 </ul>
@@ -51,7 +51,7 @@
 
 	<!-- Formulaire nouveau commentaire -->
 	{if $smarty.session.utilisateur.id != 'Visiteur' && $Article.commentaire == 1}
-	<form method="post" action="{getLink("commentaire/post")}" class="form-horizontal well">
+	<form method="post" action="{$Helper->getLink("commentaire/post")}" class="form-horizontal well">
 			<div class="control-group">
 				<label class="control-label" for="commentaire">{$lang.Commentaire} :</label>
 				<div class="controls"><textarea name="com[commentaire]" id="commentaire" cols="50" rows="5" class="input-xxlarge"></textarea></div>
@@ -93,19 +93,19 @@ $.get(
 {if isset($smarty.session.utilisateur.isAdmin) && $smarty.const.ADM_ARTICLE_LEVEL < $smarty.session.utilisateur.isAdmin}
 function deleteCommentaire(id){
 	if( confirm('{$lang.Confirm_suppression_commentaire} ?') ){
-		window.location.href='{getLink("commentaire/delete/'+ id +'?com_model=article")}';
+		window.location.href='{$Helper->getLink("commentaire/delete/'+ id +'?com_model=article")}';
 	}
 }
 
 function lockCommentaire(id){
 	if( confirm('Etes vous sur de vouloir fermer les commentaires ?') ){
-		window.location.href='{getLink("article/lockCommentaire/")}' + id;
+		window.location.href='{$Helper->getLink("article/lockCommentaire/")}' + id;
 	}
 }
 
 function unlockCommentaire(id){
 	if( confirm('Etes vous sur de vouloir ouvrir les commentaires ?') ){
-		window.location.href='{getLink("article/unlockCommentaire/")}' + id;
+		window.location.href='{$Helper->getLink("article/unlockCommentaire/")}' + id;
 	}
 }
 {/if}

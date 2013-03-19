@@ -1,6 +1,6 @@
 {strip}
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
 	<li>{$lang.Article}</a></li>
 </ul>
 
@@ -34,7 +34,7 @@
 				<td>{$Article.utilisateur}</td>
 				<td>{$Article.creat_on|date_format:$config.format_date}</td>
 				<td style="text-align:center;">
-					<a href="{getLinkAdm("article/edit/{$Article.id}")}" title=""><i class="icon-pencil"></i></a>&nbsp;&nbsp;
+					<a href="{$Helper->getLinkAdm("article/edit/{$Article.id}")}" title=""><i class="icon-pencil"></i></a>&nbsp;&nbsp;
 					<a href="javascript:deleteArticle({$Article.id}, '{$Article.title}');" title=""><i class="icon-trash"></i></a>
 				</td>
 			</tr>
@@ -47,7 +47,7 @@
 <!--
 function deleteArticle(article_id, article_title){
 	if( confirm("{$lang.Confirm_suppression_article} : "+ article_title +" ?") ){
-		window.location.href = '{getLinkAdm("article/delete/'+ article_id +'")}'
+		window.location.href = '{$Helper->getLinkAdm("article/delete/'+ article_id +'")}'
 	}
 }
 //-->

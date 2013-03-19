@@ -41,12 +41,12 @@
 		</tbody>
 	</table>
 	<div class="pull-right">
-		<a href="{getLinkAdm("annuaire?param[status]=new")}" title="" class="btn">Nouveau</a>
+		<a href="{$Helper->getLinkAdm("annuaire?param[status]=new")}" title="" class="btn">Nouveau</a>
 		&nbsp;
-		<a href="{getLinkAdm("annuaire?param[status]=wait")}" title="" class="btn">En attente</a>
+		<a href="{$Helper->getLinkAdm("annuaire?param[status]=wait")}" title="" class="btn">En attente</a>
 		{if isset($smarty.get.param)}
 		&nbsp;
-		<a href="{getLinkAdm("annuaire")}" title="" class="btn">Tous</a>
+		<a href="{$Helper->getLinkAdm("annuaire")}" title="" class="btn">Tous</a>
 		{/if}
 	</div>
 	<div class="clearfix"></div>
@@ -57,7 +57,7 @@
 <!--
 function deleteSite(id){
 	if(confirm('Etes vous sur de vouloir supprimé ce site ?')){
-		window.location.href = '{getLinkAdm("annuaire/delete/'+ id +'")}';
+		window.location.href = '{$Helper->getLinkAdm("annuaire/delete/'+ id +'")}';
 	}
 }
 //-->

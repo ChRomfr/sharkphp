@@ -3,7 +3,7 @@
 -->
 {strip}
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm("index")}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm("index")}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
 	<li>{$lang.Contact}</li>
 </ul>
 
@@ -21,7 +21,7 @@
         </thead>
         {foreach $Contacts as $contact}
         <tr>
-            <td><a href="{getLinkAdm("contact/view/{$contact.id}")}">{$contact.id}</a></td>
+            <td><a href="{$Helper->getLinkAdm("contact/view/{$contact.id}")}">{$contact.id}</a></td>
             <td>{$contact.name}</td>
             <td>{$contact.email}</td>
             <td>{$contact.post_on|date_format:$config.format_date}</td>

@@ -1,6 +1,16 @@
 <?php
+/**
+ *	SHARKPHP
+ *	@author Romain DROUCHE
+ *	@link http://www.sharkphp.com
+ *	@file adm/index.php
+ *	@date 20130319
+ */
 
+// Chrono page
 $chrono1 = microtime(true);
+
+// Definition des constante
 define('IN_VA', TRUE);
 define('IN_ADMIN', TRUE);
 define('DS', DIRECTORY_SEPARATOR); 
@@ -14,9 +24,9 @@ define('UPLOAD_PATH', ROOT_PATH . 'web' . DS . 'upload' . DS);
 define('ADM_MODEL_PATH',ROOT_PATH . 'adm' . DS . 'app' . DS . 'model' . DS);
 
 
-# START CODE SPECIFIQUE APP
+// START CODE SPECIFIQUE APP
 
-# END CODE SPECIFIQUE APP
+// END CODE SPECIFIQUE APP
 
 require_once ROOT_PATH . 'kernel' . DS . 'core'. DS . 'core.php';
 
@@ -37,9 +47,9 @@ endif;
 
 $registry->constructConstAdm();
 
-$registry->smarty->assign('config',$config);
+$registry->smarty->assign('config',$registry->config);
 
-$registry->config = $config;
+//$registry->config = $config;
 
 $registry->addJS('jquery-last.min.js');
 $registry->addJS('jquery-migrate-1.1.0.min.js');

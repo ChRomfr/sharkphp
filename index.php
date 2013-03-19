@@ -1,8 +1,8 @@
 <?php
 /**
- *	IMMOPHP
+ *	SHARKPHP
  *	@author Romain DROUCHE
- *	@link http://www.immophp.fr
+ *	@link http://www.sharkphp.com
  */
 
 # Debut chrono page

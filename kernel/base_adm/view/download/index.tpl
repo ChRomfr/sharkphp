@@ -32,7 +32,7 @@
 					{$download.categorie}
 				</td>
 				<td style="text-align:center">
-					<a href="{getLinkAdm("download/edit/{$download.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;&nbsp;&nbsp;
+					<a href="{$Helper->getLinkAdm("download/edit/{$download.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;&nbsp;&nbsp;
 					<a href="javascript:deleteDownload({$download.id});" title="{$lang.Supprimer}"><i class="icon-trash"></i></a>
 				</td>
 			</tr>
@@ -45,7 +45,7 @@
 <!--
 function deleteDownload(id){
 	if( confirm('{$lang.Confirm_suppression_telechargement|html_entity_decode|utf8_encode} ?') ){
-		window.location.href='{getLinkAdm("download/delete/")}'+id;
+		window.location.href='{$Helper->getLinkAdm("download/delete/")}'+id;
 	}
 }
 //-->

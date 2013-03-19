@@ -1,6 +1,6 @@
 {strip}
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
 	<li>{$lang.Page}</li>
 </ul>
 
@@ -27,7 +27,7 @@
 				<td>{$page.identifiant}</td>
 				<td><a href="{$Helper->getLink("page/index/{$page.id}")}" target="_blank">{$Helper->getLink("page/index/{$page.id}")}</a></td>
 				<td style="text-align:center">
-					<a href="{getLinkAdm("page/edit/{$page.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;&nbsp;&nbsp;
+					<a href="{$Helper->getLinkAdm("page/edit/{$page.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;&nbsp;&nbsp;
 					<a href="javascript:deletePage({$page.id});" title="{$lang.Supprimer}"><i class="icon-trash"></i></a>
 				</td>
 			</tr>
@@ -41,7 +41,7 @@
 <!--
 function deletePage(id){
 	if( confirm('{$lang.Confirm_suppression_page} ?') ){
-		window.location.href='{getLinkAdm("page/delete/")}'+id;
+		window.location.href='{$Helper->getLinkAdm("page/delete/")}'+id;
 	}
 }
 //-->

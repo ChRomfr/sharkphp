@@ -3,7 +3,7 @@
 -->
 {strip}
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
 	<li>{$lang.News}</li>
 </ul>
 
@@ -40,7 +40,7 @@
 			<td>{$new.identifiant}</td>
 			<td>{$new.post_on|date_format:$config.format_date}</td>
 			<td class="center">
-				<a href="{getLinkAdm("news/edit/{$new.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;
+				<a href="{$Helper->getLinkAdm("news/edit/{$new.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;
 				<a href="javascript:deleteNews({$new.id});" title="{$lang.Supprimer}"><i class="icon-trash"></i></a>
 			</td>
 		</tr>
@@ -57,7 +57,7 @@
 <!--
 function deleteNews(id){
 	if( confirm('{$lang.Confirm_suppression_news} ?') ){
-		window.location.href='{getLinkAdm("news/delete/")}'+id;
+		window.location.href='{$Helper->getLinkAdm("news/delete/")}'+id;
 	}
 }
 //-->

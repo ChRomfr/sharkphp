@@ -36,7 +36,7 @@ base_adm/link/add.tpl
 					{$link.categorie}
 				</td>
 				<td style="text-align:center">
-					<a href="{getLinkAdm("link/edit/{$link.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;&nbsp;&nbsp;
+					<a href="{$Helper->getLinkAdm("link/edit/{$link.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;&nbsp;&nbsp;
 					<a href="javascript:deleteLink({$link.id});" title="{$lang.Supprimer}"><i class="icon-trash"></i></a>
 				</td>
 			</tr>
@@ -49,7 +49,7 @@ base_adm/link/add.tpl
 <!--
 function deleteLink(id){
 	if( confirm('Etes vous sur de vouloir supprimer ce lien de la base ?') ){
-		window.location.href='{getLinkAdm("link/delete/")}'+id;
+		window.location.href='{$Helper->getLinkAdm("link/delete/")}'+id;
 	}
 }
 //-->

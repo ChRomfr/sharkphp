@@ -27,7 +27,7 @@ class Helper{
 	/*
 	*	Genere un lien pour l administration
 	*/
-	public function getLinkAdm($str){
+	public function getLinkAdm($str){	
 		return self::$config['url'] . self::$config['url_dir'] . 'adm/index.php/' . $str;		
 	}
 

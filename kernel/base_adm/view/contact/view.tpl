@@ -48,7 +48,7 @@
 <!--
 function deleteContact(id){
     if( confirm('{$lang.Confirm_suppression_message} ?') ){
-        window.location.href='{getLinkAdm("contact/delete/")}'+id;
+        window.location.href='{$Helper->getLinkAdm("contact/delete/")}'+id;
     }
 }
 //-->

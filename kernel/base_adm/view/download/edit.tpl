@@ -1,7 +1,7 @@
 
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
-	<li><a href="{getLinkAdm('download/index')}" title="{$lang.Telechargement}">{$lang.Telechargement}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('download/index')}" title="{$lang.Telechargement}">{$lang.Telechargement}</a><span class="divider">/</span></li>
 	<li>{$lang.Edition}</li>
 </ul>
 

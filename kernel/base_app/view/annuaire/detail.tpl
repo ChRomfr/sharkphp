@@ -7,12 +7,12 @@
 	<li><a href="{$Helper->getLink("annuaire")}" title="Annuaire">Annuaire</a><span class="divider">/</span></li>
 	{if isset($Parents) && !empty($Parents)}
 		{foreach $Parents as $Parent}
-		<li><a href="{getLink("Annuaire/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("Annuaire/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
 		{/foreach}
 	{/if}
 	
 	{if !empty($Site->categorie_id)}
-		<li><a href="{getLink("Annuaire/index?cid={$Site->categorie_id}")}" title="{$Site->categorie}">{$Site->categorie}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("Annuaire/index?cid={$Site->categorie_id}")}" title="{$Site->categorie}">{$Site->categorie}</a><span class="divider">/</span></li>
 	{/if}
 	<li>{$Site->name}</li>
 </ul>

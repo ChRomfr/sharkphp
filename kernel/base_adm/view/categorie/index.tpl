@@ -1,8 +1,8 @@
 {strip}
 
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm("index")}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
-	<li><a href="{getLinkAdm("{$smarty.get.c}")}" title="">{$smarty.get.c}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm("index")}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm("{$smarty.get.c}")}" title="">{$smarty.get.c}</a><span class="divider">/</span></li>
 	<li>{$lang.Categorie}</li>
 </ul>
 
@@ -141,7 +141,7 @@ categories = new Array();
 function getFormEdit(categorie_id){
 	
 	// Requete JSON pour recuperer les data.
-	$.getJSON('{getLinkAdm("categorie/getData/'+categorie_id+'?nohtml&c={$smarty.get.c}")}', function(data) {
+	$.getJSON('{$Helper->getLinkAdm("categorie/getData/'+categorie_id+'?nohtml&c={$smarty.get.c}")}', function(data) {
 		$('#name_edit').val(data.name);
 		$('#description_edit').val(data.description);
 		$('#id_edit').val(data.id);
@@ -154,7 +154,7 @@ function getFormEdit(categorie_id){
 
 function delCat(id){
 	if( confirm('{$lang.Confirm_suppression_categorie} ?') ){
-		window.location.href='{getLinkAdm("categorie/delete/")}'+id+'?c={$smarty.get.c}';
+		window.location.href='{$Helper->getLinkAdm("categorie/delete/")}'+id+'?c={$smarty.get.c}';
 	}
 }
 //-->

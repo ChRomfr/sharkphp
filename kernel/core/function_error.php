@@ -7,7 +7,7 @@
 *	LA FONCTION RETOURNE FALSE POUR LAISSER LE GESTIONNAIRE D ERREUR PHP
 * */
 
-function myErrorHandler($errno, $errstr, $errfile, $errline){
+function myErrorHandler($errno, $errstr, $errfile, $errline, $errcontext){
 
 	$mytext = date("Y-m-d h:i:s").'|';
 
@@ -34,7 +34,8 @@ function myErrorHandler($errno, $errstr, $errfile, $errline){
         break;
 
     default:
-        $mytext .= "Type d'erreur inconnu : [$errno] $errstr - ligne $errline dans le fichier $errfile\r\n";
+    	$fulldata = serialize($errcontext);
+        $mytext .= "Type d'erreur inconnu : [$errno] $errstr - ligne $errline dans le fichier $errfile - $fulldata\n";
 		WriteInFile($mytext);
         break;
     }

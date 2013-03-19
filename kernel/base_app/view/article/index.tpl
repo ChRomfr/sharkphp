@@ -7,7 +7,7 @@
 	{/if}
 	{if isset($Parents)}
 		{foreach $Parents as $Parent}
-		<li><a href="{getLink("article/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("article/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
 		{/foreach}
 	{/if}
 	{if isset($Categorie)}<li>{$Categorie.name}</li>{/if}
@@ -24,7 +24,7 @@
 			</div>
 			{/if}
 			<div style="float:left">
-				<a href="{getLink("article/index?cid={$Categorie.id}")}" title="{$Categorie.name}"><strong>{$Categorie.name}</strong></a><br/>
+				<a href="{$Helper->getLink("article/index?cid={$Categorie.id}")}" title="{$Categorie.name}"><strong>{$Categorie.name}</strong></a><br/>
 				{$Categorie.description}
 			</div>
 			<div style="clear:both"></div>
@@ -39,7 +39,7 @@
 	{foreach $Articles as $Article}
 		<div class="well">			
 			<div style="float:left; width:85%;">
-				<h4><a href="{getLink("article/read/{$Article.id}")}" title="{$Article.title}">{$Article.title}</a></h4>			
+				<h4><a href="{$Helper->getLink("article/read/{$Article.id}")}" title="{$Article.title}">{$Article.title}</a></h4>			
 				<div>{$Article.article|strip_tags|html_entity_decode|truncate:200}</div>
 			</div>	
 			{if !empty($Article.image)}

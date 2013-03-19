@@ -1,7 +1,7 @@
 {strip}
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
-	<li><a href="{getLinkAdm('blok/index')}" title="{$lang.Blok}">{$lang.Blok}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('blok/index')}" title="{$lang.Blok}">{$lang.Blok}</a><span class="divider">/</span></li>
 	<li>{$lang.Edition}</li>
 </ul>
 

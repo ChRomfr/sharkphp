@@ -161,7 +161,7 @@ function alerteMessage(message_id){
 {if $Thread->closed != 1}
 function getFormEditReply(message_id){
 	$.get(
-		'{getLink("forum/editreplyform/'+ message_id +'")}',{literal}
+		'{$Helper->getLink("forum/editreplyform/'+ message_id +'")}',{literal}
 		{nohtml:'nohtml'},{/literal}
 		function(data){ $('#message'+ message_id).html(data); }
 	);
@@ -185,13 +185,13 @@ function unlockSujet(thread_id){
 
 function deleteReply(message_id){
 	if( confirm('Etes vous sur de vouloir supprimer cette reponse ?') ){
-		window.location.href = '{getLink("forum/deletereply/'+ message_id +'")}';
+		window.location.href = '{$Helper->getLink("forum/deletereply/'+ message_id +'")}';
 	}
 }
 
 function deleteTopic(topic_id){
 	if( confirm('Etes vous sur de vouloir supprimer ce sujet ?') ){
-		window.location.href = '{getLink("forum/deletetopic/'+ topic_id +'")}';
+		window.location.href = '{$Helper->getLink("forum/deletetopic/'+ topic_id +'")}';
 	}
 }
 {/if}

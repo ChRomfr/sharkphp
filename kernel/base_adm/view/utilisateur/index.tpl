@@ -53,7 +53,7 @@
 <!--
 function deleteUtilisateur(id){
 	if( confirm('{$lang.Confirm_suppression_utilisateur} ?') ){
-		window.location.href='{getLinkAdm("utilisateur/delete/")}'+id;
+		window.location.href='{$Helper->getLinkAdm("utilisateur/delete/")}'+id;
 	}
 }
 //-->

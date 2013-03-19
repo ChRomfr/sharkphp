@@ -11,7 +11,7 @@ base_app/view/download/index.tpl
 	{/if}
 	{if isset($Parents)}
 		{foreach $Parents as $Parent}
-		<li><a href="{getLink("download/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("download/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
 		{/foreach}
 	{/if}
 	{if isset($Categorie)}<li>{$Categorie.name}</li>{/if}
@@ -28,7 +28,7 @@ base_app/view/download/index.tpl
 			</div>
 			{/if}
 			<div style="float:left">
-				<a href="{getLink("download/index?cid={$Categorie.id}")}" title="{$Categorie.name}"><strong>{$Categorie.name}</strong></a><br/>
+				<a href="{$Helper->getLink("download/index?cid={$Categorie.id}")}" title="{$Categorie.name}"><strong>{$Categorie.name}</strong></a><br/>
 				{$Categorie.description}
 			</div>
 			<div style="clear:both"></div>
@@ -45,7 +45,7 @@ base_app/view/download/index.tpl
 			{if !empty($Download.apercu)}
 			<div class="fright"><img src="{$Download.apercu}" alt="" style="width:100px;"/></div>
 			{/if}
-			<h4><a href="{getLink("download/detail/{$Download.id}")}" title="{$Download.name}">{$Download.name}</a></h4>
+			<h4><a href="{$Helper->getLink("download/detail/{$Download.id}")}" title="{$Download.name}">{$Download.name}</a></h4>
 			<div class="clear"></div>
 			<div class="fleft">	{$Download.description|strip_tags|wordwrap:50}</div>		
 			<div class="clear"></div>

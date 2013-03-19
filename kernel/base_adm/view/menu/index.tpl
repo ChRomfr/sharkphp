@@ -1,5 +1,5 @@
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
 	<li>{$lang.Menu}</li>
 </ul>
 
@@ -37,7 +37,7 @@
 <!--
 function deleteMenu(menu_id){
     if( confirm('{$lang.Confirm_suppression_menu} ?') ){
-        window.location.href = '{getLinkAdm("menu/delete/'+menu_id+'")}'
+        window.location.href = '{$Helper->getLinkAdm("menu/delete/'+menu_id+'")}'
     }
 }
 //-->

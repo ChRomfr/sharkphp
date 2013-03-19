@@ -38,8 +38,8 @@ abstract class Baseannuairecontroller extends Controller{
 		else:
 
 			$categorie_id = 0;	
-			$Categories = $this->app->db->get(PREFIX . 'annuaire_categorie', array('parent_id =' => 0), 'name');
-			$LastSites = $this->manager->annuaire->getAll(10, 0, null);
+			$Categories   = $this->app->db->get(PREFIX . 'annuaire_categorie', array('parent_id =' => 0), 'name');
+			$LastSites    = $this->manager->annuaire->getAll(10, 0, null);
 
 			$this->app->smarty->assign(array(
 				'Sites'			=>	$LastSites,
@@ -102,7 +102,7 @@ abstract class Baseannuairecontroller extends Controller{
 
 			$Site->save();
 
-			return $this->redirect( getLink('annuaire'), 3, 'Votre site vient d etre proposé' );
+			return $this->redirect( $Helper->getLink('annuaire'), 3, 'Votre site vient d etre proposé' );
 
 		endif;
 

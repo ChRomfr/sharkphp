@@ -25,8 +25,8 @@
 
 {if !isset($config.bread) || $config.bread }
 <ul class="breadcrumb">
-	<li><a href="{getLink("index")}" title="{$lang.Accueil}">{$lang.Accueil}</a><span class="divider">/</span></li>
-	<li><a href="{getLink("news")}" title="{$config.news_nom}">{$config.news_nom}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLink("index")}" title="{$lang.Accueil}">{$lang.Accueil}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLink("news")}" title="{$config.news_nom}">{$config.news_nom}</a><span class="divider">/</span></li>
 	<li>{$new.sujet}</li>
 </ul>
 {/if}
@@ -80,7 +80,7 @@
 
 	<!-- Formulaire nouveau commentaire -->
 	{if $smarty.session.utilisateur.id != 'Visiteur' && $new.commentaire == 1}
-	<form method="post" action="{getLink("commentaire/post")}" class="form-horizontal well">
+	<form method="post" action="{$Helper->getLink("commentaire/post")}" class="form-horizontal well">
 			<div class="control-group">
 				<label class="control-label" for="commentaire">{$lang.Commentaire} :</label>
 				<div class="controls"><textarea name="com[commentaire]" id="commentaire" cols="50" rows="5" class="input-xxlarge"></textarea></div>
@@ -121,19 +121,19 @@ $.get(
 
 function deleteCommentaire(id){
 	if( confirm('{$lang.Confirm_suppression_commentaire} ?') ){
-		window.location.href='{getLink("commentaire/delete/'+ id +'?com_model=news")}';
+		window.location.href='{$Helper->getLink("commentaire/delete/'+ id +'?com_model=news")}';
 	}
 }
 {if isset($smarty.session.utilisateur.isAdmin) && $smarty.const.ADM_NEWS_LEVEL < $smarty.session.utilisateur.isAdmin}
 function lockCommentaire(id){
 	if( confirm('{$lang.Confirm_lock_commentaire} ?') ){
-		window.location.href='{getLink("news/lockCommentaire/")}' + id;
+		window.location.href='{$Helper->getLink("news/lockCommentaire/")}' + id;
 	}
 }
 
 function unlockCommentaire(id){
 	if( confirm('{$lang.Confirm_unlock_commentaire} ?') ){
-		window.location.href='{getLink("news/unlockCommentaire/")}' + id;
+		window.location.href='{$Helper->getLink("news/unlockCommentaire/")}' + id;
 	}
 }
 {/if}

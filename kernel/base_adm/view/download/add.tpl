@@ -1,7 +1,7 @@
 
 <ul class="breadcrumb">
-	<li><a href="{getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
-	<li><a href="{getLinkAdm('download/index')}" title="{$lang.Telechargement}">{$lang.Telechargement}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('index/index')}" title="{$lang.Administration}">{$lang.Administration}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLinkAdm('download/index')}" title="{$lang.Telechargement}">{$lang.Telechargement}</a><span class="divider">/</span></li>
 	<li>{$lang.Nouveau}</li>
 </ul>
 <div class="alert alert-error" style="display:none;" id="alerte">Veuillez indiquer l'url du fichier ou l'envoyer par le formulaire</div>

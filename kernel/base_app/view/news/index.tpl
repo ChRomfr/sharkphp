@@ -2,11 +2,11 @@
 
 {foreach $news as $new}
 <div class="well">
-	<h3><a href="{getLink("news/view/{$new.id}/{$new.sujet|urlencode}")}" title="{$new.sujet}">{$new.sujet}</a></h3>
+	<h3><a href="{$Helper->getLink("news/view/{$new.id}/{$new.sujet|urlencode}")}" title="{$new.sujet}">{$new.sujet}</a></h3>
 	<hr/>
 	<div>
 		{if $config.news_truncate_in_index == 1 && strlen($new.contenu) > 1000}{$new.contenu|truncate:1000}
-			<div class="fright"><a href="{getLink("news/view/{$new.id}/{$new.sujet|urlencode}")}" title=""><small>{$lang.Suite}</smalL></a><br/><br/></div><div class="clear"></div>
+			<div class="fright"><a href="{$Helper->getLink("news/view/{$new.id}/{$new.sujet|urlencode}")}" title=""><small>{$lang.Suite}</smalL></a><br/><br/></div><div class="clear"></div>
 		{else}
 			{$new.contenu}
 		{/if}

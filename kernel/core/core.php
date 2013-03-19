@@ -26,6 +26,8 @@
                                                                                
 
 */
+define('BUNDLE_PATH', ROOT_PATH . 'bundle' . DS);
+
 # Demarrage des sessions
 session_start();
 
@@ -52,10 +54,10 @@ define('BASE_APP_PATH', ROOT_PATH . 'kernel' . DS . 'base_app' . DS);
 
 $registry              = new Registry();
 $registry->router      = new Router($registry);
-$registry->session     = new Session($registry);
 $registry->cache       = new MyCache($registry);
 $registry->db          = $db->getInstance();
 $registry->smarty      = new MySmarty($registry);
+$registry->session     = new Session($registry);
 $registry->HTTPRequest = new HTTPRequest($registry);
 $registry->form        = new Form($registry);
 $cache                 = $registry->cache;

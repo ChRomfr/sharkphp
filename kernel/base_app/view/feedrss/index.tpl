@@ -7,7 +7,7 @@
 	{/if}
 	{if isset($Parents)}
 		{foreach $Parents as $Parent}
-		<li><a href="{getLink("feedRss/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
+		<li><a href="{$Helper->getLink("feedRss/index?cid={$Parent.id}")}">{$Parent.name}</a><span class="divider">/</span></li>
 		{/foreach}
 	{/if}
 	{if isset($Categorie)}<li>{$Categorie.name}</li>{/if}
@@ -24,7 +24,7 @@
 			</div>
 			{/if}
 			<div style="float:left">
-				<a href="{getLink("feedRss/index?cid={$Categorie.id}")}" title="{$Categorie.name}"><strong>{$Categorie.name}</strong></a><br/>
+				<a href="{$Helper->getLink("feedRss/index?cid={$Categorie.id}")}" title="{$Categorie.name}"><strong>{$Categorie.name}</strong></a><br/>
 				{$Categorie.description}
 			</div>
 			<div style="clear:both"></div>

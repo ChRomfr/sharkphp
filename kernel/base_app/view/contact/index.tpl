@@ -25,7 +25,7 @@
 
 {if !isset($config.bread) || $config.bread }
 <ul class="breadcrumb">
-	<li><a href="{getLink('index/index')}" title="{$lang.Accueil}">{$lang.Accueil}</a><span class="divider">/</span></li>
+	<li><a href="{$Helper->getLink('index/index')}" title="{$lang.Accueil}">{$lang.Accueil}</a><span class="divider">/</span></li>
 	<li>{$lang.Contact}</li>
 </ul>
 {/if}

@@ -11,10 +11,6 @@ class Http {
 		return isset($_POST[$key]) ? $_POST[$key] : null;
 	}
 
-	public function __construct($registry){
-        $this->registry = $registry;
-    }
-
     public function cookieData($key)
     {
         return isset($_COOKIE[$key]) ? $_COOKIE[$key] : null;

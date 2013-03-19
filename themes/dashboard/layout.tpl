@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/dashboard/css/charisma-app.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/dashboard/css/uniform.default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}themes/sharkphp/sharkphp.css" type="text/css" media="screen" />
-{nocache}
 {if !empty($css_add)}
 {foreach $css_add as $k => $v}
 <link rel="stylesheet" href="{$config.url}{$config.url_dir}web/css/{$v}" type="text/css" media="screen" />
@@ -29,7 +28,7 @@
 {foreach registry::$js_lib as $k => $v}
 <script type="text/javascript" src="{$config.url}{$config.url_dir}web/lib/{$v}"></script>
 {/foreach}
-{/nocache}
+
 <script type="text/javascript" src="{$config.url}{$config.url_dir}themes/bootstrap/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -56,7 +55,6 @@
 						<li><a href="{$Helper->getLinkAdm("contact")}" title="Contact">Contact</a></li>
 					</ul>
 					<ul class="nav pull-right">
-						{nocache}
 						{if $smarty.session.utilisateur.id != 'Visiteur'}
 						<li><a href="{$Helper->getLink("utilisateur")}" title=""><i class="icon-user icon-white"></i></a>
 						<li><a href="{$Helper->getLink("connexion/logout")}" title=""><i class="icon-off icon-white"></i></a>
@@ -65,7 +63,6 @@
 						{if $smarty.session.utilisateur.isAdmin > 0}
 						<li><a href="{$config.url}{$config.url_dir}adm/" title="Administration"><i class="icon-wrench icon-white"></i></a></li>
 						{/if}
-						{/nocache}
 					</ul>
 					
 				</div>
@@ -83,7 +80,6 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Main</li>
 						<li><a href="{$Helper->getLinkAdm("index")}" title="">Dashboard</a></li>
-						{nocache}
 						{if $config.mod_annuaire == 1}
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="">Annuaire&nbsp;<b class="caret"></b></a>
@@ -94,7 +90,6 @@
 							</ul>
 						</li>
 						{/if}
-						{/nocache}
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="">Article&nbsp;<b class="caret"></b></a>
 							<ul class="dropdown-menu">

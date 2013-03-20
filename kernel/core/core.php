@@ -52,6 +52,14 @@ require_once ROOT_PATH . 'kernel' . DS . 'lib' . DS . 'markitup.bbcode-parser.ph
 
 define('BASE_APP_PATH', ROOT_PATH . 'kernel' . DS . 'base_app' . DS);
 
+# On demarre les services
+/*
+$Service = new Service($Services);
+
+$config = new Baseconfig($config_file, $Service->cache, $Service->db);
+$config->get();
+*/
+
 $registry              = new Registry();
 $registry->router      = new Router($registry);
 $registry->cache       = new MyCache($registry);

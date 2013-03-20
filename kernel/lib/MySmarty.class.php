@@ -11,7 +11,7 @@ class MySmarty extends Smarty{
 	
 	public		$tpls_used = array();
 	
-	public function __construct($registry){
+	public function __construct(array $param){
 		
 		$this->registry = $registry;
 		parent::__construct();

@@ -32,7 +32,7 @@ function MyAutoload($class){
 # Definition d un table avec le nom de la class et son chemin
 $ClassList = array(
 
-	//'App'					=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'App.class.php',
+	'App'					=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'App.class.php',
 	'Config'				=>	ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Config.class.php',
 
 	// Kernel / core

@@ -26,13 +26,12 @@ class Baseconfig extends Record{
 	/**
 	 * @NoDb: {"nodb":1}
 	 */
-	public $db;
+	private $registry;
 
 
-	public function __construct($config_file=null, MyCache $cache, $db){
-		$this->cache = $cache;
+	public function __construct($config_file=null, $registry){
+		$this->registry = $registry;
 		$this->config_file = $config_file;
-		$this->db = $db;
 		$this->merge();
 	}
 
@@ -49,12 +48,12 @@ class Baseconfig extends Record{
 
 	public function get($cle = null){
 
-		if( !$Datas = $this->cache->get('config') ):
+		if( !$Datas = $this->registry->cache->get('config') ):
 			// Recuperation de la config dans la base
-			$Datas = $this->db->get(PREFIX . 'config');
+			$Datas = $this->registry->db->get(PREFIX . 'config');
 
 			// Sauvegarde en cache
-			$this->cache->save(serialize($Datas));
+			$this->registry->cache->save(serialize($Datas));
 		else:
 			$Datas = unserialize($Datas);
 		endif; 			

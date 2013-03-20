@@ -1,7 +1,7 @@
 <?php
 class MySmarty extends Smarty{
 	
-	private $registry;
+	private 	$container;
 	
 	protected	$_cache_tpl_db = 1;
 	
@@ -11,25 +11,25 @@ class MySmarty extends Smarty{
 	
 	public		$tpls_used = array();
 	
-	public function __construct(array $param){
-		
-		$this->registry = $registry;
+	public function __construct( $container ){
+
+		$this->container = $container;
 		parent::__construct();
 		$this->debugging = false;
 		$this->template_dir = VIEW_PATH;
-		$this->compile_dir = CACHE_PATH; // Repertoire du cache compilé
-		$this->cache_dir = CACHE_PATH;   // Repertoire du cache
-		$this->cache_lifetime = 3600; // Duree de vie du cache
+		$this->compile_dir = CACHE_PATH; 	// Repertoire du cache compilé
+		$this->cache_dir = CACHE_PATH;   	// Repertoire du cache
+		$this->cache_lifetime = 3600; 		// Duree de vie du cache
 		$this->caching = false;
 
 		$this->php_handling = self::PHP_ALLOW;
 		
 		if( $this->_use_tpl_perso == 1 && $this->_cache_tpl_db == 1 ):
 		
-			if( !$this->_tpls = $this->registry->cache->get("templates_in_db") ):	
+			if( !$this->_tpls = $this->container->cache->get("templates_in_db") ):	
 			
 				// Recuperation des templates en base
-				$tmp = $this->registry->db->get(PREFIX . 'view_template', array('active =' => 1) );
+				$tmp = $this->container->db->get(PREFIX . 'view_template', array('active =' => 1) );
 				
 				// On boucle sur le resultat pour le mettre dans la viariable
 				foreach( $tmp as $row ):
@@ -37,7 +37,7 @@ class MySmarty extends Smarty{
 				endforeach;
 				
 				// On sauvegarde le resultat en cache
-				$this->registry->cache->save( serialize($this->_tpls) );
+				$this->container->cache->save( serialize($this->_tpls) );
 			else:
 				$this->_tpls = unserialize($this->_tpls);
 			endif;
@@ -63,7 +63,7 @@ class MySmarty extends Smarty{
 			$this->debugging = true;
 
 			# Recuperation dans la base de la vue
-			$Tpl = $this->registry->db->get_one(PREFIX . 'view_template', array('token =' => $_GET['token'])) ;
+			$Tpl = $this->container->db->get_one(PREFIX . 'view_template', array('token =' => $_GET['token'])) ;
 
 			# On verifie que la requete retourne un resultat
 			if( empty($Tpl) ):
@@ -89,7 +89,7 @@ class MySmarty extends Smarty{
 			elseif( !isset($this->_tpls[$file_search]) &&  $this->_cache_tpl_db == 1):
 				goto normal_fetch;
 			elseif( $this->_cache_tpl_db == 0 ):
-				$_tpl = $this->registry->db->get_one(PREFIX . 'view_template', array('real_dir =' => $file_search, 'active =' => 1) );
+				$_tpl = $this->container->db->get_one(PREFIX . 'view_template', array('real_dir =' => $file_search, 'active =' => 1) );
 			endif;
 			
 			

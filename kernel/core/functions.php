@@ -108,7 +108,7 @@ function VerifieAdresseMail($adresse)
 *   @return bool
 */
 function sendEmail($destinataire, $expediteur, $sujet, $message, $messageHTML = '', $file = ''){
-	global $config;
+	global $registry;
 	
 	if( !ini_get('safe_mode') ){ set_time_limit(600); }	// Si possible on augmente le tps d excution
 	
@@ -118,17 +118,17 @@ function sendEmail($destinataire, $expediteur, $sujet, $message, $messageHTML = 
 	$mail->CharSet = 'UTF-8';		
 
 	// Traitement method d envoie
-	if( $config['mail_method'] == 'smtp' && $config['smtp_server'] != '' ){
+	if( $registry->config['mail_method'] == 'smtp' && $registry->config['smtp_server'] != '' ){
 		// Parametrage pour utilisation SMTP
 		$mail->IsSMTP();
-		$mail->Host = $config['smtp_server'];
-		$mail->Port = $config['smtp_port'];
+		$mail->Host = $registry->config['smtp_server'];
+		$mail->Port = $registry->config['smtp_port'];
 
 		// Si champ identifiant et mdp smtp utilisation authentification
-		if( $config['smtp_login'] != '' && $config['smtp_password'] != '' ){
+		if( $registry->config['smtp_login'] != '' && $registry->config['smtp_password'] != '' ){
 			$mail->SMTPAuth = true;
-			$mail->Username = $config['smtp_login'];
-			$mail->Password = $config['smtp_password'];
+			$mail->Username = $registry->config['smtp_login'];
+			$mail->Password = $registry->config['smtp_password'];
 		}
 	}
 	
@@ -222,7 +222,10 @@ function getFilesInDir($dirname, $path_return = ''){
  * @return mixed Code html contenant la pagination
  * */
 function getPagination($param){
-	global $config;
+	global $registry;
+
+	// FOR BC
+	$config = $registry->config;
 
 	if( strstr($_SERVER['REQUEST_URI'], 'adm/') == TRUE):
 		$param['fileName'] = str_replace($config['url'] . $config['url_dir'] . 'adm/', '', $param['fileName']);
@@ -313,75 +316,6 @@ function getUrlForPagination(){
         $url = $_SERVER['QUERY_STRING'];
         
     return $url;
-}
-
-/**
-*	Function permettant de savoir si le visiteur courant est un ROBOTS
-*	Code inspirer de phpBB3
-*	@return bool false si non robot
-*/
-function isBot(){
-	global $registry;
-
-	$browser = (!empty($_SERVER['HTTP_USER_AGENT'])) ? htmlspecialchars((string) $_SERVER['HTTP_USER_AGENT']) : '';
-	$ip = (!empty($_SERVER['REMOTE_ADDR'])) ? (string) $_SERVER['REMOTE_ADDR'] : '';
-	$bot = false;
-
-	if( !$bots = $registry->cache->get('bots_listes') ){
-		$bots = $registry->db->get(PREFIX . 'bots');
-		$registry->cache->save(serialize($bots));
-	}else{
-		$bots = unserialize($bots);
-	}
-	
-	foreach($bots as $row){
-	
-		if ($row['bot_agent'] && preg_match('#' . str_replace('\*', '.*?', preg_quote($row['bot_agent'], '#')) . '#i', $browser)){
-			$bot = $row['user_id'];
-		}
-		
-		// If ip is supplied, we will make sure the ip is matching too...
-		if ($row['bot_ip'] && ($bot || !$row['bot_agent']))
-		{
-			// Set bot to false, then we only have to set it to true if it is matching
-			$bot = false;
-
-			foreach (explode(',', $row['bot_ip']) as $bot_ip)
-			{
-				$bot_ip = trim($bot_ip);
-
-				if (!$bot_ip)
-				{
-					continue;
-				}
-
-				if (strpos($ip, $bot_ip) === 0)
-				{
-					$bot = (int) $row['user_id'];
-					break;
-				}
-			}
-		}
-	}
-	
-	if( $bot !== false) return true;
-	
-	return false;	
-}
-
-function injectBotIp(){
-	global $registry;
-	
-	$fichiers = getFilesInDir(ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Bots' . DS);
-	foreach($fichiers as $file){
-		$ips =  @file(ROOT_PATH . 'kernel' . DS . 'core' . DS . 'Bots' . DS . $file);
-		$listes = '';
-		foreach($ips as $ip){
-			$ip = trim($ip);
-			$listes .= $ip .',';
-		}
-		$registry->db->update(PREFIX . 'bots', array('bot_ip' => substr($listes,0,-1)), array('bot_agent =' => $file) );
-	}
 }
 
 /**

@@ -50,6 +50,8 @@ class Router{
  public $action; 
 
  public $adm = 0;
+ 
+ public $route;
 
  function __construct($registry) {
 
@@ -70,6 +72,8 @@ class Router{
 		$route = str_replace($_SERVER['SCRIPT_NAME'] .'/','', $_SERVER['REQUEST_URI']);
 	else
 		$route = $_SERVER['REDIRECT_QUERY_STRING'];
+		
+	$this->route = $route;
 		
 	$route = explode('?', $route);
 	$route = explode('&', $route[0]);

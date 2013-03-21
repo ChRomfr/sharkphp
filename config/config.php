@@ -32,7 +32,7 @@ $config_file = array(
 'news_per_page'				=>	5,
 'news_truncate_in_index'	=>	1,
 # Utilisateur
-'register_open'				=>	0,
+'register_open'				=>	1,
 #Article
 'article_nom'				=>	'Articles',
 'article_pager'				=>	0,

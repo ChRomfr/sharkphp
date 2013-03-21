@@ -72,7 +72,9 @@
                 			<span class="add-on"><i class="icon-user"></i></span><input type="text" class="span2" placeholder="Login" name="login[identifiant]" required />
                 		</div>
                 		<div class="input-prepend input-append">
-                			<span class="add-on"><i class="icon-keys"></i></span><input type="password" class="span2" placeholder="Password" name="login[password]" required /><button type="submit" class="btn"><i class="icon-ok"></i></button>
+                			<span class="add-on"><i class="icon-key"></i></span><input type="password" class="span2" placeholder="Password" name="login[password]" required />
+							<input type="hidden" name="referer" value="{$config.url}{$config.url_dir}{$App->router->route}" />
+							<button type="submit" class="btn"><i class="icon-ok"></i></button>
                 		</div>
             		</form>
         			{/if}

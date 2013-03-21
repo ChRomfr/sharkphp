@@ -57,7 +57,7 @@ $lang = array(
 'Categorie_modifiee'							=>	'Cat&eacute;gorie modifi&eacute;e',
 'Categorie_supprimee'							=>	'Cat&eacute;gorie supprim&eacute;e',
 'Categories'									=>	'Cat&eacute;gories',
-'Chambres'										=>	'Chambres',
+
 'Changer_de_mot_de_passe'						=>	'Changer de mot de passe',
 'Changement_de_mot_de_passe'					=>	'Changement de mot de passe',
 'Choix_du_modele'								=>	'Choix du modele',
@@ -92,11 +92,9 @@ $lang = array(
 'Confirm_suppression_telechargement'			=>	'Etes vous sur de vouloir supprimer ce t&eacute;l&eacute;chargement',
 'Confirm_suppression_utilisateur'				=>	'Etes vous sur de vouloir supprimer cet utilisateur',
 'Confirmation'									=>	'Confirmation',
-'Consommation_energetique'						=>  utf8_encode('Consommation énergétique'),
+'Connexion'										=>	'Connexion',
 'Contact'										=>	'Contact',
-'Contact_par_agence'                            =>  'Contact par agence',
-'Contact_par_annonce'                           =>  'Contact par annonce',
-'Contacter_l_agence'                            =>  'Contacter l\'agence',
+
 'Contenu_page_accueil'							=>	'Contenu accueil',
 	
 'Constructeur_ajoute'							=>	'Constructeur ajout&eacute;',

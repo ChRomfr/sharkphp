@@ -15,8 +15,7 @@ class BaseconnexionController extends Controller{
 		endif;
 		
 		# Soumission du formulaire
-		if( $this->app->HTTPRequest->postExists('login') ):
-            #$this->load_manager('utilisateur', 'base_app');            
+		if( $this->app->Http->postExists('login') ):            
             
             if( is_file(APP_PATH . 'model' . DS  . 'utilisateur.php') ):
                 $this->load_model('utilisateur');
@@ -40,13 +39,26 @@ class BaseconnexionController extends Controller{
 			$this->app->db->update(PREFIX . 'user', array('last_connexion' => time()), array('id =' => $_SESSION['utilisateur']['id']));
 			
 			if( isset($_SESSION['utilisateur']['isAdmin']) && $_SESSION['utilisateur']['isAdmin'] > 0):
+				# Si administrateur redirige l utilisateur vers l administration
 				return $this->redirect( $this->app->config['url'] . $this->app->config['url_dir'] . 'adm/');
 			else:
-				return $this->redirect($this->app->Helper->getLink('index'));
+				# On gere la redirection de l utilisateur
+				$url_redirection = $this->registry->Helper->getLink('index');
+				
+				if( $this->registry->Http->postExists('referer') ):
+					$referer = $this->registry->Http->post('referer');
+					# On verifie que l url soit bien du site
+					if( strpos($referer, $this->registry->config['url']) !== false ):
+						$url_redirection = $referer;
+					endif;
+				endif;
+				return $this->redirect($url_redirection);
 			endif;
 		endif;
 		
+		# Affichage du formulaire
 		print_form:
+		$this->Helper->getFormValidatorJs();
 		return $this->app->smarty->fetch(BASE_APP_PATH . 'view' . DS . 'connexion' . DS . 'index.tpl');
 	}
 	

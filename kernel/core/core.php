@@ -65,6 +65,8 @@ $registry->form        = new Form($registry);
 $registry->Http        = new Http($registry);
 $config                = new Baseconfig($config_file, $registry);
 $config->get();
+$config->config['url'] = $registry->Http->getUrl();
+$config->config['url_dir']  = '';
 $registry->config      = $config->config;
 $registry->Helper      = new Helper($registry);
 

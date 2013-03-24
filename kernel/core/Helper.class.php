@@ -31,7 +31,7 @@ class Helper{
 	*	Genere un lien pour l administration
 	*/
 	public function getLinkAdm($str){	
-		return self::$config['url'] . self::$config['url_dir'] . 'adm/index.php/' . $str;		
+		return self::$config['url'] . self::$config['url_dir'] . 'admin.php/' . $str;		
 	}
 
 	public function getFormValidatorJs(){

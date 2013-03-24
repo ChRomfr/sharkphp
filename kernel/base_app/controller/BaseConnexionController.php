@@ -40,7 +40,7 @@ class BaseconnexionController extends Controller{
 			
 			if( isset($_SESSION['utilisateur']['isAdmin']) && $_SESSION['utilisateur']['isAdmin'] > 0):
 				# Si administrateur redirige l utilisateur vers l administration
-				return $this->redirect( $this->app->config['url'] . $this->app->config['url_dir'] . 'adm/');
+				return $this->redirect( $this->registry->Helper->getLinkAdm('index'));
 			else:
 				# On gere la redirection de l utilisateur
 				$url_redirection = $this->registry->Helper->getLink('index');

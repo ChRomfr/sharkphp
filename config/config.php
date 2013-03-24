@@ -23,8 +23,8 @@ $jquery_theme = 'overcast';
 $config_file = array(
 'format_date'				=>	"%d/%m/%Y - %H:%M",
 'format_date_day'			=>	"%d/%m/%Y",
-'url'						=>	'http://127.0.0.1/',
-'url_dir'					=>	'sharkphp/',
+//'url'						=>	'http://127.0.0.1/',
+//'url_dir'					=>	'sharkphp/',
 'rewrite_url'				=>	0,
 # News
 'news_commentaire'			=>	0,

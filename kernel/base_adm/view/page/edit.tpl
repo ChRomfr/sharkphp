@@ -16,7 +16,7 @@
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="contenu">{$lang.Contenu} :</label>
-			<div class="controls"><textarea {if $config.use_ckeditor}class="ckeditor"{else}class="input-xxlarge"{/if} rows="10" name="page[contenu]" id="contenupage">{$page.contenu}</textarea></div>
+			<div class="controls"><textarea class="input-xxlarge" rows="10" name="page[contenu]" id="contenupage">{$page.contenu}</textarea></div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">{$lang.Visible} :</label>

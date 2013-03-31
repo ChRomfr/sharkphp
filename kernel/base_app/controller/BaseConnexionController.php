@@ -62,10 +62,14 @@ class BaseconnexionController extends Controller{
 		return $this->app->smarty->fetch(BASE_APP_PATH . 'view' . DS . 'connexion' . DS . 'index.tpl');
 	}
 	
+	/**
+	 * Gere la deco utilisateur
+	 * @return [type] [description]
+	 */
 	public function logoutAction(){
-		# Destruction de la session
+		// Destruction de la session
 		$this->app->session->destroy();
-		# Redirection de l utilisateur
+		// Redirection de l utilisateur
 		return $this->redirect($this->app->Helper->getLink('index'), 0, $this->lang['Vous_etes_maintenant_deconnecte']);
 	}
 	

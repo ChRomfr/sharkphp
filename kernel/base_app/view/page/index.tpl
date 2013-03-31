@@ -2,7 +2,7 @@
 <ul class="breadcrumb">
 	<li><a href="{$Helper->getLink("index")}" title="{$lang.Accueil}">{$lang.Accueil}</a><span class="divider">/</span></li>
 	<li>{$page->titre}</li>
-</div>
+</ul>
 
 <div class="well">
 	<h4>{$page->titre}</h4>

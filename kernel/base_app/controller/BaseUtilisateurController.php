@@ -46,7 +46,7 @@ class BaseutilisateurController extends Controller{
 			$user->cryptPassword();
 
 			# On le sauvegarde dans la base
-			$user->id = $user->save();
+			$user->save();
 
 			# On ajoute l utilisateur au groupe membre
 			$this->app->db->insert(PREFIX . 'user_groupe', array('groupe_id' => 2, 'user_id' => $user->id));

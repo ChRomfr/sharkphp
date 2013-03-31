@@ -67,14 +67,9 @@ abstract class Basefeedrsscontroller extends Controller{
 	}
 
 	public function burnAction(){
-
+		ini_set('user_agent', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22');
 		ignore_user_abort(true);
 		set_time_limit(0);
-
-		/*if( $this->app->config['feedrss_last_time'] > time() - 3600 ):
-			# On arrete le script 
-			exit;
-		endif;*/
 
 		# Recuperation des flux dans la base
 		$Flux = $this->app->db->get(PREFIX . 'feed_rss_link');

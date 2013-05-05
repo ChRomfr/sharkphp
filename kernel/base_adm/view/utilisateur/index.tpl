@@ -23,6 +23,7 @@
 				<th>{$lang.Administrateur}</th>
 				<th>{$lang.Actif}</td>
 				<th>{$lang.Email}</th>
+				<th>{$lang.Derniere_visite}</th>
 				<th>{$lang.Action}</th>
 			</tr>
 		</thead>
@@ -38,6 +39,7 @@
 					{if $user.actif == 1}<span style="color:green">{$lang.Oui}{else}<span style="color:red">{$lang.Non}{/if}</span>
 				</td>
 				<td>{$user.email}</td>
+				<td>{$user.last_connexion|date_format:"%m-%d-%Y"}</td>
 				<td style="text-align:center;">
 					<a href="{$Helper->getLinkAdm("utilisateur/edit/{$user.id}")}" title="{$lang.Edition}"><i class="icon-pencil"></i></a>&nbsp;
 					<a href="javascript:deleteUtilisateur({$user.id});" title="{$lang.Supprimer}"><i class="icon-trash"></i></a>

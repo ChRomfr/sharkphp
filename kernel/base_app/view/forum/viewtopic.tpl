@@ -13,6 +13,7 @@
 	</div>
 	{/if}
 	<div class="pagination">{$Pagination->render()}</div>
+	<h4>{$Thread.titre}</h4>
 	<table class="table table-hover table-striped table-condensed">
 		{foreach $Messages as $Message name=loopmessage}
 		<tr>

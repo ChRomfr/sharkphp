@@ -207,9 +207,15 @@ abstract class Baseforumcontroller extends Controller{
 		$Thread = new Basethread();
 		$Thread->get($Message->thread_id);
 
+		// Recuperation de l'id du message le plus bas pour savoir si c'est le premier
+		$Sql = $this->registry->db->query('SELECT MIN(id) as minid FROM '.PREFIX.'forum_message WHERE thread_id = '. $Message->thread_id);
+		$MinId = $Sql->fetchColumn();
+		$Sql->closeCursor();
+
 		$this->app->smarty->assign(array(
 			'Message'		=>	$Message,
 			'Thread'		=>	$Thread,
+			'MinId'			=>	$MinId,
 		));
 
 		return $this->app->smarty->fetch(BASE_APP_PATH . 'view' . DS . 'forum' . DS . 'editreplyform.tpl');

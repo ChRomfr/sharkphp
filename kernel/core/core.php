@@ -61,12 +61,12 @@ $registry->smarty      = new MySmarty($registry);
 $registry->session     = new Session($registry);
 $registry->HTTPRequest = new HTTPRequest($registry);
 $registry->form        = new Form($registry);
-//$cache                 = $registry->cache;
 $registry->Http        = new Http($registry);
 $config                = new Baseconfig($config_file, $registry);
 $config->get();
-$config->config['url'] = $registry->Http->getUrl();
-$config->config['url_dir']  = '';
+$config->config['url']     = $registry->Http->getUrl();
+$config->config['url_dir'] = '';
+$config->config['curl']    = curPageURL();
 $registry->config      = $config->config;
 $registry->Helper      = new Helper($registry);
 
